@@ -2,6 +2,16 @@
 
 Aplicativo Android offline em Kotlin, Jetpack Compose e Room. Funciona no Android 14 e começa com a lista de rotinas vazia.
 
+## Baixar e instalar no Android
+
+1. Entre na sua conta do GitHub e abra [Gerar APK Android](https://github.com/lucasdossantosxl-cyber/app-gym/actions/workflows/android-apk.yml).
+2. Se já houver uma execução com ✅, abra a mais recente. Se precisar gerar o APK, toque em **Run workflow**, selecione a branch **main** e confirme em **Run workflow**. Se o botão não aparecer no Chrome do celular, abra o menu ⋮ e ative **Site para computador**. Para iniciar a execução, sua conta precisa ter acesso de escrita ao repositório.
+3. Quando a execução terminar com ✅, abra o resumo e toque em **meu-treino** na seção **Artifacts**. Isso baixa o ZIP que contém o instalador. O botão **Code → Download ZIP** da página inicial baixa o código-fonte.
+4. No Moto G04s, abra o ZIP no app **Arquivos**, toque em **Extrair** e abra **`meu-treino.apk`**.
+5. Se o Android pedir autorização, toque em **Configurações**, habilite **Permitir desta fonte**, volte e toque em **Instalar**. Depois, abra **Meu Treino** pelo ícone na lista de apps.
+
+## Como usar
+
 - **Criar rotina** salva um modelo com exercícios de força e cardio.
 - **Iniciar** abre uma sessão a partir da rotina. **Registrar treino avulso** abre uma sessão em branco.
 - Na força, informe carga e repetições. A carga aceita ponto ou vírgula. Para cardio, informe minutos e, se quiser, distância em quilômetros.
@@ -15,7 +25,7 @@ Imagem ilustrativa com dados de exemplo, baseada na interface do projeto.
 
 ![Prévia das telas Rotinas e Registrar treino](docs/previa-interface.jpg)
 
-## Gerar o APK
+## Compilar o APK no computador
 
 Use JDK 17, Android SDK Platform 35 e Gradle 8.9. Configure ANDROID_HOME ou abra o projeto no Android Studio para configurar o SDK. Para gerar os arquivos oficiais do Wrapper a partir de uma instalação do Gradle 8.9 e compilar:
 
@@ -35,4 +45,4 @@ Com um emulador ou aparelho conectado com depuração USB:
 ./gradlew :app:connectedDebugAndroidTest
 ```
 
-Teste manual no Android 14: crie duas rotinas, registre carga com vírgula em uma, mude para a outra e salve outro treino. Feche e reabra o app e confirme ambos os registros no histórico. Inicie a primeira rotina novamente e confira o último treino. Repita com e sem atingir a meta. Valide também a digitação com o teclado aberto e o funcionamento em modo avião.
+Para testar no Android 14, crie duas rotinas, registre carga com vírgula em uma, mude para a outra e salve outro treino. Feche e reabra o app e confirme ambos os registros no histórico. Inicie a primeira rotina novamente e confira o último treino. Repita com e sem atingir a meta. Valide também a digitação com o teclado aberto e o funcionamento em modo avião.
