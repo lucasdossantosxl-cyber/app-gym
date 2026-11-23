@@ -26,6 +26,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -178,6 +179,8 @@ private fun Tabs(
                         icon = { Icon(Icons.Filled.FitnessCenter, null) }, label = { Text("Treinar") })
                     NavigationBarItem(selected = model.tab == Tab.History, onClick = { model.tab = Tab.History },
                         icon = { Icon(Icons.Filled.History, null) }, label = { Text("Histórico") })
+                    NavigationBarItem(selected = model.tab == Tab.Stopwatch, onClick = { model.tab = Tab.Stopwatch },
+                        icon = { Icon(Icons.Filled.Timer, null) }, label = { Text("Cronômetro") })
                     NavigationBarItem(selected = model.tab == Tab.Library, onClick = { model.tab = Tab.Library },
                         icon = { Icon(Icons.AutoMirrored.Filled.MenuBook, null) }, label = { Text("Exercícios") })
                 }
@@ -187,6 +190,7 @@ private fun Tabs(
         when (model.tab) {
             Tab.Train -> HomeScreen(model, routines, sessions, onPickPlan, onExport, onRestore, Modifier.padding(padding))
             Tab.History -> HistoryScreen(model, sessions, Modifier.padding(padding))
+            Tab.Stopwatch -> StopwatchScreen(model, Modifier.padding(padding))
             Tab.Library -> Column(Modifier.padding(padding).fillMaxSize()) {
                 Text("Exercícios", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(start = 16.dp, top = 12.dp, bottom = 12.dp))

@@ -66,11 +66,11 @@ class PlanParserTest {
             3 - Barra fixa 3x falha
             * **Tríceps testa** — 3×10-12, intervalo de 1min30
             - [ ] 4x10 Supino inclinado
-            - Flexão nórdica 3x8
+            - Levantamento de tora 3x8
         """)
         assertEquals(listOf("TREINO B"), plan.names())
         val exercises = plan.routines.single().exercises
-        assertEquals(listOf("rosca-direta", "agachamento", "barra-fixa", "triceps-testa", "supino-inclinado", "Flexão nórdica"),
+        assertEquals(listOf("rosca-direta", "agachamento", "barra-fixa", "triceps-testa", "supino-inclinado", "Levantamento de tora"),
             plan.routines.single().refs())
         assertEquals(listOf("3", "4", "3", "3", "4", "3"), exercises.map { it.sets })
         assertEquals(listOf("12", "10", "", "12", "10", "8"), exercises.map { it.target })
@@ -164,5 +164,19 @@ class PlanParserTest {
         assertTrue(parse("Lista de compras:\n- 2 kg de arroz\n- 12 ovos\nLigar para o João às 10h").routines.isEmpty())
         assertTrue(parse("").routines.isEmpty())
         assertTrue(PlanParser.parse("\u0000\u0001 %PDF lixo 3x", testCatalog).routines.isEmpty())
+    }
+
+    @Test
+    fun variationsWrittenInThePlanKeepPhotoAndGetTheirOwnHistory() {
+        val exercises = parse("""
+            # Treino C
+            - Tríceps corda unilateral 3x12
+            - Tríceps katana na polia unilateral 3x15
+            - Rosca alternada 3x10
+        """).routines.single().exercises
+        assertEquals(listOf("triceps-corda", "triceps-katana", "rosca-alternada"), exercises.map { it.ref })
+        assertEquals(listOf("unilateral", "unilateral", ""), exercises.map { it.variant })
+        assertEquals("Tríceps na polia com corda · unilateral", exercises[0].name)
+        assertEquals("Tríceps katana na polia · unilateral", exercises[1].name)
     }
 }

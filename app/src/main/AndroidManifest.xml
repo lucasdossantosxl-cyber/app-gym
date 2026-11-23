@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
-        O app não pede acesso à internet: nada do que você registra sai do aparelho.
+        O app não pede acesso à internet e não tem servidor próprio.
         As permissões abaixo servem só para avisar o fim do descanso.
+        As rotinas e o histórico entram no backup do Android (conta Google do aparelho), quando ele está ligado,
+        para voltarem depois de reinstalar o app ou trocar de celular.
     -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
@@ -12,8 +14,8 @@
     <application
         android:label="Meu Treino"
         android:icon="@drawable/ic_launcher"
-        android:allowBackup="false"
-        android:fullBackupContent="false"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:supportsRtl="true"
         android:theme="@style/Theme.MeuTreino">

@@ -35,7 +35,7 @@ class DatabaseTest {
     }
 
     private fun open(name: String) = Room.databaseBuilder(context, TrainingDatabase::class.java, name)
-        .addMigrations(TrainingDatabase.MIGRATION_1_2).allowMainThreadQueries().build()
+        .addMigrations(*TrainingDatabase.MIGRATIONS).allowMainThreadQueries().build()
 
     @Test
     fun dataFromVersionOneSurvivesTheUpgrade() = runBlocking {
@@ -46,12 +46,22 @@ class DatabaseTest {
             val workout = dao.workouts().first().single()
             assertEquals("Upper A", workout.name)
             assertEquals(0L, workout.duration)
+            assertEquals(0, workout.rating)
+            assertEquals("", workout.note)
             assertEquals(entries, workout.entries.decodeEntries())
             assertEquals("Upper A", dao.routines().first().single().name)
 
             dao.save(workout.copy(duration = 3600))
             dao.save(Workout(routineId = null, name = "Avulso", date = 2000, entries = entries.encodeEntries(), duration = 1800))
             assertEquals(listOf(1800L, 3600L), dao.workouts().first().map { it.duration })
+
+            // um treino pode ser concluído sem nenhuma série, só com a avaliação
+            dao.save(Workout(routineId = null, name = "Só presença", date = 3000, entries = "[]", duration = 60,
+                rating = 4, note = "Fui, mas não anotei"))
+            val empty = dao.workouts().first().first()
+            assertEquals(4, empty.rating)
+            assertEquals("Fui, mas não anotei", empty.note)
+            assertEquals(emptyList<Entry>(), empty.entries.decodeEntries())
         } finally {
             database.close()
         }
@@ -63,7 +73,8 @@ class DatabaseTest {
         val target = open("destino.db")
         try {
             val routineId = source.trainingDao().add(Routine(name = "Upper A", exercises = entries.map { it.exercise }.encodeExercises()))
-            source.trainingDao().add(Workout(routineId = routineId, name = "Upper A", date = 1000, entries = entries.encodeEntries(), duration = 900))
+            source.trainingDao().add(Workout(routineId = routineId, name = "Upper A", date = 1000, entries = entries.encodeEntries(),
+                duration = 900, rating = 5, note = "Bati a meta"))
             source.trainingDao().add(Workout(routineId = null, name = "Avulso", date = 2000, entries = entries.encodeEntries()))
             val json = Backup.encode(source.trainingDao().allRoutines(), source.trainingDao().allWorkouts())
             assertEquals(true, Backup.looksLikeBackup(json))
@@ -78,11 +89,24 @@ class DatabaseTest {
             val workouts = dao.allWorkouts()
             assertEquals(listOf(restored.id, null), workouts.map { it.routineId })
             assertEquals(listOf(900L, 0L), workouts.map { it.duration })
+            assertEquals(listOf(5, 0), workouts.map { it.rating })
+            assertEquals(listOf("Bati a meta", ""), workouts.map { it.note })
             assertEquals(entries, workouts.first().entries.decodeEntries())
         } finally {
             source.close()
             target.close()
         }
+    }
+
+    /** Backups feitos pela versão 2.0 não têm avaliação nem os campos novos de cardio. */
+    @Test
+    fun backupFromTheOlderVersionStillRestores() {
+        val old = """{"app":"meutreino","version":1,"routines":[],"workouts":[{"routineId":null,"name":"Cardio","date":5,
+            "duration":600,"entries":[{"exercise":{"id":"a","name":"Esteira","cardio":true,"unit":"km","sets":"1","target":""},
+            "series":[{"first":"20","second":"3","done":true}]}]}]}"""
+        val workout = Backup.decode(old).workouts.single()
+        assertEquals(0, workout.rating)
+        assertEquals(SetEntry("20", "3", true), workout.entries.decodeEntries().single().sets.single())
     }
 
     @Test(expected = Exception::class)

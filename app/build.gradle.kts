@@ -26,8 +26,8 @@ android {
         minSdk = 26
         targetSdk = 36
         // No GitHub Actions cada publicação recebe um código maior, para instalar por cima da anterior.
-        versionCode = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull()?.plus(100) ?: 3
-        versionName = "2.0"
+        versionCode = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull()?.plus(100) ?: 4
+        versionName = "2.1"
     }
     signingConfigs {
         val store = secret("MEUTREINO_KEYSTORE")

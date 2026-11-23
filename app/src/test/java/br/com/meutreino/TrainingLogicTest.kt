@@ -115,4 +115,39 @@ class TrainingLogicTest {
         assertEquals("40", 40.0.pretty())
         assertEquals("8,75", "8.750".decimal()!!.plain())
     }
+
+    @Test
+    fun cardioSetsAcceptSpeedAndCalories() {
+        assertTrue(SetEntry("30", "5", speed = "9,5", calories = "320").valid(cardio = true))
+        assertTrue(SetEntry("30").valid(cardio = true))
+        assertFalse(SetEntry("", "5", calories = "100").valid(cardio = true))
+        assertFalse(SetEntry("30", calories = "muitas").valid(cardio = true))
+        assertFalse(SetEntry(calories = "100").empty())
+        assertEquals("30 min", SetEntry("30").cardioSummary())
+        assertEquals("30 min · 320 kcal", SetEntry("30", calories = "320").cardioSummary())
+
+        val entry = Entry(Exercise(name = "Bicicleta", cardio = true, unit = "km"),
+            listOf(SetEntry("25", "8", true, "12", "210"), SetEntry("10")))
+        assertEquals(entry, listOf(entry).encodeEntries().decodeEntries().single())
+        assertEquals("25 min · 8 km · vel. 12 · 210 kcal  |  10 min", entry.summary())
+    }
+
+    @Test
+    fun workoutDraftKeepsRatingAndNote() {
+        val draft = WorkoutDraft(3, null, "Treino A", 1000, emptyList(), 60, rating = 4, note = "Bom")
+        assertEquals(draft, draft.encodeDraft().decodeDraft())
+        // rascunhos gravados pela versão anterior não têm avaliação
+        val old = """{"id":0,"routineId":null,"name":"Treino","date":5,"duration":0,"entries":[]}""".decodeDraft()
+        assertEquals(0, old.rating)
+        assertEquals("", old.note)
+    }
+
+    @Test
+    fun variationsHaveTheirOwnHistory() {
+        val base = Exercise(name = "Tríceps na polia com corda", ref = "triceps-corda")
+        val variant = base.copy(name = "Tríceps na polia com corda · unilateral", variant = "unilateral")
+        assertEquals("triceps-corda", base.key())
+        assertEquals("triceps-corda+unilateral", variant.key())
+        assertEquals(variant, listOf(variant).encodeExercises().decodeExercises().single())
+    }
 }

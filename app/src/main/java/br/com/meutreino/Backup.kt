@@ -1,5 +1,11 @@
 package br.com.meutreino
 
+import android.content.ContentValues
+import android.content.Context
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
+import android.provider.MediaStore
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -18,7 +24,8 @@ object Backup {
         }))
         .put("workouts", JSONArray(workouts.map {
             JSONObject().put("routineId", it.routineId ?: JSONObject.NULL).put("name", it.name)
-                .put("date", it.date).put("duration", it.duration).put("entries", JSONArray(it.entries))
+                .put("date", it.date).put("duration", it.duration).put("rating", it.rating).put("note", it.note)
+                .put("entries", JSONArray(it.entries))
         }))
         .toString(1)
 
@@ -41,7 +48,8 @@ object Backup {
                 entries.decodeEntries()
                 Workout(0, if (item.isNull("routineId")) null else item.getLong("routineId"),
                     item.getString("name").take(200), item.getLong("date"), entries,
-                    item.optLong("duration").coerceAtLeast(0))
+                    item.optLong("duration").coerceAtLeast(0), item.optInt("rating").coerceIn(0, 5),
+                    item.optString("note").take(500))
             }
         }
         return Data(routines, workouts)
@@ -67,5 +75,44 @@ object Backup {
             workouts++
         }
         return routines to workouts
+    }
+}
+
+/**
+ * Cópia automática em Downloads/MeuTreino. O arquivo fica fora da área do app, então continua lá depois de
+ * desinstalar. Usa a MediaStore do Android 10 em diante, que não exige permissão para gravar em Downloads.
+ */
+object AutoBackup {
+    const val FOLDER = "Download/MeuTreino"
+    const val NAME = "meu-treino-backup.json"
+    val supported get() = Build.VERSION.SDK_INT >= 29
+
+    /** Grava o backup, reaproveitando o arquivo anterior quando ele ainda existe. Devolve o endereço usado. */
+    fun write(context: Context, json: String, saved: String?): String? {
+        if (Build.VERSION.SDK_INT < 29) return null
+        val resolver = context.contentResolver
+        val bytes = json.toByteArray()
+        if (saved != null) {
+            val reused = runCatching {
+                resolver.openOutputStream(Uri.parse(saved), "wt")?.use { it.write(bytes) } != null
+            }.getOrDefault(false)
+            if (reused) return saved
+        }
+        return runCatching {
+            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, ContentValues().apply {
+                put(MediaStore.Downloads.DISPLAY_NAME, NAME)
+                put(MediaStore.Downloads.MIME_TYPE, "application/json")
+                put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + "/MeuTreino")
+                put(MediaStore.Downloads.IS_PENDING, 1)
+            }) ?: return null
+            try {
+                resolver.openOutputStream(uri, "wt")!!.use { it.write(bytes) }
+                resolver.update(uri, ContentValues().apply { put(MediaStore.Downloads.IS_PENDING, 0) }, null, null)
+                uri.toString()
+            } catch (error: Exception) {
+                resolver.delete(uri, null, null)
+                null
+            }
+        }.getOrNull()
     }
 }

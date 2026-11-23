@@ -98,26 +98,20 @@ fun Long.dayLabel(): String = localDate().let {
 
 fun Long.timeLabel(): String = timeFormat.format(Instant.ofEpochMilli(this).atZone(ZoneId.systemDefault()))
 
-/** 3700 segundos viram "1 h 01 min". */
-fun durationLabel(seconds: Long): String = when {
-    seconds <= 0 -> ""
-    seconds < 3600 -> "${(seconds + 30) / 60} min"
-    else -> "%d h %02d min".format(seconds / 3600, seconds % 3600 / 60)
-}
-
 private val photos = LruCache<String, ImageBitmap>(120)
 
 /** Foto do exercício da biblioteca. Sem foto, mostra a inicial do nome. */
 @Composable
 fun ExercisePhoto(ref: String, name: String, modifier: Modifier = Modifier, frame: Int = 0, thumb: Boolean = true) {
     val context = LocalContext.current
-    val key = "$ref/$frame/$thumb"
-    var bitmap by remember(key) { mutableStateOf(if (ref.isEmpty()) null else photos.get(key)) }
-    if (bitmap == null && ref.isNotEmpty()) {
+    val file = Photos.byRef[ref].orEmpty()
+    val key = "$file/$frame/$thumb"
+    var bitmap by remember(key) { mutableStateOf(if (file.isEmpty()) null else photos.get(key)) }
+    if (bitmap == null && file.isNotEmpty()) {
         LaunchedEffect(key) {
             bitmap = withContext(Dispatchers.IO) {
                 runCatching {
-                    context.assets.open("ex/${ref}_$frame.jpg").use { stream ->
+                    context.assets.open("ex/${file}_$frame.jpg").use { stream ->
                         BitmapFactory.decodeStream(stream, null, BitmapFactory.Options().apply {
                             inSampleSize = if (thumb) 2 else 1
                             inPreferredConfig = Bitmap.Config.RGB_565

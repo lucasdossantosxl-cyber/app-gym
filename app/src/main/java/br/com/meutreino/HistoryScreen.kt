@@ -55,7 +55,7 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 
-/** Histórico em três abas: lista de treinos, evolução por exercício e resumo com calendário. */
+/** Histórico em quatro abas: lista de treinos, evolução por exercício, resumo com calendário e retrospectiva. */
 @Composable
 fun HistoryScreen(model: TrainingModel, sessions: List<Session>, modifier: Modifier = Modifier) {
     var page by rememberSaveable { mutableIntStateOf(0) }
@@ -63,7 +63,7 @@ fun HistoryScreen(model: TrainingModel, sessions: List<Session>, modifier: Modif
         Text("Histórico", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(start = 16.dp, top = 12.dp, bottom = 4.dp))
         PrimaryTabRow(selectedTabIndex = page, containerColor = MaterialTheme.colorScheme.background) {
-            listOf("Treinos", "Exercícios", "Resumo").forEachIndexed { index, title ->
+            listOf("Treinos", "Exercícios", "Resumo", "Meu mês").forEachIndexed { index, title ->
                 Tab(selected = page == index, onClick = { page = index }, text = { Text(title) })
             }
         }
@@ -78,12 +78,13 @@ fun HistoryScreen(model: TrainingModel, sessions: List<Session>, modifier: Modif
         } else when (page) {
             0 -> WorkoutsTab(model, sessions)
             1 -> ExercisesTab(model, sessions)
-            else -> SummaryTab(sessions)
+            2 -> SummaryTab(sessions)
+            else -> RecapTab(sessions)
         }
     }
 }
 
-private val monthFormat = DateTimeFormatter.ofPattern("MMMM 'de' yyyy", PtBr)
+val monthFormat = DateTimeFormatter.ofPattern("MMMM 'de' yyyy", PtBr)
 
 @Composable
 private fun WorkoutsTab(model: TrainingModel, sessions: List<Session>) {
@@ -105,11 +106,19 @@ private fun WorkoutsTab(model: TrainingModel, sessions: List<Session>) {
                 Surface(onClick = { open = if (expanded) -1L else session.workout.id }, shape = RoundedCornerShape(20.dp),
                     color = MaterialTheme.colorScheme.surfaceContainer, modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                        Text(session.workout.name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(session.workout.name, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                            if (session.workout.rating > 0) RatingStars(session.workout.rating, onChange = null, size = 16)
+                        }
                         Text(listOfNotNull(
                             "${session.workout.date.dayLabel()} às ${session.workout.date.timeLabel()}",
                             durationLabel(session.workout.duration).takeIf { it.isNotEmpty() },
-                            if (session.setCount == 1) "1 série" else "${session.setCount} séries",
+                            when (session.setCount) {
+                                0 -> "sem séries registradas"
+                                1 -> "1 série"
+                                else -> "${session.setCount} séries"
+                            },
                             session.volume.takeIf { it > BigDecimal.ZERO }?.let { "${it.pretty()} kg no total" }
                         ).joinToString(" · "), style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -126,6 +135,11 @@ private fun WorkoutsTab(model: TrainingModel, sessions: List<Session>) {
                         if (!expanded && session.entries.size > 4) {
                             Text("+ ${session.entries.size - 4} exercícios", style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.primary)
+                        }
+                        if (session.workout.note.isNotBlank()) {
+                            Text("“${session.workout.note}”", style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = if (expanded) 8 else 2,
+                                overflow = TextOverflow.Ellipsis)
                         }
                         if (expanded) Row {
                             TextButton(onClick = { model.edit(session) }) { Text("Editar") }
@@ -293,6 +307,14 @@ private fun SummaryTab(sessions: List<Session>) {
             Line("Séries registradas", sessions.sumOf { it.setCount }.toDouble().pretty())
             if (seconds > 0) Line("Tempo de treino", durationLabel(seconds))
             Line("Carga levantada", "${volume.pretty()} kg")
+            val cardio = sessions.sumOf { it.cardioMinutes }
+            if (cardio > 0) Line("Cardio", "${cardio.pretty()} min" +
+                sessions.sumOf { it.cardioDistance }.takeIf { it > 0 }?.let { " · ${it.pretty()} km" }.orEmpty())
+            val calories = sessions.sumOf { it.calories }
+            if (calories > 0) Line("Calorias no cardio", "${calories.pretty()} kcal")
+            val rated = sessions.filter { it.workout.rating > 0 }
+            if (rated.isNotEmpty()) Line("Avaliação média",
+                "%.1f de 5".format(PtBr, rated.sumOf { it.workout.rating }.toDouble() / rated.size))
         }
     }
 }

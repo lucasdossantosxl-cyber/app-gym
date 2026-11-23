@@ -9,6 +9,10 @@ data class RoutineItem(val routine: Routine, val exercises: List<Exercise>)
 data class Session(val workout: Workout, val entries: List<Entry>) {
     val volume: BigDecimal = entries.fold(BigDecimal.ZERO) { sum, entry -> sum + entry.volume() }
     val setCount: Int = entries.sumOf { it.sets.size }
+    private val cardioSets = entries.filter { it.exercise.cardio }.flatMap { it.sets }
+    val cardioMinutes: Double = cardioSets.sumOf { it.first.decimal()?.toDouble() ?: 0.0 }
+    val cardioDistance: Double = cardioSets.sumOf { it.second.decimal()?.toDouble() ?: 0.0 }
+    val calories: Double = cardioSets.sumOf { it.calories.decimal()?.toDouble() ?: 0.0 }
 }
 
 /** Um treino na linha do tempo de um exercício. */
@@ -18,7 +22,9 @@ data class Point(
     val best: Double,
     val oneRepMax: Double,
     val volume: Double,
-    val summary: String
+    val summary: String,
+    /** Calorias registradas (só em cardio). */
+    val calories: Double = 0.0
 )
 
 data class ExerciseStats(
@@ -33,6 +39,7 @@ data class ExerciseStats(
     val bestLoad get() = points.maxOfOrNull { it.best } ?: 0.0
     val bestOneRepMax get() = points.maxOfOrNull { it.oneRepMax } ?: 0.0
     val bestVolume get() = points.maxOfOrNull { it.volume } ?: 0.0
+    val totalCalories get() = points.sumOf { it.calories }
 }
 
 enum class Metric(val label: String) {
@@ -60,7 +67,8 @@ fun List<Session>.exerciseStats(): List<ExerciseStats> {
             group.points += if (entry.exercise.cardio) {
                 val minutes = entry.sets.sumOf { it.first.decimal()?.toDouble() ?: 0.0 }
                 val distance = entry.sets.sumOf { it.second.decimal()?.toDouble() ?: 0.0 }
-                Point(session.workout.date, session.workout.id, minutes, distance, distance, entry.summary())
+                Point(session.workout.date, session.workout.id, minutes, distance, distance, entry.summary(),
+                    entry.sets.sumOf { it.calories.decimal()?.toDouble() ?: 0.0 })
             } else {
                 Point(session.workout.date, session.workout.id, entry.bestLoad()?.toDouble() ?: 0.0,
                     entry.oneRepMax() ?: 0.0, entry.volume().toDouble(), entry.summary())
