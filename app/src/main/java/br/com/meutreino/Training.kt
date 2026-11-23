@@ -10,7 +10,8 @@ data class Exercise(
     val cardio: Boolean = false,
     val unit: String = "kg",
     val sets: String = "3",
-    val target: String = ""
+    val target: String = "",
+    val increment: String = ""
 )
 
 data class SetEntry(val first: String = "", val second: String = "") {
@@ -28,6 +29,13 @@ data class SetEntry(val first: String = "", val second: String = "") {
 }
 
 data class Entry(val exercise: Exercise, val sets: List<SetEntry>) {
+    fun nextLoad(): String? {
+        if (!readyToIncrease()) return null
+        val increment = exercise.increment.decimal()?.takeIf { it.signum() > 0 } ?: return null
+        val load = sets.first().first.decimal() ?: return null
+        return (load + increment).stripTrailingZeros().toPlainString().replace('.', ',')
+    }
+
     fun readyToIncrease(): Boolean {
         val target = exercise.target.toIntOrNull()?.takeIf { it > 0 } ?: return false
         if (exercise.cardio || sets.size < (exercise.sets.toIntOrNull() ?: 1)) return false
@@ -38,16 +46,16 @@ data class Entry(val exercise: Exercise, val sets: List<SetEntry>) {
     }
 }
 
-private fun String.decimal() = trim().replace(',', '.').toBigDecimalOrNull()
+fun String.decimal() = trim().replace(',', '.').toBigDecimalOrNull()
     ?.takeIf { it.signum() >= 0 }
 
 private fun Exercise.json() = JSONObject()
     .put("id", id).put("name", name).put("cardio", cardio)
-    .put("unit", unit).put("sets", sets).put("target", target)
+    .put("unit", unit).put("sets", sets).put("target", target).put("increment", increment)
 
 private fun JSONObject.exercise() = Exercise(
     getString("id"), getString("name"), getBoolean("cardio"),
-    getString("unit"), getString("sets"), getString("target")
+    getString("unit"), getString("sets"), getString("target"), optString("increment")
 )
 
 fun List<Exercise>.encodeExercises() = JSONArray(map { it.json() }).toString()

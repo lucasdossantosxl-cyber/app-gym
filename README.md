@@ -1,48 +1,50 @@
 # Meu Treino
 
-Aplicativo Android offline em Kotlin, Jetpack Compose e Room. Funciona no Android 14 e começa com a lista de rotinas vazia.
+Registre musculação e cardio no Android, mesmo em modo avião. As rotinas e o histórico ficam no aparelho. O aplicativo dispensa conta.
 
-## Baixar e instalar no Android
+## Baixar e instalar
 
-1. Entre na sua conta do GitHub e abra [Gerar APK Android](https://github.com/lucasdossantosxl-cyber/app-gym/actions/workflows/android-apk.yml).
-2. Se já houver uma execução com ✅, abra a mais recente. Se precisar gerar o APK, toque em **Run workflow**, selecione a branch **main** e confirme em **Run workflow**. Se o botão não aparecer no Chrome do celular, abra o menu ⋮ e ative **Site para computador**. Para iniciar a execução, sua conta precisa ter acesso de escrita ao repositório.
-3. Quando a execução terminar com ✅, abra o resumo e toque em **meu-treino** na seção **Artifacts**. Isso baixa o ZIP que contém o instalador. O botão **Code → Download ZIP** da página inicial baixa o código-fonte.
-4. No Moto G04s, abra o ZIP no app **Arquivos**, toque em **Extrair** e abra **`meu-treino.apk`**.
-5. Se o Android pedir autorização, toque em **Configurações**, habilite **Permitir desta fonte**, volte e toque em **Instalar**. Depois, abra **Meu Treino** pelo ícone na lista de apps.
+O link abaixo ficará ativo quando a primeira versão for publicada no GitHub Releases.
 
-## Como usar
+**[Baixar Meu Treino para Android (.apk)](https://github.com/lucasdossantosxl-cyber/app-gym/releases/latest/download/meu-treino.apk)**
 
-- **Criar rotina** salva um modelo com exercícios de força e cardio.
-- **Iniciar** abre uma sessão a partir da rotina. **Registrar treino avulso** abre uma sessão em branco.
-- Na força, informe carga e repetições. A carga aceita ponto ou vírgula. Para cardio, informe minutos e, se quiser, distância em quilômetros.
-- Em **Histórico**, abra **Editar registro** para corrigir uma sessão já salva.
-- O último registro do exercício aparece durante a sessão. A consulta considera a mesma rotina e unidade. Treinos avulsos consultam registros avulsos.
-- Se você configurar uma meta de repetições, o aviso aparece quando todas as séries registradas atingem a meta com a mesma carga e a quantidade de séries planejadas foi alcançada. Essa regra pertence à versão genérica.
+1. No celular, toque no link e abra o arquivo **meu-treino.apk** depois do download.
+2. Se o Android pedir, abra **Configurações**, ative **Permitir desta fonte**, volte e toque em **Instalar**.
+3. Abra **Meu Treino** pelo ícone na lista de apps.
+
+## Rotinas e registros
+
+- Em **Rotinas**, toque em **Criar rotina**. Dê um nome e adicione os exercícios na ordem desejada. Para força, escolha a unidade de carga, quantas séries quer fazer e, se quiser, uma meta de repetições e um incremento de carga.
+- Toque em **Iniciar** para registrar uma sessão baseada na rotina. Use **Registrar treino avulso** para começar com uma ficha vazia. Dá para acrescentar ou remover exercícios e séries durante a sessão.
+- Na musculação, informe carga e repetições. A carga aceita vírgula ou ponto. Em cardio, informe o tempo em minutos e, opcionalmente, a distância em quilômetros.
+- Durante o treino, o app mostra o último registro do exercício na mesma rotina e unidade. Treinos avulsos consultam outros treinos avulsos.
+- Toque em **Salvar** para gravar a sessão. Em **Histórico**, escolha **Editar registro** se precisar corrigir algo. Alterar uma rotina afeta apenas os próximos treinos iniciados a partir dela.
+
+## Descanso entre séries
+
+Abra a aba **Descanso** ou toque em **Cronômetro de descanso** durante o treino. Escolha **60**, **90** ou **120 segundos** e toque em **Iniciar**. Você pode pausar, retomar ou tocar em **Zerar** para voltar ao tempo escolhido. Toque em **Voltar ao treino** para continuar preenchendo a ficha enquanto o relógio segue contando. Ao terminar, a tela mostra **Descanso concluído**.
+
+## Como a próxima carga é calculada
+
+Configure a **meta de repetições por série** e o **incremento de carga** do exercício. Quando você completar pelo menos a quantidade planejada de séries, com a mesma carga e todas na meta ou acima, o app soma o incremento à carga utilizada.
+
+Por exemplo, com 3 séries planejadas, meta de 12 repetições e incremento de 1 kg, fazer **12, 12 e 13 repetições com 7,5 kg** gera uma sugestão de **8,5 kg**. Com uma série abaixo da meta ou com cargas diferentes, o app mantém o último registro visível e aguarda você atingir a meta. Sem incremento, ele mostra apenas o aviso de meta atingida. Você decide se vai usar a sugestão.
 
 ## Prévia da interface
 
-Imagem ilustrativa com dados de exemplo, baseada na interface do projeto.
+Imagem ilustrativa com dados de exemplo.
 
-![Prévia das telas Rotinas e Registrar treino](docs/previa-interface.jpg)
+![Prévia das telas Rotinas, Descanso e Registrar treino](docs/previa-interface.jpg)
 
-## Compilar o APK no computador
+## Para quem mantém o projeto
 
-Use JDK 17, Android SDK Platform 35 e Gradle 8.9. Configure ANDROID_HOME ou abra o projeto no Android Studio para configurar o SDK. Para gerar os arquivos oficiais do Wrapper a partir de uma instalação do Gradle 8.9 e compilar:
+A automação [Gerar e publicar APK Android](https://github.com/lucasdossantosxl-cyber/app-gym/actions/workflows/android-apk.yml) compila e verifica o APK. Para manter a mesma assinatura entre versões, configure o secret `ANDROID_DEBUG_KEYSTORE_BASE64` com o keystore de debug dedicado ao projeto, codificado em Base64. Preserve essa mesma chave para que futuras versões possam ser instaladas por cima da anterior. A chave deve usar o perfil padrão de debug do Android. Sem o secret, cada execução usa uma assinatura de debug nova. O Android pode recusar a instalação por cima de uma versão assinada com outra chave. A automação pode ser iniciada com **Run workflow** na branch `main`.
+
+Para compilar localmente, use JDK 17, Android SDK Platform 35 e Gradle 8.9, com o SDK configurado no Android Studio ou via `ANDROID_HOME`.
 
 ```sh
-gradle wrapper --gradle-version 8.9 --distribution-type bin
-./gradlew :app:assembleDebug
+gradle :app:assembleDebug
 cp app/build/outputs/apk/debug/app-debug.apk meu-treino.apk
 ```
 
-Copie o APK para o celular, abra-o pelo app Arquivos e permita **Instalar apps desconhecidos** para esse app caso o Android solicite. O ícone aparecerá como **Meu Treino**.
-
-## Validar
-
-Com um emulador ou aparelho conectado com depuração USB:
-
-```sh
-./gradlew :app:connectedDebugAndroidTest
-```
-
-Para testar no Android 14, crie duas rotinas, registre carga com vírgula em uma, mude para a outra e salve outro treino. Feche e reabra o app e confirme ambos os registros no histórico. Inicie a primeira rotina novamente e confira o último treino. Repita com e sem atingir a meta. Valide também a digitação com o teclado aberto e o funcionamento em modo avião.
+Com um aparelho ou emulador conectado, execute `gradle :app:connectedDebugAndroidTest` para verificar persistência, edição de registros e a regra de progressão.

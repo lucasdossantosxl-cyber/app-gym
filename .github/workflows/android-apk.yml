@@ -1,4 +1,4 @@
-name: Gerar APK Android
+name: Gerar e publicar APK Android
 
 on:
   workflow_dispatch:
@@ -11,10 +11,15 @@ on:
       - 'gradle.properties'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: publicar-apk
+  cancel-in-progress: true
 
 jobs:
   apk:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,12 +30,32 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Restaurar chave de assinatura do projeto
+        env:
+          DEBUG_KEYSTORE_BASE64: ${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$DEBUG_KEYSTORE_BASE64" ]; then
+            mkdir -p "$HOME/.android"
+            printf '%s' "$DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+          fi
       - name: Compilar APK de debug
         run: |
           gradle :app:assembleDebug
           cp app/build/outputs/apk/debug/app-debug.apk meu-treino.apk
+      - name: Validar assinatura
+        run: |
+          apksigner="$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | sort -V | tail -1)"
+          "$apksigner" verify meu-treino.apk
       - uses: actions/upload-artifact@v4
         with:
           name: meu-treino
           path: meu-treino.apk
           if-no-files-found: error
+      - name: Publicar APK com link direto
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: android-${{ github.run_number }}-${{ github.run_attempt }}
+        run: |
+          gh release create "$RELEASE_TAG" meu-treino.apk \
+            --target "$GITHUB_SHA" --latest --title "Meu Treino para Android" \
+            --notes "Baixe meu-treino.apk e abra o arquivo no aparelho para instalar."

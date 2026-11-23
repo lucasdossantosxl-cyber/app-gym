@@ -67,4 +67,15 @@ class TrainingTest {
         assertFalse(Entry(exercise, listOf(set, SetEntry("8", "12"))).readyToIncrease())
         assertFalse(Entry(exercise.copy(target = ""), listOf(set, set)).readyToIncrease())
     }
+    @Test
+    fun progressionUsesTheConfiguredLoadIncrement() {
+        val exercise = Exercise(name = "Supino", sets = "2", target = "12", increment = "1,25")
+        val set = SetEntry("7,5", "12")
+        val entry = Entry(exercise, listOf(set, set))
+        assertEquals("8,75", entry.nextLoad())
+        assertEquals(null, entry.copy(sets = listOf(set)).nextLoad())
+        assertEquals(null, entry.copy(exercise = exercise.copy(increment = "0")).nextLoad())
+        assertEquals(null, entry.copy(exercise = exercise.copy(increment = "")).nextLoad())
+    }
+
 }
