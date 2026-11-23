@@ -1,61 +1,120 @@
-name: Gerar e publicar APK Android
+name: Testar e publicar APK Android
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches: [main]
     paths:
       - '.github/workflows/android-apk.yml'
       - 'app/**'
+      - 'gradle/**'
       - '*.gradle.kts'
       - 'gradle.properties'
+      - 'signing-cert.sha256'
 
+# Por padrão o job só lê o repositório. A permissão de escrita fica restrita ao job que publica.
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: publicar-apk
+  group: apk-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  apk:
-    if: github.ref == 'refs/heads/main'
+  testar:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.9'
-      - name: Restaurar chave de assinatura do projeto
-        env:
-          DEBUG_KEYSTORE_BASE64: ${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}
+      # Também confere se o gradle-wrapper.jar é um wrapper oficial do Gradle.
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+      - name: Testes automáticos
+        run: ./gradlew :app:testDebugUnitTest
+
+  publicar:
+    needs: testar
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+    steps:
+      - name: Conferir se a chave de assinatura está configurada
+        id: chave
         run: |
-          if [ -n "$DEBUG_KEYSTORE_BASE64" ]; then
-            mkdir -p "$HOME/.android"
-            printf '%s' "$DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::warning::Secrets de assinatura ausentes. Rode tools/criar-chave.sh e configure os secrets (veja o README). Nenhum APK foi publicado."
+            echo "configurada=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configurada=true" >> "$GITHUB_OUTPUT"
           fi
-      - name: Compilar APK de debug
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.chave.outputs.configurada == 'true'
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        if: steps.chave.outputs.configurada == 'true'
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+        if: steps.chave.outputs.configurada == 'true'
+      - name: Compilar APK de release assinado
+        if: steps.chave.outputs.configurada == 'true'
+        env:
+          MEUTREINO_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          MEUTREINO_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          MEUTREINO_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
-          gradle :app:assembleDebug
-          cp app/build/outputs/apk/debug/app-debug.apk meu-treino.apk
+          umask 077
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+          MEUTREINO_KEYSTORE="$RUNNER_TEMP/release.jks" ./gradlew :app:assembleRelease
+          rm -f "$RUNNER_TEMP/release.jks"
+          cp app/build/outputs/apk/release/app-release.apk meu-treino.apk
       - name: Validar assinatura
+        if: steps.chave.outputs.configurada == 'true'
         run: |
-          apksigner="$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | sort -V | tail -1)"
-          "$apksigner" verify meu-treino.apk
-      - uses: actions/upload-artifact@v4
+          tools="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)"
+          "$tools/apksigner" verify --min-sdk-version 26 --print-certs meu-treino.apk | tee certificado.txt
+          grep -q 'CN=Android Debug' certificado.txt && { echo "::error::APK assinado com chave de debug."; exit 1; }
+          if "$tools/aapt2" dump xmltree --file AndroidManifest.xml meu-treino.apk | grep -q 'debuggable.*=true\|debuggable.*0xffffffff'; then
+            echo "::error::APK marcado como depurável."; exit 1
+          fi
+          atual="$(grep -m1 'certificate SHA-256 digest' certificado.txt | awk '{print $NF}')"
+          if [ -f signing-cert.sha256 ]; then
+            esperado="$(tr -d '[:space:]' < signing-cert.sha256)"
+            if [ "$atual" != "$esperado" ]; then
+              echo "::error::A chave usada ($atual) não é a registrada em signing-cert.sha256. Atualizações não instalariam por cima da versão anterior."
+              exit 1
+            fi
+          fi
+          sha256sum meu-treino.apk > meu-treino.apk.sha256
+          {
+            echo "### APK assinado"
+            echo "- Certificado (SHA-256): \`$atual\`"
+            echo "- Arquivo (SHA-256): \`$(cut -d' ' -f1 meu-treino.apk.sha256)\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: steps.chave.outputs.configurada == 'true'
         with:
           name: meu-treino
-          path: meu-treino.apk
+          path: |
+            meu-treino.apk
+            meu-treino.apk.sha256
           if-no-files-found: error
       - name: Publicar APK com link direto
+        if: steps.chave.outputs.configurada == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: android-${{ github.run_number }}-${{ github.run_attempt }}
         run: |
-          gh release create "$RELEASE_TAG" meu-treino.apk \
+          gh release create "$RELEASE_TAG" meu-treino.apk meu-treino.apk.sha256 \
             --target "$GITHUB_SHA" --latest --title "Meu Treino para Android" \
-            --notes "Baixe meu-treino.apk e abra o arquivo no aparelho para instalar."
+            --notes "Baixe meu-treino.apk e abra o arquivo no aparelho para instalar. O arquivo .sha256 permite conferir a integridade do download."

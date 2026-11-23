@@ -1,12 +1,52 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="Meu Treino" android:icon="@drawable/ic_launcher"
-        android:allowBackup="false" android:theme="@android:style/Theme.Material.NoActionBar">
-        <activity android:name=".MainActivity" android:exported="true"
+
+    <!--
+        O app não pede acesso à internet: nada do que você registra sai do aparelho.
+        As permissões abaixo servem só para avisar o fim do descanso.
+    -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32"/>
+
+    <application
+        android:label="Meu Treino"
+        android:icon="@drawable/ic_launcher"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MeuTreino">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <!-- "Abrir com" e "Compartilhar" para fichas de treino em Markdown, texto ou PDF -->
+            <intent-filter android:label="Importar no Meu Treino">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="text/markdown"/>
+                <data android:mimeType="text/x-markdown"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+            <intent-filter android:label="Importar no Meu Treino">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/markdown"/>
+                <data android:mimeType="text/x-markdown"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
         </activity>
+
+        <receiver android:name=".RestAlarmReceiver" android:exported="false"/>
     </application>
 </manifest>

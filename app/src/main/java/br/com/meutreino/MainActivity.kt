@@ -1,416 +1,230 @@
 package br.com.meutreino
 
-import android.app.Application
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.graphics.Color
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.AndroidViewModel
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewModelScope
-import androidx.room.Room
-import java.text.DateFormat
-import java.util.Date
-import java.util.Locale
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.launch
+import java.time.LocalDate
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
+    private lateinit var model: TrainingModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        // barras do sistema transparentes com ícones claros, porque o app é sempre escuro
+        enableEdgeToEdge(SystemBarStyle.dark(Color.TRANSPARENT), SystemBarStyle.dark(Color.TRANSPARENT))
         super.onCreate(savedInstanceState)
-        val model = ViewModelProvider(this)[TrainingModel::class.java]
+        model = ViewModelProvider(this)[TrainingModel::class.java]
+        if (savedInstanceState == null) receive(intent)
         setContent {
-            MaterialTheme(colorScheme = darkColorScheme(
-                primary = Color(0xFFA8F5BC),
-                onPrimary = Color(0xFF103420),
-                background = Color(0xFF101916),
-                surface = Color(0xFF17231E)
-            )) { TrainingApp(model) }
-        }
-    }
-}
-
-data class RoutineDraft(val id: Long = 0, val name: String = "", val exercises: List<Exercise> = emptyList())
-data class WorkoutDraft(
-    val id: Long = 0,
-    val routineId: Long? = null,
-    val name: String = "",
-    val date: Long = System.currentTimeMillis(),
-    val entries: List<Entry> = emptyList()
-)
-
-enum class Page { Routines, Rest, History }
-
-class TrainingModel(application: Application) : AndroidViewModel(application) {
-    private val database = Room.databaseBuilder(application, TrainingDatabase::class.java, "training.db").build()
-    private val dao = database.trainingDao()
-    val routines = dao.routines()
-    val workouts = dao.workouts()
-    var routineDraft by mutableStateOf<RoutineDraft?>(null)
-    var workoutDraft by mutableStateOf<WorkoutDraft?>(null)
-    var page by mutableStateOf(Page.Routines)
-    val timer = RestTimer()
-    var busy by mutableStateOf(false)
-        private set
-    var error by mutableStateOf("")
-        private set
-
-    fun closeEditor() {
-        if (busy) return
-        routineDraft = null
-        workoutDraft = null
-        error = ""
-    }
-
-    fun editRoutine(routine: Routine? = null) {
-        routineDraft = routine?.let { RoutineDraft(it.id, it.name, it.exercises.decodeExercises()) }
-            ?: RoutineDraft()
-    }
-
-    fun start(routine: Routine? = null) {
-        workoutDraft = routine?.let {
-            WorkoutDraft(routineId = it.id, name = it.name, entries = it.exercises.decodeExercises().map(::blankEntry))
-        } ?: WorkoutDraft()
-    }
-
-    fun edit(workout: Workout) {
-        workoutDraft = WorkoutDraft(workout.id, workout.routineId, workout.name, workout.date,
-            workout.entries.decodeEntries())
-    }
-
-    fun save(draft: RoutineDraft) {
-        if (draft.name.isBlank() || draft.exercises.isEmpty() || draft.exercises.any {
-            it.name.isBlank() || (!it.cardio && (it.unit.isBlank() || !it.validIncrement() || (it.sets.toIntOrNull() ?: 0) !in 1..100 ||
-                (it.target.isNotBlank() && (it.target.toIntOrNull() ?: 0) < 1)))
-        }) {
-            error = "Confira os nomes, as séries (1 a 100), a meta e o incremento de carga."
-            return
-        }
-        persist { dao.save(Routine(draft.id, draft.name.trim(), draft.exercises.map {
-            it.copy(name = it.name.trim(), unit = it.unit.trim())
-        }.encodeExercises())) }
-    }
-
-    fun save(draft: WorkoutDraft) {
-        val entries = draft.entries.map { entry ->
-            entry.copy(exercise = entry.exercise.copy(name = entry.exercise.name.trim(), unit = entry.exercise.unit.trim()),
-                sets = entry.sets.filterNot(SetEntry::empty))
-        }.filter { it.sets.isNotEmpty() }
-        if (draft.name.isBlank() || entries.isEmpty() || entries.any { entry ->
-            entry.exercise.name.isBlank() || (!entry.exercise.cardio &&
-                (entry.exercise.unit.isBlank() || !entry.exercise.validIncrement() || (entry.exercise.target.isNotBlank() &&
-                    (entry.exercise.target.toIntOrNull() ?: 0) < 1))) ||
-                entry.sets.any { !it.valid(entry.exercise.cardio) }
-        }) {
-            error = "Confira os nomes, as séries, o incremento de carga e a duração do cardio."
-            return
-        }
-        persist {
-            dao.save(Workout(draft.id, draft.routineId, draft.name.trim(), draft.date, entries.encodeEntries()))
-            page = Page.History
-        }
-    }
-
-    private fun persist(write: suspend () -> Unit) {
-        if (busy) return
-        busy = true
-        error = ""
-        viewModelScope.launch {
-            try {
-                write()
-                busy = false
-                closeEditor()
-            } catch (cancelled: CancellationException) {
-                throw cancelled
-            } catch (_: Exception) {
-                error = "Não foi possível salvar. Tente novamente."
-            } finally {
-                busy = false
+            MaterialTheme(colorScheme = AppColors) {
+                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) { TrainingApp(model) }
             }
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        database.close()
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        receive(intent)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        AppState.visible = true
+        RestAlarm.clearDone(this)
+    }
+
+    override fun onStop() {
+        AppState.visible = false
+        super.onStop()
+    }
+
+    /** Arquivo ou texto enviado por "Abrir com" ou "Compartilhar" de outro app. */
+    private fun receive(intent: Intent?) {
+        when (intent?.action) {
+            Intent.ACTION_VIEW -> intent.data?.takeIf { it.scheme == "content" }?.let(model::importFile)
+            Intent.ACTION_SEND -> {
+                val stream = if (Build.VERSION.SDK_INT >= 33) intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+                    else @Suppress("DEPRECATION") intent.getParcelableExtra(Intent.EXTRA_STREAM)
+                when {
+                    stream != null && stream.scheme == "content" -> model.importFile(stream)
+                    else -> intent.getStringExtra(Intent.EXTRA_TEXT)?.let { model.importText(it, "Texto compartilhado") }
+                }
+            }
+        }
     }
 }
 
-private fun blankEntry(exercise: Exercise) = Entry(exercise,
-    List(if (exercise.cardio) 1 else exercise.sets.toIntOrNull()?.coerceIn(1, 100) ?: 1) { SetEntry() })
-
-private fun List<Workout>.previous(exercise: Exercise, draft: WorkoutDraft): Entry? =
-    asSequence().filter { it.routineId == draft.routineId && it.id != draft.id && (draft.id == 0L ||
-        it.date < draft.date || (it.date == draft.date && it.id < draft.id)) }
-        .flatMap { it.entries.decodeEntries().asSequence() }
-        .firstOrNull {
-            val saved = it.exercise
-            saved.cardio == exercise.cardio && saved.unit.equals(exercise.unit.trim(), true) &&
-                (saved.id == exercise.id || saved.name.equals(exercise.name.trim(), true))
-        }
-
-private fun Exercise.validIncrement() =
-    increment.isBlank() || increment.decimal()?.let { it.signum() > 0 } == true
+private val planTypes = arrayOf("text/*", "application/pdf", "application/octet-stream")
+private val backupTypes = arrayOf("application/json", "text/*", "application/octet-stream")
 
 @Composable
 private fun TrainingApp(model: TrainingModel) {
-    val routines by model.routines.collectAsStateWithLifecycle(initialValue = emptyList())
-    val workouts by model.workouts.collectAsStateWithLifecycle(initialValue = emptyList())
-    val routine = model.routineDraft
-    val workout = model.workoutDraft
-    val editing = model.page != Page.Rest && (routine != null || workout != null)
+    val routines by model.routines.collectAsStateWithLifecycle()
+    val sessions by model.sessions.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+    val snackbar = remember { SnackbarHostState() }
+    val pickPlan = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { it?.let(model::importFile) }
+    val pickBackup = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { it?.let(model::importBackup) }
+    val saveBackup = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
+        it?.let(model::exportBackup)
+    }
+    val askNotifications = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {}
+
+    // o descanso continua contando em qualquer tela
     LaunchedEffect(model.timer.running) {
         while (model.timer.running) {
-            model.timer.tick()
-            delay(100)
+            model.tickRest()
+            delay(200)
         }
     }
-    val focus = LocalFocusManager.current
-    var confirmExit by remember { mutableStateOf(false) }
-    val requestExit = { focus.clearFocus(); confirmExit = true }
-    BackHandler(editing && !model.busy, onBack = requestExit)
-    BackHandler(model.page == Page.Rest && (routine != null || workout != null)) {
-        model.page = if (workout != null && workout.id != 0L) Page.History else Page.Routines
+    // a notificação de fim de descanso precisa de permissão a partir do Android 13
+    LaunchedEffect(model.activeWorkout != null) {
+        if (model.activeWorkout != null && Build.VERSION.SDK_INT >= 33 && !model.askedNotifications &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            model.askedNotifications = true
+            askNotifications.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
-    if (confirmExit) {
-        AlertDialog(onDismissRequest = { confirmExit = false },
-            title = { Text("Sair da edição?") },
-            text = { Text("As alterações pendentes serão descartadas.") },
-            confirmButton = { TextButton(onClick = {
-                confirmExit = false
-                model.closeEditor()
-            }) { Text("Descartar") } },
-            dismissButton = { TextButton(onClick = { confirmExit = false }) { Text("Continuar editando") } })
+    LaunchedEffect(model.message) {
+        if (model.message.isNotEmpty()) {
+            val text = model.message
+            model.message = ""
+            snackbar.showSnackbar(text)
+        }
     }
 
+    val importing = model.importState
+    val routine = model.routineDraft
+    val record = model.recordDraft
+    val active = model.activeWorkout
+
+    Box(Modifier.fillMaxSize()) {
+        when {
+            importing != null -> ImportScreen(model, importing, onPickFile = { pickPlan.launch(planTypes) })
+            routine != null -> RoutineScreen(model, routine, sessions)
+            record != null -> WorkoutScreen(model, record, live = false, sessions = sessions)
+            active != null && model.workoutOpen -> WorkoutScreen(model, active, live = true, sessions = sessions)
+            else -> Tabs(model, routines, sessions, active,
+                onPickPlan = { pickPlan.launch(planTypes) },
+                onExport = { saveBackup.launch("meu-treino-backup-${LocalDate.now()}.json") },
+                onRestore = { pickBackup.launch(backupTypes) })
+        }
+        SnackbarHost(snackbar, Modifier.align(Alignment.BottomCenter).padding(bottom = 96.dp))
+    }
+}
+
+@Composable
+private fun Tabs(
+    model: TrainingModel, routines: List<RoutineItem>, sessions: List<Session>, active: WorkoutDraft?,
+    onPickPlan: () -> Unit, onExport: () -> Unit, onRestore: () -> Unit
+) {
+    var info by remember { mutableStateOf<Exercise?>(null) }
+    BackHandler(model.tab != Tab.Train) { model.tab = Tab.Train }
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.background,
         bottomBar = {
-            if (!editing) {
-                NavigationBar {
-                    if (routine != null || workout != null) {
-                        NavigationBarItem(selected = false, onClick = {
-                            model.page = if (workout != null && workout.id != 0L) Page.History else Page.Routines
-                        }, icon = { Text("‹") }, label = { Text("Voltar ao treino") })
-                    } else {
-                        NavigationBarItem(selected = model.page == Page.Routines, onClick = { model.page = Page.Routines },
-                            icon = { Text("▤") }, label = { Text("Rotinas") })
-                    }
-                    NavigationBarItem(selected = model.page == Page.Rest, onClick = { model.page = Page.Rest },
-                        icon = { Text("◴") }, label = { Text("Descanso") })
-                    if (routine == null && workout == null) {
-                        NavigationBarItem(selected = model.page == Page.History, onClick = { model.page = Page.History },
-                            icon = { Text("↶") }, label = { Text("Histórico") })
-                    }
+            Column {
+                RestBar(model)
+                if (active != null) ActiveBanner(active) { model.workoutOpen = true }
+                NavigationBar(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
+                    NavigationBarItem(selected = model.tab == Tab.Train, onClick = { model.tab = Tab.Train },
+                        icon = { Icon(Icons.Filled.FitnessCenter, null) }, label = { Text("Treinar") })
+                    NavigationBarItem(selected = model.tab == Tab.History, onClick = { model.tab = Tab.History },
+                        icon = { Icon(Icons.Filled.History, null) }, label = { Text("Histórico") })
+                    NavigationBarItem(selected = model.tab == Tab.Library, onClick = { model.tab = Tab.Library },
+                        icon = { Icon(Icons.AutoMirrored.Filled.MenuBook, null) }, label = { Text("Exercícios") })
                 }
             }
         }
-    ) { insets ->
-        key(routine?.id, workout?.id, model.page) {
-            Column(Modifier.padding(insets).fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text(when {
-                    model.page == Page.Rest -> "Descanso"
-                    routine != null && routine.id == 0L -> "Nova rotina"
-                    routine != null -> "Editar rotina"
-                    workout != null && workout.id == 0L -> "Registrar treino"
-                    workout != null -> "Editar registro"
-                    model.page == Page.History -> "Histórico"
-                    else -> "Meu Treino"
-                }, style = MaterialTheme.typography.headlineLarge)
-                if (editing && workout != null) {
-                    OutlinedButton(enabled = !model.busy, modifier = Modifier.fillMaxWidth(),
-                        onClick = { focus.clearFocus(); model.page = Page.Rest }) { Text("Cronômetro de descanso") }
-                }
-                when {
-                    model.page == Page.Rest -> RestScreen(model.timer)
-                    routine != null -> key("routine") {
-                        RoutineEditor(routine) { model.routineDraft = it }
-                    }
-                    workout != null -> key("workout") {
-                        WorkoutEditor(workout, workouts) { model.workoutDraft = it }
-                    }
-                    model.page == Page.History -> History(workouts, model::edit)
-                    else -> Routines(routines, model)
-                }
-                if (editing) {
-                    if (model.error.isNotEmpty()) Text(model.error, color = MaterialTheme.colorScheme.error)
-                    Button(enabled = !model.busy, modifier = Modifier.fillMaxWidth(), onClick = {
-                        focus.clearFocus()
-                        if (routine != null) model.save(routine)
-                        if (workout != null) model.save(workout)
-                    }) { Text(if (model.busy) "Salvando…" else "Salvar") }
-                    OutlinedButton(enabled = !model.busy, modifier = Modifier.fillMaxWidth(),
-                        onClick = requestExit) { Text("Cancelar") }
-                }
+    ) { padding ->
+        when (model.tab) {
+            Tab.Train -> HomeScreen(model, routines, sessions, onPickPlan, onExport, onRestore, Modifier.padding(padding))
+            Tab.History -> HistoryScreen(model, sessions, Modifier.padding(padding))
+            Tab.Library -> Column(Modifier.padding(padding).fillMaxSize()) {
+                Text("Exercícios", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(start = 16.dp, top = 12.dp, bottom = 12.dp))
+                val custom = remember(sessions) { sessions.customExercises() }
+                ExerciseList(model.catalog, custom, selected = null, onToggle = {}, onInfo = { info = it },
+                    modifier = Modifier.weight(1f))
             }
         }
     }
+    info?.let { exercise ->
+        val stats = remember(sessions, exercise.key()) {
+            sessions.exerciseStats().firstOrNull { it.cardio == exercise.cardio && it.key.endsWith(":" + exercise.key()) }
+        }
+        ExerciseSheet(exercise, model.catalog, stats, onDismiss = { info = null })
+    }
 }
 
+/** Faixa que leva de volta ao treino em andamento enquanto o usuário consulta outras abas. */
 @Composable
-private fun Routines(routines: List<Routine>, model: TrainingModel) {
-    Text("Seu treino, no seu ritmo", color = MaterialTheme.colorScheme.onSurfaceVariant)
-    Button(onClick = { model.start() }, modifier = Modifier.fillMaxWidth()) { Text("Registrar treino avulso") }
-    OutlinedButton(onClick = { model.editRoutine() }, modifier = Modifier.fillMaxWidth()) { Text("Criar rotina") }
-    Text("Minhas rotinas", style = MaterialTheme.typography.titleLarge)
-    if (routines.isEmpty()) Panel { Text("Crie uma rotina para reutilizar seus exercícios.") }
-    routines.forEach { routine ->
-        Panel {
-            Text(routine.name, style = MaterialTheme.typography.titleLarge)
-            Text(routine.exercises.decodeExercises().joinToString(" · ") { it.name })
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(onClick = { model.start(routine) }) { Text("Iniciar") }
-                TextButton(onClick = { model.editRoutine(routine) }) { Text("Editar") }
+private fun ActiveBanner(draft: WorkoutDraft, onOpen: () -> Unit) {
+    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(draft.date) {
+        while (true) {
+            now = System.currentTimeMillis()
+            delay(1000)
+        }
+    }
+    val done = draft.entries.sumOf { entry -> entry.sets.count { it.done } }
+    Surface(color = MaterialTheme.colorScheme.primary, modifier = Modifier.fillMaxWidth().clickable(onClick = onOpen)) {
+        Row(Modifier.padding(horizontal = 16.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text("Treino em andamento · ${clock(((now - draft.date) / 1000).coerceAtLeast(0))}",
+                    style = MaterialTheme.typography.titleSmall.copy(fontFeatureSettings = "tnum"),
+                    color = MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
+                Text("${draft.name} · ${if (done == 1) "1 série concluída" else "$done séries concluídas"}",
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimary, maxLines = 1)
             }
+            Text("Abrir", color = MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
         }
     }
 }
-
-@Composable
-private fun History(workouts: List<Workout>, edit: (Workout) -> Unit) {
-    if (workouts.isEmpty()) Text("Seus treinos salvos aparecem aqui.")
-    val dateFormat = remember { DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale("pt", "BR")) }
-    workouts.forEach { workout ->
-        key(workout.id) {
-            Panel {
-                Text(workout.name, style = MaterialTheme.typography.titleLarge)
-                Text(dateFormat.format(Date(workout.date)))
-                workout.entries.decodeEntries().forEach { entry ->
-                    Text(entry.exercise.name, style = MaterialTheme.typography.titleMedium)
-                    Text(entry.summary())
-                    ProgressHint(entry)
-                }
-                TextButton(onClick = { edit(workout) }) { Text("Editar registro") }
-            }
-        }
-    }
-}
-
-@Composable
-private fun RoutineEditor(draft: RoutineDraft, change: (RoutineDraft) -> Unit) {
-    Field("Nome da rotina", draft.name, { change(draft.copy(name = it)) })
-    draft.exercises.forEachIndexed { index, exercise ->
-        key(exercise.id) {
-            Panel {
-                ExerciseFields(exercise, showPlan = true) { edited ->
-                    change(draft.copy(exercises = draft.exercises.replacing(index, edited)))
-                }
-                TextButton(onClick = { change(draft.copy(exercises = draft.exercises.removing(index))) }) {
-                    Text("Remover exercício")
-                }
-            }
-        }
-    }
-    AddExercise { exercise -> change(draft.copy(exercises = draft.exercises + exercise)) }
-}
-
-@Composable
-private fun WorkoutEditor(draft: WorkoutDraft, workouts: List<Workout>, change: (WorkoutDraft) -> Unit) {
-    Field("Nome do treino", draft.name, { change(draft.copy(name = it)) })
-    draft.entries.forEachIndexed { index, entry ->
-        key(entry.exercise.id) {
-            Panel {
-                val exercise = entry.exercise
-                val update = { edited: Entry -> change(draft.copy(entries = draft.entries.replacing(index, edited))) }
-                if (exercise.name.isNotBlank()) Text(exercise.name, style = MaterialTheme.typography.titleLarge)
-                ExerciseFields(exercise, showPlan = false) { update(entry.copy(exercise = it)) }
-                val previous = remember(workouts, exercise, draft.id, draft.date) { workouts.previous(exercise, draft) }
-                if (previous != null) {
-                    Text("Último treino · " + previous.summary())
-                    ProgressHint(previous.copy(exercise = exercise))
-                }
-                entry.sets.forEachIndexed { row, values ->
-                    Text(if (exercise.cardio) "Atividade ${row + 1}" else "Série ${row + 1}")
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Field(if (exercise.cardio) "Minutos" else "Carga (${exercise.unit})", values.first,
-                            { update(entry.copy(sets = entry.sets.replacing(row, values.copy(first = it)))) },
-                            Modifier.weight(1f), KeyboardType.Decimal)
-                        Field(if (exercise.cardio) "Distância (km)" else "Repetições", values.second,
-                            { update(entry.copy(sets = entry.sets.replacing(row, values.copy(second = it)))) },
-                            Modifier.weight(1f), if (exercise.cardio) KeyboardType.Decimal else KeyboardType.Number)
-                    }
-                    if (entry.sets.size > 1) TextButton(onClick = {
-                        update(entry.copy(sets = entry.sets.removing(row)))
-                    }) { Text("Remover ${if (exercise.cardio) "atividade" else "série"} ${row + 1}") }
-                }
-                TextButton(onClick = { update(entry.copy(sets = entry.sets + SetEntry())) }) {
-                    Text(if (exercise.cardio) "+ Atividade" else "+ Série")
-                }
-                TextButton(onClick = { change(draft.copy(entries = draft.entries.removing(index))) }) {
-                    Text("Remover exercício")
-                }
-            }
-        }
-    }
-    AddExercise { change(draft.copy(entries = draft.entries + blankEntry(it))) }
-}
-
-@Composable
-private fun ExerciseFields(exercise: Exercise, showPlan: Boolean, change: (Exercise) -> Unit) {
-    Field(if (exercise.cardio) "Nome da atividade" else "Nome do exercício", exercise.name,
-        { change(exercise.copy(name = it)) })
-    if (!exercise.cardio) {
-        Field("Unidade de carga", exercise.unit, { change(exercise.copy(unit = it)) })
-        if (showPlan) Field("Séries planejadas", exercise.sets, { change(exercise.copy(sets = it)) },
-            keyboard = KeyboardType.Number)
-        Field("Meta de repetições por série (opcional)", exercise.target, { change(exercise.copy(target = it)) },
-            keyboard = KeyboardType.Number)
-        Field("Incremento de carga (opcional)", exercise.increment, { change(exercise.copy(increment = it)) },
-            keyboard = KeyboardType.Decimal)
-    }
-}
-
-@Composable
-private fun ProgressHint(entry: Entry) {
-    if (!entry.readyToIncrease()) return
-    val next = entry.nextLoad()
-    Surface(color = MaterialTheme.colorScheme.primaryContainer, shape = MaterialTheme.shapes.medium) {
-        Text(if (next == null) "Meta atingida. Você pode avaliar subir a carga."
-            else "Próxima carga: $next ${entry.exercise.unit}",
-            Modifier.fillMaxWidth().padding(12.dp), color = MaterialTheme.colorScheme.onPrimaryContainer)
-    }
-}
-
-@Composable
-private fun AddExercise(add: (Exercise) -> Unit) {
-    OutlinedButton(onClick = { add(Exercise()) }, modifier = Modifier.fillMaxWidth()) { Text("+ Exercício de força") }
-    OutlinedButton(onClick = { add(Exercise(cardio = true, unit = "km", sets = "1")) },
-        modifier = Modifier.fillMaxWidth()) { Text("+ Cardio") }
-}
-
-@Composable
-private fun Field(label: String, value: String, update: (String) -> Unit, modifier: Modifier = Modifier.fillMaxWidth(),
-    keyboard: KeyboardType = KeyboardType.Text) {
-    OutlinedTextField(value = value, onValueChange = update, modifier = modifier, label = { Text(label) },
-        singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = keyboard))
-}
-
-@Composable
-private fun Panel(content: @Composable ColumnScope.() -> Unit) {
-    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp), content = content)
-    }
-}
-
-private fun Entry.summary() = sets.joinToString(" · ") {
-    if (exercise.cardio) {
-        if (it.second.isBlank()) "${it.first} min" else "${it.first} min / ${it.second} km"
-    } else "${it.first} ${exercise.unit} × ${it.second}"
-}
-
-private fun <T> List<T>.replacing(index: Int, value: T) = toMutableList().apply { set(index, value) }
-private fun <T> List<T>.removing(index: Int) = toMutableList().apply { removeAt(index) }

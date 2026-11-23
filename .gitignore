@@ -3,3 +3,7 @@
 .idea/
 **/build/
 local.properties
+# chave de assinatura: nunca vai para o Git
+keystore.properties
+*.jks
+*.keystore
