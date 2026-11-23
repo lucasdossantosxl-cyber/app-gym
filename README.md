@@ -9,6 +9,12 @@ Aplicativo Android offline em Kotlin, Jetpack Compose e Room. Funciona no Androi
 - O último registro do exercício aparece durante a sessão. A consulta considera a mesma rotina e unidade. Treinos avulsos consultam registros avulsos.
 - Se você configurar uma meta de repetições, o aviso aparece quando todas as séries registradas atingem a meta com a mesma carga e a quantidade de séries planejadas foi alcançada. Essa regra pertence à versão genérica.
 
+## Prévia da interface
+
+Imagem ilustrativa com dados de exemplo, baseada na interface do projeto.
+
+![Prévia das telas Rotinas e Registrar treino](docs/previa-interface.jpg)
+
 ## Gerar o APK
 
 Use JDK 17, Android SDK Platform 35 e Gradle 8.9. Configure ANDROID_HOME ou abra o projeto no Android Studio para configurar o SDK. Para gerar os arquivos oficiais do Wrapper a partir de uma instalação do Gradle 8.9 e compilar:
