@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
@@ -17,13 +18,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-enum class Tab { Train, History, Library }
+enum class Tab { Train, History, Stopwatch, Library }
+
+/** O que será gravado ao concluir o treino em andamento. */
+data class FinishPreview(val entries: List<Entry>, val sets: Int, val dropped: Int, val seconds: Long)
 
 data class ImportState(
     val source: String,
@@ -37,11 +42,12 @@ data class ImportState(
 class TrainingModel(application: Application) : AndroidViewModel(application) {
     private val app get() = getApplication<Application>()
     private val database = Room.databaseBuilder(application, TrainingDatabase::class.java, "training.db")
-        .addMigrations(TrainingDatabase.MIGRATION_1_2).build()
+        .addMigrations(*TrainingDatabase.MIGRATIONS).build()
     private val dao = database.trainingDao()
     private val prefs = application.getSharedPreferences("meutreino", Context.MODE_PRIVATE)
 
     val catalog: Catalog = Catalog.parse(application.assets.open("exercises.json").bufferedReader().use { it.readText() })
+        .also { Photos.byRef = it.photos }
 
     val routines: StateFlow<List<RoutineItem>> = dao.routines()
         .map { list -> list.map { RoutineItem(it, runCatching { it.exercises.decodeExercises() }.getOrDefault(emptyList())) } }
@@ -64,6 +70,14 @@ class TrainingModel(application: Application) : AndroidViewModel(application) {
     var defaultRest by mutableIntStateOf(prefs.getInt("rest", 90).coerceIn(5, RestTimer.MAX_SECONDS))
         private set
     val timer = RestTimer()
+    val stopwatch = Stopwatch().apply {
+        prefs.getString("stopwatch", null)?.let { restore(it, System.currentTimeMillis()) }
+    }
+    /** Cópia automática em Downloads/MeuTreino a cada alteração. */
+    var autoBackup by mutableStateOf(prefs.getBoolean("autoBackup", true))
+        private set
+    var lastBackup by mutableLongStateOf(prefs.getLong("lastBackup", 0))
+        private set
     /** A permissão de notificação é pedida uma única vez, no primeiro treino. */
     var askedNotifications: Boolean
         get() = prefs.getBoolean("askedNotifications", false)
@@ -82,6 +96,35 @@ class TrainingModel(application: Application) : AndroidViewModel(application) {
                 }
             }
         }
+        // cópia automática: espera as alterações assentarem e só grava quando o conteúdo mudou
+        viewModelScope.launch {
+            combine(dao.routines(), dao.workouts(), snapshotFlow { autoBackup }) { routines, workouts, enabled ->
+                Triple(routines, workouts, enabled)
+            }.collectLatest { (routines, workouts, enabled) ->
+                if (!enabled || !AutoBackup.supported || (routines.isEmpty() && workouts.isEmpty())) return@collectLatest
+                delay(1500)
+                withContext(Dispatchers.IO) {
+                    val json = Backup.encode(routines.sortedBy { it.id }, workouts.sortedWith(compareBy({ it.date }, { it.id })))
+                    val mark = json.hashCode().toString() + ":" + json.length
+                    if (mark == prefs.getString("backupMark", null)) return@withContext
+                    val saved = AutoBackup.write(app, json, prefs.getString("backupUri", null)) ?: return@withContext
+                    val now = System.currentTimeMillis()
+                    prefs.edit().putString("backupUri", saved).putString("backupMark", mark).putLong("lastBackup", now).apply()
+                    lastBackup = now
+                }
+            }
+        }
+    }
+
+    fun changeAutoBackup(enabled: Boolean) {
+        autoBackup = enabled
+        prefs.edit().putBoolean("autoBackup", enabled).remove("backupMark").apply()
+    }
+
+    /** Altera o cronômetro e guarda o estado, para ele continuar contando com o app fechado. */
+    fun stopwatch(action: Stopwatch.() -> Unit) {
+        stopwatch.action()
+        prefs.edit().putString("stopwatch", stopwatch.snapshot(System.currentTimeMillis())).apply()
     }
 
     private fun restoreDraft(): WorkoutDraft? =
@@ -150,13 +193,31 @@ class TrainingModel(application: Application) : AndroidViewModel(application) {
         error = ""
     }
 
-    fun finishWorkout() {
-        val draft = activeWorkout ?: return
-        val entries = cleaned(draft.entries) ?: return
+    /**
+     * Mostra o que entra no registro ao concluir. Séries vazias ou incompletas ficam de fora, e o treino
+     * pode ser concluído mesmo sem nenhuma série: fica a data, a duração e a avaliação.
+     */
+    fun finishPreview(): FinishPreview? {
+        val draft = activeWorkout ?: return null
+        var dropped = 0
+        val entries = draft.entries.map { entry ->
+            val kept = entry.sets.filter { set ->
+                val ok = !set.empty() && entry.exercise.name.isNotBlank() && set.valid(entry.exercise.cardio)
+                if (!ok && !set.empty()) dropped++
+                ok
+            }
+            entry.copy(exercise = trimmed(entry.exercise), sets = kept)
+        }.filter { it.sets.isNotEmpty() }
         val seconds = ((System.currentTimeMillis() - draft.date) / 1000).coerceIn(0, 12 * 3600)
+        return FinishPreview(entries, entries.sumOf { it.sets.size }, dropped, seconds)
+    }
+
+    fun finishWorkout(rating: Int, note: String) {
+        val draft = activeWorkout ?: return
+        val preview = finishPreview() ?: return
         persist {
             dao.save(Workout(0, draft.routineId, draft.name.trim().ifEmpty { "Treino" }, draft.date,
-                entries.encodeEntries(), seconds))
+                preview.entries.encodeEntries(), preview.seconds, rating.coerceIn(0, 5), note.trim().take(500)))
             clearDraft()
             stopRest()
             tab = Tab.History
@@ -167,7 +228,7 @@ class TrainingModel(application: Application) : AndroidViewModel(application) {
     fun edit(session: Session) {
         error = ""
         recordDraft = WorkoutDraft(session.workout.id, session.workout.routineId, session.workout.name,
-            session.workout.date, session.entries, session.workout.duration)
+            session.workout.date, session.entries, session.workout.duration, session.workout.rating, session.workout.note)
     }
 
     fun closeRecord() {
@@ -182,7 +243,7 @@ class TrainingModel(application: Application) : AndroidViewModel(application) {
         if (draft.name.isBlank()) return fail("Dê um nome para o treino.")
         persist {
             dao.save(Workout(draft.id, draft.routineId, draft.name.trim(), draft.date, entries.encodeEntries(),
-                draft.duration))
+                draft.duration, draft.rating.coerceIn(0, 5), draft.note.trim().take(500)))
             recordDraft = null
         }
     }
@@ -193,15 +254,11 @@ class TrainingModel(application: Application) : AndroidViewModel(application) {
         message = "Registro excluído."
     }
 
-    /** Tira séries vazias e exercícios sem série. Devolve null (com mensagem de erro) se algo estiver inválido. */
+    /** Tira séries vazias e exercícios sem série. Devolve null (com mensagem de erro) se alguma série estiver incompleta. */
     private fun cleaned(entries: List<Entry>): List<Entry>? {
         val kept = entries.map { entry ->
             entry.copy(exercise = trimmed(entry.exercise), sets = entry.sets.filterNot(SetEntry::empty))
         }.filter { it.sets.isNotEmpty() }
-        if (kept.isEmpty()) {
-            fail("Preencha pelo menos uma série antes de salvar.")
-            return null
-        }
         val broken = kept.firstOrNull { entry ->
             entry.exercise.name.isBlank() || entry.sets.any { !it.valid(entry.exercise.cardio) }
         }

@@ -271,9 +271,10 @@ object PlanParser {
         name: String, catalog: Catalog, sets: String?, reps: String?, load: String?, unit: String?,
         rest: Int?, notes: List<String>, cardio: Boolean?
     ): Exercise {
-        val item = catalog.match(name)
+        val found = catalog.matchVariant(name)
+        val item = found?.first
         val isCardio = cardio ?: (item?.cardio == true)
-        val base = item?.toExercise() ?: Exercise(name = name.replaceFirstChar { it.uppercase() }, cardio = isCardio,
+        val base = item?.toExercise()?.let { if (found.second.isEmpty()) it else it.withVariant(found.second, catalog) } ?: Exercise(name = name.replaceFirstChar { it.uppercase() }, cardio = isCardio,
             unit = if (isCardio) "km" else "kg", increment = if (isCardio) "" else "2,5")
         val note = notes.filter { it.isNotBlank() }.distinct().joinToString(" · ").take(120)
         if (isCardio) return base.copy(cardio = true, unit = "km", sets = "1", target = "", increment = "",

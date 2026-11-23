@@ -29,6 +29,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Switch
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.platform.LocalContext
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,6 +58,7 @@ fun HomeScreen(
     var importMenu by remember { mutableStateOf(false) }
     var pasting by remember { mutableStateOf(false) }
     var resting by remember { mutableStateOf(false) }
+    var settings by remember { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<RoutineItem?>(null) }
     val lastUse = remember(sessions) {
         sessions.filter { it.workout.routineId != null }.groupBy { it.workout.routineId }
@@ -69,8 +78,7 @@ fun HomeScreen(
                         DropdownMenuItem(text = { Text("Descanso padrão: ${clock(model.defaultRest)}") },
                             onClick = { menu = false; resting = true })
                         HorizontalDivider()
-                        DropdownMenuItem(text = { Text("Salvar backup") }, onClick = { menu = false; onExport() })
-                        DropdownMenuItem(text = { Text("Restaurar backup") }, onClick = { menu = false; onRestore() })
+                        DropdownMenuItem(text = { Text("Backup e atualização") }, onClick = { menu = false; settings = true })
                     }
                 }
             }
@@ -113,6 +121,15 @@ fun HomeScreen(
                     color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             }
         }
+        if (routines.isEmpty() && sessions.isEmpty()) item(key = "restaurar") {
+            Panel {
+                Text("Já usava o Meu Treino?", style = MaterialTheme.typography.titleMedium)
+                Text("Traga de volta as rotinas e o histórico de um arquivo de backup. A cópia automática fica em " +
+                    "Downloads, na pasta MeuTreino.", color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 6.dp))
+                FilledTonalButton(onClick = onRestore, modifier = Modifier.padding(top = 10.dp)) { Text("Restaurar backup") }
+            }
+        }
         items(routines, key = { it.routine.id }) { item ->
             var options by remember { mutableStateOf(false) }
             Panel {
@@ -150,11 +167,64 @@ fun HomeScreen(
         }
     }
 
+    if (settings) BackupSheet(model, onExport = { settings = false; onExport() }, onRestore = { settings = false; onRestore() },
+        onDismiss = { settings = false })
     if (pasting) PasteDialog(onImport = { pasting = false; model.importText(it) }, onDismiss = { pasting = false })
     if (resting) RestPicker("Descanso padrão", model.defaultRest, "Salvar", onConfirm = model::changeDefaultRest,
         onDismiss = { resting = false })
     deleting?.let { item ->
         Confirm("Excluir rotina?", "“${item.routine.name}” será apagada. Os treinos já registrados continuam no histórico.",
             confirm = "Excluir", onConfirm = { deleting = null; model.delete(item.routine) }, onDismiss = { deleting = null })
+    }
+}
+
+private const val RELEASES = "https://github.com/lucasdossantosxl-cyber/app-gym/releases/latest"
+
+/** Cópia automática, backup manual e atualização do app. */
+@Composable
+private fun BackupSheet(model: TrainingModel, onExport: () -> Unit, onRestore: () -> Unit, onDismiss: () -> Unit) {
+    val context = LocalContext.current
+    val colors = MaterialTheme.colorScheme
+    val version = remember {
+        runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull().orEmpty()
+    }
+    ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
+        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 28.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("Backup e atualização", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+
+            if (AutoBackup.supported) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f).padding(end = 12.dp)) {
+                        Text("Cópia automática", style = MaterialTheme.typography.titleMedium)
+                        Text(when {
+                            !model.autoBackup -> "Desligada."
+                            model.lastBackup == 0L -> "Ligada. A primeira cópia é feita quando você salvar uma rotina ou um treino."
+                            else -> "Última cópia: ${model.lastBackup.dayLabel()} às ${model.lastBackup.timeLabel()}."
+                        }, style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
+                    }
+                    Switch(checked = model.autoBackup, onCheckedChange = model::changeAutoBackup)
+                }
+                Text("A cada alteração, o app grava ${AutoBackup.NAME} em Downloads, na pasta MeuTreino. O arquivo continua " +
+                    "lá mesmo se o app for desinstalado.", style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
+            }
+            Text("O backup do Android (Configurações > Google > Backup), quando ligado, também guarda os dados do app na " +
+                "sua conta Google e os devolve ao reinstalar ou trocar de celular.",
+                style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                FilledTonalButton(onClick = onExport, modifier = Modifier.weight(1f)) { Text("Salvar cópia em…") }
+                FilledTonalButton(onClick = onRestore, modifier = Modifier.weight(1f)) { Text("Restaurar backup") }
+            }
+
+            HorizontalDivider()
+            Text("Atualização", style = MaterialTheme.typography.titleMedium)
+            Text("Você está na versão $version. As versões novas instalam por cima desta, sem apagar rotinas nem histórico.",
+                style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
+            FilledTonalButton(onClick = {
+                runCatching {
+                    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(RELEASES)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                }
+            }) { Text("Ver a versão mais recente") }
+        }
     }
 }

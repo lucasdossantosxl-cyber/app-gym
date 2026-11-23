@@ -13,7 +13,8 @@
 "supino reto barra",
 "bench press"
 ],
-"how": "Deite com os pés firmes no chão e as escápulas juntas. Desça a barra até o meio do peito e empurre até estender os braços, sem tirar o quadril do banco."
+"how": "Deite com os pés firmes no chão e as escápulas juntas. Desça a barra até o meio do peito e empurre até estender os braços, sem tirar o quadril do banco.",
+"photo": "supino-reto"
 },
 {
 "id": "supino-inclinado",
@@ -26,7 +27,8 @@
 "supino inclinado",
 "supino inclinado barra"
 ],
-"how": "Banco entre 30° e 45°. Desça a barra até a parte alta do peito e suba em linha reta, mantendo os cotovelos um pouco abaixo da linha dos ombros."
+"how": "Banco entre 30° e 45°. Desça a barra até a parte alta do peito e suba em linha reta, mantendo os cotovelos um pouco abaixo da linha dos ombros.",
+"photo": "supino-inclinado"
 },
 {
 "id": "supino-declinado",
@@ -39,7 +41,8 @@
 "supino declinado",
 "supino declinado barra"
 ],
-"how": "Prenda os pés no apoio do banco declinado. Desça a barra até a parte baixa do peito e empurre até estender os braços."
+"how": "Prenda os pés no apoio do banco declinado. Desça a barra até a parte baixa do peito e empurre até estender os braços.",
+"photo": "supino-declinado"
 },
 {
 "id": "supino-halteres",
@@ -54,7 +57,8 @@
 "supino reto halteres",
 "supino halteres"
 ],
-"how": "Com um halter em cada mão, desça até os cotovelos passarem um pouco da linha do banco e empurre aproximando os halteres no alto."
+"how": "Com um halter em cada mão, desça até os cotovelos passarem um pouco da linha do banco e empurre aproximando os halteres no alto.",
+"photo": "supino-halteres"
 },
 {
 "id": "supino-inclinado-halteres",
@@ -68,7 +72,8 @@
 "supino inclinado halter",
 "supino inclinado com halter"
 ],
-"how": "Banco a 30°–45°. Desça os halteres ao lado da parte alta do peito e empurre para cima sem bater um no outro."
+"how": "Banco a 30°–45°. Desça os halteres ao lado da parte alta do peito e empurre para cima sem bater um no outro.",
+"photo": "supino-inclinado-halteres"
 },
 {
 "id": "supino-declinado-halteres",
@@ -81,7 +86,8 @@
 "supino declinado halteres",
 "supino declinado halter"
 ],
-"how": "No banco declinado, desça os halteres ao lado da parte baixa do peito e empurre até estender os braços."
+"how": "No banco declinado, desça os halteres ao lado da parte baixa do peito e empurre até estender os braços.",
+"photo": "supino-declinado-halteres"
 },
 {
 "id": "supino-maquina",
@@ -97,7 +103,8 @@
 "supino articulado",
 "supino sentado"
 ],
-"how": "Ajuste o banco para as pegadas ficarem na altura do peito. Empurre até quase estender os braços e volte devagar, sem deixar os pesos baterem."
+"how": "Ajuste o banco para as pegadas ficarem na altura do peito. Empurre até quase estender os braços e volte devagar, sem deixar os pesos baterem.",
+"photo": "supino-maquina"
 },
 {
 "id": "supino-smith",
@@ -111,7 +118,8 @@
 "supino guiado",
 "supino reto smith"
 ],
-"how": "Posicione o banco para a barra descer no meio do peito. Destrave, desça controlando e empurre até estender os braços."
+"how": "Posicione o banco para a barra descer no meio do peito. Destrave, desça controlando e empurre até estender os braços.",
+"photo": "supino-smith"
 },
 {
 "id": "supino-inclinado-smith",
@@ -124,7 +132,8 @@
 "supino inclinado smith",
 "supino inclinado guiado"
 ],
-"how": "Banco a 30°–45° sob a barra guiada. Desça até a parte alta do peito e empurre até estender os braços."
+"how": "Banco a 30°–45° sob a barra guiada. Desça até a parte alta do peito e empurre até estender os braços.",
+"photo": "supino-inclinado-smith"
 },
 {
 "id": "crucifixo",
@@ -139,7 +148,8 @@
 "crucifixo halteres",
 "fly"
 ],
-"how": "Braços levemente flexionados. Abra os halteres em arco até sentir o peito alongar e volte como se abraçasse um barril."
+"how": "Braços levemente flexionados. Abra os halteres em arco até sentir o peito alongar e volte como se abraçasse um barril.",
+"photo": "crucifixo"
 },
 {
 "id": "crucifixo-inclinado",
@@ -152,7 +162,8 @@
 "crucifixo inclinado",
 "fly inclinado"
 ],
-"how": "No banco inclinado, abra os halteres em arco com os cotovelos levemente flexionados e feche contraindo a parte alta do peito."
+"how": "No banco inclinado, abra os halteres em arco com os cotovelos levemente flexionados e feche contraindo a parte alta do peito.",
+"photo": "crucifixo-inclinado"
 },
 {
 "id": "peck-deck",
@@ -170,7 +181,8 @@
 "peck-deck",
 "voador peitoral"
 ],
-"how": "Costas apoiadas e cotovelos na altura dos ombros. Feche os braços à frente do peito, segure um instante e volte devagar."
+"how": "Costas apoiadas e cotovelos na altura dos ombros. Feche os braços à frente do peito, segure um instante e volte devagar.",
+"photo": "peck-deck"
 },
 {
 "id": "crossover",
@@ -186,7 +198,8 @@
 "crucifixo polia",
 "cross"
 ],
-"how": "Um passo à frente, tronco levemente inclinado. Puxe as alças em arco até as mãos se encontrarem à frente do quadril e volte controlando."
+"how": "Um passo à frente, tronco levemente inclinado. Puxe as alças em arco até as mãos se encontrarem à frente do quadril e volte controlando.",
+"photo": "crossover"
 },
 {
 "id": "crossover-baixo",
@@ -200,7 +213,8 @@
 "crossover polia baixa",
 "crucifixo polia baixa"
 ],
-"how": "Com as polias embaixo, suba as alças em arco até a altura do peito, juntando as mãos, e desça devagar."
+"how": "Com as polias embaixo, suba as alças em arco até a altura do peito, juntando as mãos, e desça devagar.",
+"photo": "crossover-baixo"
 },
 {
 "id": "flexao",
@@ -218,7 +232,8 @@
 "pushup",
 "push-up"
 ],
-"how": "Mãos pouco além da largura dos ombros e corpo em linha reta. Desça até o peito quase tocar o chão e empurre sem deixar o quadril cair."
+"how": "Mãos pouco além da largura dos ombros e corpo em linha reta. Desça até o peito quase tocar o chão e empurre sem deixar o quadril cair.",
+"photo": "flexao"
 },
 {
 "id": "flexao-inclinada",
@@ -232,7 +247,8 @@
 "flexao no banco",
 "flexao facilitada"
 ],
-"how": "Apoie as mãos em um banco e mantenha o corpo reto. Desça o peito até o banco e empurre. É mais leve que a flexão no chão."
+"how": "Apoie as mãos em um banco e mantenha o corpo reto. Desça o peito até o banco e empurre. É mais leve que a flexão no chão.",
+"photo": "flexao-inclinada"
 },
 {
 "id": "paralelas-peito",
@@ -248,7 +264,8 @@
 "paralela",
 "mergulho nas paralelas"
 ],
-"how": "Incline o tronco à frente e desça até os ombros ficarem na linha dos cotovelos. Empurre até estender os braços."
+"how": "Incline o tronco à frente e desça até os ombros ficarem na linha dos cotovelos. Empurre até estender os braços.",
+"photo": "paralelas-peito"
 },
 {
 "id": "pullover",
@@ -262,7 +279,216 @@
 "pull over",
 "pullover halter"
 ],
-"how": "Deitado, segure um halter com as duas mãos acima do peito. Leve-o para trás da cabeça com os cotovelos levemente flexionados e volte."
+"how": "Deitado, segure um halter com as duas mãos acima do peito. Leve-o para trás da cabeça com os cotovelos levemente flexionados e volte.",
+"photo": "pullover"
+},
+{
+"id": "supino-inclinado-maquina",
+"name": "Supino inclinado na máquina",
+"group": "Peito",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"supino inclinado maquina",
+"supino inclinado articulado",
+"chest press inclinado"
+],
+"how": "Banco ajustado para as pegadas ficarem na altura da parte alta do peito. Empurre para cima e à frente até quase estender os braços e volte devagar.",
+"photo": "supino-inclinado-maquina"
+},
+{
+"id": "supino-declinado-maquina",
+"name": "Supino declinado na máquina",
+"group": "Peito",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"supino declinado maquina",
+"supino declinado articulado"
+],
+"how": "Costas apoiadas e pegadas na altura da parte baixa do peito. Empurre para baixo e à frente até quase estender os braços e volte controlando.",
+"photo": "supino-declinado-maquina"
+},
+{
+"id": "supino-declinado-smith",
+"name": "Supino declinado no Smith",
+"group": "Peito",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"supino declinado smith",
+"supino declinado guiado"
+],
+"how": "Banco declinado sob a barra guiada. Desça a barra até a parte baixa do peito e empurre até estender os braços.",
+"photo": "supino-declinado-smith"
+},
+{
+"id": "supino-halteres-neutro",
+"name": "Supino com halteres em pegada neutra",
+"group": "Peito",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"supino neutro",
+"supino pegada neutra",
+"supino halteres neutro"
+],
+"how": "Palmas viradas uma para a outra e cotovelos mais perto do tronco. Desça os halteres ao lado do peito e empurre até estender os braços.",
+"photo": "supino-halteres-neutro"
+},
+{
+"id": "supino-unilateral",
+"name": "Supino unilateral com halter",
+"group": "Peito",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"supino unilateral",
+"supino unilateral halter",
+"supino um braco"
+],
+"how": "Deitado, com um halter só. Firme o abdômen para o tronco não girar, desça o halter ao lado do peito e empurre. Complete um lado e troque.",
+"photo": "supino-unilateral"
+},
+{
+"id": "supino-polia",
+"name": "Supino na polia em pé",
+"group": "Peito",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"supino polia",
+"supino no cabo",
+"chest press polia",
+"supino em pe polia"
+],
+"how": "De costas para as polias, um pé à frente. Empurre as alças para frente até os braços estenderem e volte até as mãos ficarem ao lado do peito.",
+"photo": "supino-polia"
+},
+{
+"id": "crucifixo-declinado",
+"name": "Crucifixo declinado com halteres",
+"group": "Peito",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"crucifixo declinado",
+"fly declinado"
+],
+"how": "No banco declinado, abra os halteres em arco com os cotovelos levemente flexionados e feche contraindo a parte baixa do peito.",
+"photo": "crucifixo-declinado"
+},
+{
+"id": "crucifixo-polia-banco",
+"name": "Crucifixo na polia deitado",
+"group": "Peito",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"crucifixo polia banco",
+"crucifixo no cabo deitado",
+"fly polia banco",
+"crucifixo deitado polia"
+],
+"how": "Banco entre as duas polias baixas. Deitado, feche os braços em arco acima do peito e abra devagar até alongar.",
+"photo": "crucifixo-polia-banco"
+},
+{
+"id": "crucifixo-inclinado-polia",
+"name": "Crucifixo inclinado na polia",
+"group": "Peito",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"crucifixo inclinado polia",
+"fly inclinado polia",
+"crucifixo inclinado cabo"
+],
+"how": "Banco inclinado entre as polias baixas. Feche os braços em arco acima da parte alta do peito e volte controlando.",
+"photo": "crucifixo-inclinado-polia"
+},
+{
+"id": "crossover-unilateral",
+"name": "Crossover unilateral",
+"group": "Peito",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"crossover unilateral",
+"cross unilateral",
+"crucifixo unilateral polia",
+"crucifixo unilateral na polia"
+],
+"how": "De lado para a polia alta. Puxe a alça em arco até a frente do quadril, cruzando a linha do meio do corpo, e volte devagar. Complete um lado e troque.",
+"photo": "crossover-unilateral"
+},
+{
+"id": "flexao-declinada",
+"name": "Flexão com pés elevados",
+"group": "Peito",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"flexao declinada",
+"flexao pes elevados",
+"flexao com pes no banco"
+],
+"how": "Pés apoiados em um banco e mãos no chão. Desça o peito até perto do chão com o corpo reto e empurre. É mais pesada que a flexão comum.",
+"photo": "flexao-declinada"
+},
+{
+"id": "flexao-aberta",
+"name": "Flexão aberta",
+"group": "Peito",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"flexao aberta",
+"flexao pegada aberta"
+],
+"how": "Mãos bem mais afastadas que os ombros. Desça o peito até perto do chão e empurre, mantendo o corpo em linha reta.",
+"photo": "flexao-aberta"
+},
+{
+"id": "pullover-barra",
+"name": "Pullover com barra",
+"group": "Peito",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"pullover barra",
+"pull over barra"
+],
+"how": "Deitado, barra acima do peito com os cotovelos flexionados. Leve a barra para trás da cabeça até alongar e volte pelo mesmo arco.",
+"photo": "pullover-barra"
+},
+{
+"id": "pullover-polia",
+"name": "Pullover na polia deitado",
+"group": "Peito",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"pullover polia",
+"pullover no cabo",
+"pull over polia"
+],
+"how": "Deitado com a cabeça voltada para a polia baixa, segure a barra ou a corda com os braços quase estendidos atrás da cabeça. Traga em arco até acima do peito e volte devagar.",
+"photo": "pullover"
 },
 {
 "id": "puxada-frente",
@@ -283,7 +509,8 @@
 "puxada pela frente",
 "puxador frontal"
 ],
-"how": "Pegada um pouco mais aberta que os ombros. Puxe a barra até a parte alta do peito levando os cotovelos para baixo e volte até estender os braços."
+"how": "Pegada um pouco mais aberta que os ombros. Puxe a barra até a parte alta do peito levando os cotovelos para baixo e volte até estender os braços.",
+"photo": "puxada-frente"
 },
 {
 "id": "puxada-fechada",
@@ -297,7 +524,8 @@
 "pulley fechado",
 "puxada frente fechada"
 ],
-"how": "Mãos na largura dos ombros. Puxe a barra até o peito mantendo o tronco firme e solte devagar."
+"how": "Mãos na largura dos ombros. Puxe a barra até o peito mantendo o tronco firme e solte devagar.",
+"photo": "puxada-fechada"
 },
 {
 "id": "puxada-triangulo",
@@ -312,7 +540,8 @@
 "pulley triangulo",
 "puxador triangulo"
 ],
-"how": "Com o triângulo, incline levemente o tronco para trás e puxe até o peito, aproximando os cotovelos do corpo."
+"how": "Com o triângulo, incline levemente o tronco para trás e puxe até o peito, aproximando os cotovelos do corpo.",
+"photo": "puxada-triangulo"
 },
 {
 "id": "puxada-supinada",
@@ -326,7 +555,8 @@
 "pulley supinado",
 "puxada invertida"
 ],
-"how": "Palmas viradas para você, mãos na largura dos ombros. Puxe a barra até o peito e volte controlando."
+"how": "Palmas viradas para você, mãos na largura dos ombros. Puxe a barra até o peito e volte controlando.",
+"photo": "puxada-supinada"
 },
 {
 "id": "barra-fixa",
@@ -343,7 +573,8 @@
 "barra",
 "barra fixa pronada"
 ],
-"how": "Pegada pronada um pouco mais aberta que os ombros. Suba até o queixo passar da barra e desça até estender os braços, sem balançar."
+"how": "Pegada pronada um pouco mais aberta que os ombros. Suba até o queixo passar da barra e desça até estender os braços, sem balançar.",
+"photo": "barra-fixa"
 },
 {
 "id": "barra-fixa-supinada",
@@ -358,7 +589,8 @@
 "barra supinada",
 "barra fixa supinada"
 ],
-"how": "Palmas viradas para você, mãos na largura dos ombros. Suba até o queixo passar da barra e desça devagar."
+"how": "Palmas viradas para você, mãos na largura dos ombros. Suba até o queixo passar da barra e desça devagar.",
+"photo": "barra-fixa-supinada"
 },
 {
 "id": "remada-curvada",
@@ -373,7 +605,8 @@
 "remada curvada barra",
 "remada pronada"
 ],
-"how": "Tronco inclinado com a coluna reta e joelhos levemente flexionados. Puxe a barra até o abdômen e desça controlando."
+"how": "Tronco inclinado com a coluna reta e joelhos levemente flexionados. Puxe a barra até o abdômen e desça controlando.",
+"photo": "remada-curvada"
 },
 {
 "id": "remada-supinada",
@@ -386,7 +619,8 @@
 "remada supinada",
 "remada curvada supinada"
 ],
-"how": "Mesma posição da remada curvada, com as palmas para cima. Puxe a barra até o umbigo mantendo os cotovelos perto do corpo."
+"how": "Mesma posição da remada curvada, com as palmas para cima. Puxe a barra até o umbigo mantendo os cotovelos perto do corpo.",
+"photo": "remada-supinada"
 },
 {
 "id": "remada-unilateral",
@@ -402,7 +636,8 @@
 "remada unilateral halter",
 "remada com halter"
 ],
-"how": "Apoie joelho e mão no banco, coluna reta. Puxe o halter em direção ao quadril e desça até alongar as costas."
+"how": "Apoie joelho e mão no banco, coluna reta. Puxe o halter em direção ao quadril e desça até alongar as costas.",
+"photo": "remada-unilateral"
 },
 {
 "id": "remada-halteres",
@@ -415,7 +650,8 @@
 "remada curvada halteres",
 "remada halteres"
 ],
-"how": "Tronco inclinado e coluna reta. Puxe os dois halteres ao lado do tronco, juntando as escápulas, e desça devagar."
+"how": "Tronco inclinado e coluna reta. Puxe os dois halteres ao lado do tronco, juntando as escápulas, e desça devagar.",
+"photo": "remada-halteres"
 },
 {
 "id": "remada-baixa",
@@ -432,7 +668,8 @@
 "remada polia",
 "remada sentado"
 ],
-"how": "Sentado, coluna reta e joelhos levemente flexionados. Puxe o triângulo até o abdômen sem jogar o tronco para trás."
+"how": "Sentado, coluna reta e joelhos levemente flexionados. Puxe o triângulo até o abdômen sem jogar o tronco para trás.",
+"photo": "remada-baixa"
 },
 {
 "id": "remada-cavalinho",
@@ -448,7 +685,8 @@
 "t bar",
 "remada t"
 ],
-"how": "Tronco inclinado, coluna reta. Puxe a barra até o peito, juntando as escápulas, e desça controlando."
+"how": "Tronco inclinado, coluna reta. Puxe a barra até o peito, juntando as escápulas, e desça controlando.",
+"photo": "remada-cavalinho"
 },
 {
 "id": "remada-maquina",
@@ -463,7 +701,8 @@
 "remada sentada maquina",
 "remada hammer"
 ],
-"how": "Peito apoiado no encosto. Puxe as alavancas levando os cotovelos para trás e volte até estender os braços."
+"how": "Peito apoiado no encosto. Puxe as alavancas levando os cotovelos para trás e volte até estender os braços.",
+"photo": "remada-maquina"
 },
 {
 "id": "remada-invertida",
@@ -476,7 +715,8 @@
 "remada invertida",
 "remada australiana"
 ],
-"how": "Sob uma barra baixa, corpo reto. Puxe o peito até a barra e desça até estender os braços."
+"how": "Sob uma barra baixa, corpo reto. Puxe o peito até a barra e desça até estender os braços.",
+"photo": "remada-invertida"
 },
 {
 "id": "pulldown",
@@ -491,7 +731,8 @@
 "pulldown barra",
 "pull down polia"
 ],
-"how": "De pé, braços quase estendidos. Leve a barra da altura dos olhos até as coxas em arco, sem dobrar os cotovelos."
+"how": "De pé, braços quase estendidos. Leve a barra da altura dos olhos até as coxas em arco, sem dobrar os cotovelos.",
+"photo": "pulldown"
 },
 {
 "id": "pulldown-corda",
@@ -504,7 +745,8 @@
 "pulldown corda",
 "pull down corda"
 ],
-"how": "Com a corda na polia alta e os braços quase estendidos, puxe em arco até as coxas e volte devagar."
+"how": "Com a corda na polia alta e os braços quase estendidos, puxe em arco até as coxas e volte devagar.",
+"photo": "pulldown-corda"
 },
 {
 "id": "levantamento-terra",
@@ -519,7 +761,8 @@
 "deadlift",
 "terra convencional"
 ],
-"how": "Barra sobre o meio dos pés, coluna reta e peito aberto. Empurre o chão e suba com a barra rente às pernas. Desça controlando."
+"how": "Barra sobre o meio dos pés, coluna reta e peito aberto. Empurre o chão e suba com a barra rente às pernas. Desça controlando.",
+"photo": "levantamento-terra"
 },
 {
 "id": "hiperextensao",
@@ -535,7 +778,229 @@
 "lombar",
 "extensao de tronco"
 ],
-"how": "Quadril apoiado no banco romano. Desça o tronco com a coluna reta e suba até alinhar com as pernas, sem passar do ponto."
+"how": "Quadril apoiado no banco romano. Desça o tronco com a coluna reta e suba até alinhar com as pernas, sem passar do ponto.",
+"photo": "hiperextensao"
+},
+{
+"id": "puxada-nuca",
+"name": "Puxada atrás da nuca",
+"group": "Costas",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"puxada nuca",
+"puxada atras",
+"pulley atras",
+"pulley nuca",
+"puxada por tras"
+],
+"how": "Pegada aberta e tronco na vertical. Puxe a barra até a altura da nuca sem projetar a cabeça à frente e volte devagar. Exige boa mobilidade de ombros.",
+"photo": "puxada-nuca"
+},
+{
+"id": "puxada-unilateral",
+"name": "Puxada unilateral na polia",
+"group": "Costas",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"puxada unilateral",
+"pulley unilateral",
+"puxada alta unilateral",
+"puxada um braco"
+],
+"how": "Com uma alça na polia alta, puxe o cotovelo para baixo e para trás até a mão chegar ao lado do peito. Volte até estender o braço. Complete um lado e troque.",
+"photo": "puxada-unilateral"
+},
+{
+"id": "remada-baixa-unilateral",
+"name": "Remada baixa unilateral na polia",
+"group": "Costas",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"remada baixa unilateral",
+"remada unilateral polia",
+"remada sentada unilateral",
+"remada unilateral no cabo"
+],
+"how": "Sentado, uma alça na polia baixa. Puxe o cotovelo para trás rente ao tronco, sem girar o corpo, e volte até estender o braço.",
+"photo": "remada-baixa-unilateral"
+},
+{
+"id": "remada-alta-maquina",
+"name": "Remada alta na máquina",
+"group": "Costas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"high row",
+"remada alta maquina",
+"remada alta articulada",
+"puxada articulada"
+],
+"how": "Peito apoiado e braços estendidos para cima e à frente. Puxe as alavancas levando os cotovelos para baixo e para trás e volte controlando.",
+"photo": "remada-alta-maquina"
+},
+{
+"id": "remada-cavalinho-apoiado",
+"name": "Remada cavalinho com apoio no peito",
+"group": "Costas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"cavalinho apoiado",
+"remada cavalinho maquina",
+"t-bar apoiado",
+"remada t apoiada"
+],
+"how": "Peito apoiado na almofada. Puxe as pegadas em direção ao tronco juntando as escápulas e desça até estender os braços.",
+"photo": "remada-cavalinho-apoiado"
+},
+{
+"id": "remada-smith",
+"name": "Remada curvada no Smith",
+"group": "Costas",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"remada smith",
+"remada curvada smith",
+"remada guiada"
+],
+"how": "Tronco inclinado com a coluna reta sob a barra guiada. Puxe a barra até o abdômen e desça controlando.",
+"photo": "remada-smith"
+},
+{
+"id": "remada-banco-inclinado",
+"name": "Remada no banco inclinado com halteres",
+"group": "Costas",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"remada banco inclinado",
+"remada apoiada",
+"remada inclinada halteres",
+"remada com apoio"
+],
+"how": "Deitado de bruços no banco inclinado. Puxe os halteres ao lado do tronco juntando as escápulas e desça até estender os braços.",
+"photo": "remada-banco-inclinado"
+},
+{
+"id": "barra-fixa-neutra",
+"name": "Barra fixa em pegada neutra",
+"group": "Costas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"barra fixa neutra",
+"barra neutra",
+"pull up neutro"
+],
+"how": "Palmas viradas uma para a outra. Suba até o queixo passar das mãos e desça até estender os braços.",
+"photo": "barra-fixa-neutra"
+},
+{
+"id": "barra-fixa-peso",
+"name": "Barra fixa com peso",
+"group": "Costas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"barra fixa com peso",
+"barra lastrada",
+"barra fixa lastro",
+"pull up com peso"
+],
+"how": "Com um cinto de anilhas ou um halter entre os pés, suba até o queixo passar da barra e desça devagar. Anote o peso extra como carga.",
+"photo": "barra-fixa-peso"
+},
+{
+"id": "barra-fixa-elastico",
+"name": "Barra fixa com elástico",
+"group": "Costas",
+"equipment": "Elástico",
+"cardio": false,
+"increment": "",
+"aliases": [
+"barra fixa elastico",
+"barra assistida",
+"barra fixa assistida",
+"pull up assistido"
+],
+"how": "Prenda o elástico na barra e apoie um joelho ou um pé nele. Suba até o queixo passar da barra e desça controlando. O elástico ajuda na parte mais difícil.",
+"photo": "barra-fixa-elastico"
+},
+{
+"id": "graviton",
+"name": "Barra fixa no graviton",
+"group": "Costas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"graviton",
+"barra graviton",
+"barra assistida maquina",
+"barra fixa na maquina"
+],
+"how": "Ajoelhado na plataforma, que tira parte do seu peso. Suba até o queixo passar das mãos e desça até estender os braços. Quanto mais peso na máquina, mais leve o exercício.",
+"photo": "barra-fixa"
+},
+{
+"id": "remada-fita",
+"name": "Remada na fita de suspensão",
+"group": "Costas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"remada trx",
+"remada na fita",
+"remada suspensa"
+],
+"how": "Segure as alças com o corpo inclinado para trás e reto. Puxe o peito até as mãos e volte devagar. Quanto mais deitado, mais pesado.",
+"photo": "remada-fita"
+},
+{
+"id": "hiperextensao-reversa",
+"name": "Hiperextensão reversa",
+"group": "Costas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"hiperextensao reversa",
+"reverse hyper",
+"extensao reversa"
+],
+"how": "Tronco apoiado na máquina e pernas soltas. Suba as pernas até alinhar com o tronco contraindo glúteos e lombar e desça controlando.",
+"photo": "hiperextensao-reversa"
+},
+{
+"id": "terra-hexagonal",
+"name": "Levantamento terra com barra hexagonal",
+"group": "Costas",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"terra hexagonal",
+"trap bar",
+"terra barra hexagonal",
+"terra trap bar"
+],
+"how": "De pé dentro da barra hexagonal, pegadas ao lado do corpo. Com a coluna reta, empurre o chão e fique em pé. Desça controlando.",
+"photo": "terra-hexagonal"
 },
 {
 "id": "desenvolvimento-barra",
@@ -550,7 +1015,8 @@
 "military press",
 "desenvolvimento em pe"
 ],
-"how": "Barra na altura da clavícula, abdômen firme. Empurre para cima até estender os braços e desça até o queixo."
+"how": "Barra na altura da clavícula, abdômen firme. Empurre para cima até estender os braços e desça até o queixo.",
+"photo": "desenvolvimento-barra"
 },
 {
 "id": "desenvolvimento-barra-sentado",
@@ -563,7 +1029,8 @@
 "desenvolvimento sentado",
 "desenvolvimento sentado barra"
 ],
-"how": "Sentado com as costas apoiadas, desça a barra até a altura do queixo e empurre até estender os braços."
+"how": "Sentado com as costas apoiadas, desça a barra até a altura do queixo e empurre até estender os braços.",
+"photo": "desenvolvimento-barra-sentado"
 },
 {
 "id": "desenvolvimento-halteres",
@@ -579,7 +1046,8 @@
 "desenvolvimento com halter",
 "desenvolvimento ombro"
 ],
-"how": "Halteres na altura das orelhas, cotovelos abaixo dos punhos. Empurre para cima até quase estender e desça devagar."
+"how": "Halteres na altura das orelhas, cotovelos abaixo dos punhos. Empurre para cima até quase estender e desça devagar.",
+"photo": "desenvolvimento-halteres"
 },
 {
 "id": "desenvolvimento-maquina",
@@ -593,7 +1061,8 @@
 "shoulder press",
 "desenvolvimento articulado"
 ],
-"how": "Ajuste o banco para as pegadas ficarem na altura dos ombros. Empurre para cima até quase estender os braços e volte devagar."
+"how": "Ajuste o banco para as pegadas ficarem na altura dos ombros. Empurre para cima até quase estender os braços e volte devagar.",
+"photo": "desenvolvimento-maquina"
 },
 {
 "id": "desenvolvimento-smith",
@@ -606,7 +1075,8 @@
 "desenvolvimento smith",
 "desenvolvimento guiado"
 ],
-"how": "Sentado sob a barra guiada, desça até a altura do queixo e empurre até estender os braços."
+"how": "Sentado sob a barra guiada, desça até a altura do queixo e empurre até estender os braços.",
+"photo": "desenvolvimento-smith"
 },
 {
 "id": "arnold",
@@ -620,7 +1090,8 @@
 "arnold press",
 "desenvolvimento arnold"
 ],
-"how": "Comece com as palmas viradas para você na frente do rosto. Suba girando os punhos até as palmas apontarem para frente."
+"how": "Comece com as palmas viradas para você na frente do rosto. Suba girando os punhos até as palmas apontarem para frente.",
+"photo": "arnold"
 },
 {
 "id": "elevacao-lateral",
@@ -635,7 +1106,8 @@
 "elevacao lateral halteres",
 "abducao de ombro"
 ],
-"how": "Cotovelos levemente flexionados. Eleve os halteres pelos lados até a altura dos ombros e desça devagar, sem balançar o tronco."
+"how": "Cotovelos levemente flexionados. Eleve os halteres pelos lados até a altura dos ombros e desça devagar, sem balançar o tronco.",
+"photo": "elevacao-lateral"
 },
 {
 "id": "elevacao-lateral-sentado",
@@ -647,7 +1119,8 @@
 "aliases": [
 "elevacao lateral sentado"
 ],
-"how": "Sentado na ponta do banco, eleve os halteres pelos lados até a linha dos ombros e desça controlando."
+"how": "Sentado na ponta do banco, eleve os halteres pelos lados até a linha dos ombros e desça controlando.",
+"photo": "elevacao-lateral-sentado"
 },
 {
 "id": "elevacao-lateral-polia",
@@ -661,7 +1134,8 @@
 "elevacao lateral cabo",
 "lateral na polia"
 ],
-"how": "De lado para a polia baixa, puxe a alça cruzando à frente do corpo até a altura do ombro e desça devagar."
+"how": "De lado para a polia baixa, puxe a alça cruzando à frente do corpo até a altura do ombro e desça devagar.",
+"photo": "elevacao-lateral-polia"
 },
 {
 "id": "elevacao-frontal",
@@ -675,7 +1149,8 @@
 "frontal",
 "elevacao frontal halteres"
 ],
-"how": "Eleve os halteres à frente até a altura dos ombros, com os braços quase estendidos, e desça controlando."
+"how": "Eleve os halteres à frente até a altura dos ombros, com os braços quase estendidos, e desça controlando.",
+"photo": "elevacao-frontal"
 },
 {
 "id": "elevacao-frontal-anilha",
@@ -688,7 +1163,8 @@
 "elevacao frontal anilha",
 "frontal anilha"
 ],
-"how": "Segure a anilha com as duas mãos. Eleve à frente até a altura dos olhos e desça devagar."
+"how": "Segure a anilha com as duas mãos. Eleve à frente até a altura dos olhos e desça devagar.",
+"photo": "elevacao-frontal-anilha"
 },
 {
 "id": "crucifixo-inverso",
@@ -704,7 +1180,8 @@
 "fly inverso",
 "voador inverso halteres"
 ],
-"how": "Tronco inclinado à frente. Abra os braços para os lados até a linha dos ombros, apertando a parte de trás do ombro."
+"how": "Tronco inclinado à frente. Abra os braços para os lados até a linha dos ombros, apertando a parte de trás do ombro.",
+"photo": "crucifixo-inverso"
 },
 {
 "id": "crucifixo-inverso-maquina",
@@ -721,7 +1198,8 @@
 "fly inverso maquina",
 "peck deck inverso"
 ],
-"how": "Peito apoiado no encosto e braços estendidos à frente. Abra os braços para trás até a linha dos ombros e volte devagar."
+"how": "Peito apoiado no encosto e braços estendidos à frente. Abra os braços para trás até a linha dos ombros e volte devagar.",
+"photo": "crucifixo-inverso-maquina"
 },
 {
 "id": "face-pull",
@@ -735,7 +1213,8 @@
 "facepull",
 "puxada para o rosto"
 ],
-"how": "Corda na polia alta. Puxe em direção ao rosto, abrindo os cotovelos para os lados e para trás, e volte controlando."
+"how": "Corda na polia alta. Puxe em direção ao rosto, abrindo os cotovelos para os lados e para trás, e volte controlando.",
+"photo": "face-pull"
 },
 {
 "id": "remada-alta",
@@ -748,7 +1227,8 @@
 "remada alta",
 "remada alta barra"
 ],
-"how": "Pegada na largura dos ombros. Puxe a barra rente ao corpo até a altura do peito, cotovelos acima dos punhos."
+"how": "Pegada na largura dos ombros. Puxe a barra rente ao corpo até a altura do peito, cotovelos acima dos punhos.",
+"photo": "remada-alta"
 },
 {
 "id": "remada-alta-polia",
@@ -761,7 +1241,8 @@
 "remada alta polia",
 "remada alta cabo"
 ],
-"how": "De frente para a polia baixa, puxe a barra rente ao corpo até a altura do peito e desça devagar."
+"how": "De frente para a polia baixa, puxe a barra rente ao corpo até a altura do peito e desça devagar.",
+"photo": "remada-alta-polia"
 },
 {
 "id": "encolhimento-barra",
@@ -775,7 +1256,8 @@
 "encolhimento de ombros barra",
 "trapezio barra"
 ],
-"how": "Braços estendidos. Eleve os ombros em direção às orelhas, segure um instante e desça, sem girar os ombros."
+"how": "Braços estendidos. Eleve os ombros em direção às orelhas, segure um instante e desça, sem girar os ombros.",
+"photo": "encolhimento-barra"
 },
 {
 "id": "encolhimento-halteres",
@@ -790,7 +1272,316 @@
 "encolhimento de ombros",
 "trapezio"
 ],
-"how": "Halteres ao lado do corpo. Eleve os ombros o mais alto que conseguir, segure um instante e desça devagar."
+"how": "Halteres ao lado do corpo. Eleve os ombros o mais alto que conseguir, segure um instante e desça devagar.",
+"photo": "encolhimento-halteres"
+},
+{
+"id": "encolhimento-polia",
+"name": "Encolhimento na polia",
+"group": "Ombros",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"encolhimento polia",
+"encolhimento cabo",
+"trapezio polia"
+],
+"how": "De frente para a polia baixa, braços estendidos. Eleve os ombros em direção às orelhas, segure um instante e desça.",
+"photo": "encolhimento-polia"
+},
+{
+"id": "encolhimento-maquina",
+"name": "Encolhimento na máquina",
+"group": "Ombros",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"encolhimento maquina",
+"trapezio maquina"
+],
+"how": "Segure as pegadas com os braços estendidos. Eleve os ombros o mais alto que conseguir, segure um instante e desça devagar.",
+"photo": "encolhimento-maquina"
+},
+{
+"id": "desenvolvimento-halteres-em-pe",
+"name": "Desenvolvimento em pé com halteres",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"desenvolvimento em pe halteres",
+"desenvolvimento halteres em pe"
+],
+"how": "De pé, abdômen e glúteos firmes. Empurre os halteres da altura das orelhas até acima da cabeça sem inclinar o tronco para trás.",
+"photo": "desenvolvimento-halteres-em-pe"
+},
+{
+"id": "desenvolvimento-unilateral",
+"name": "Desenvolvimento unilateral com halter",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"desenvolvimento unilateral",
+"desenvolvimento um braco",
+"desenvolvimento unilateral halter"
+],
+"how": "Com um halter na altura do ombro, empurre para cima até estender o braço, sem inclinar o tronco para o lado. Complete um lado e troque.",
+"photo": "desenvolvimento-unilateral"
+},
+{
+"id": "desenvolvimento-neutro",
+"name": "Desenvolvimento com halteres em pegada neutra",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"desenvolvimento neutro",
+"desenvolvimento pegada neutra",
+"desenvolvimento martelo"
+],
+"how": "Palmas viradas uma para a outra e cotovelos à frente do corpo. Empurre os halteres para cima até estender os braços e desça devagar.",
+"photo": "desenvolvimento-neutro"
+},
+{
+"id": "desenvolvimento-nuca",
+"name": "Desenvolvimento por trás da nuca",
+"group": "Ombros",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"desenvolvimento nuca",
+"desenvolvimento atras",
+"desenvolvimento por tras"
+],
+"how": "Barra apoiada atrás da cabeça, na altura das orelhas. Empurre para cima até estender os braços e desça só até onde os ombros permitem sem dor.",
+"photo": "desenvolvimento-nuca"
+},
+{
+"id": "desenvolvimento-cubano",
+"name": "Desenvolvimento cubano",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"cubano",
+"cuban press",
+"desenvolvimento cubano"
+],
+"how": "Com halteres leves, puxe os cotovelos até a altura dos ombros, gire os antebraços para cima e empurre acima da cabeça. Volte pelo caminho inverso.",
+"photo": "desenvolvimento-cubano"
+},
+{
+"id": "elevacao-lateral-unilateral",
+"name": "Elevação lateral unilateral com halter",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"elevacao lateral unilateral",
+"lateral unilateral",
+"elevacao lateral um braco"
+],
+"how": "Segure em um apoio com a mão livre. Eleve o halter pelo lado até a altura do ombro e desça devagar. Complete um lado e troque.",
+"photo": "elevacao-lateral-unilateral"
+},
+{
+"id": "elevacao-lateral-inclinada",
+"name": "Elevação lateral deitado no banco inclinado",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"elevacao lateral inclinada",
+"lateral inclinada",
+"elevacao lateral banco inclinado"
+],
+"how": "Deitado de lado no banco inclinado. Eleve o halter do quadril até a linha do ombro e desça devagar, sem balançar.",
+"photo": "elevacao-lateral-inclinada"
+},
+{
+"id": "elevacao-lateral-maquina",
+"name": "Elevação lateral na máquina",
+"group": "Ombros",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"elevacao lateral maquina",
+"lateral maquina",
+"abducao de ombro maquina"
+],
+"how": "Sentado, antebraços apoiados nas almofadas. Eleve os cotovelos pelos lados até a altura dos ombros e desça controlando.",
+"photo": "elevacao-lateral"
+},
+{
+"id": "elevacao-lateral-elastico",
+"name": "Elevação lateral com elástico",
+"group": "Ombros",
+"equipment": "Elástico",
+"cardio": false,
+"increment": "",
+"aliases": [
+"elevacao lateral elastico",
+"lateral elastico"
+],
+"how": "Pise no meio do elástico e segure as pontas. Eleve os braços pelos lados até a altura dos ombros e desça devagar.",
+"photo": "elevacao-lateral-elastico"
+},
+{
+"id": "elevacao-frontal-polia",
+"name": "Elevação frontal na polia",
+"group": "Ombros",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"elevacao frontal polia",
+"frontal polia",
+"elevacao frontal cabo"
+],
+"how": "De costas para a polia baixa, eleve o braço à frente até a altura do ombro e desça devagar.",
+"photo": "elevacao-frontal-polia"
+},
+{
+"id": "elevacao-frontal-barra",
+"name": "Elevação frontal com barra",
+"group": "Ombros",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"elevacao frontal barra",
+"frontal barra"
+],
+"how": "Barra à frente das coxas, braços quase estendidos. Eleve até a altura dos olhos e desça controlando, sem balançar o tronco.",
+"photo": "elevacao-frontal-barra"
+},
+{
+"id": "crucifixo-inverso-polia",
+"name": "Crucifixo inverso na polia",
+"group": "Ombros",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"crucifixo inverso polia",
+"posterior de ombro polia",
+"crucifixo invertido polia",
+"fly inverso polia"
+],
+"how": "Polias na altura dos ombros, cabos cruzados. Abra os braços para trás até a linha dos ombros e volte devagar.",
+"photo": "crucifixo-inverso-polia"
+},
+{
+"id": "crucifixo-inverso-sentado",
+"name": "Crucifixo inverso sentado",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"crucifixo inverso sentado",
+"posterior de ombro sentado"
+],
+"how": "Sentado na ponta do banco, tronco deitado sobre as coxas. Abra os halteres para os lados até a linha dos ombros e desça devagar.",
+"photo": "crucifixo-inverso-sentado"
+},
+{
+"id": "remada-alta-halteres",
+"name": "Remada alta com halteres",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"remada alta halteres",
+"remada alta halter"
+],
+"how": "Halteres à frente das coxas. Puxe para cima rente ao corpo até a altura do peito, cotovelos acima dos punhos, e desça devagar.",
+"photo": "remada-alta-halteres"
+},
+{
+"id": "remada-alta-smith",
+"name": "Remada alta no Smith",
+"group": "Ombros",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"remada alta smith",
+"remada alta guiada"
+],
+"how": "Segure a barra guiada na largura dos ombros. Puxe rente ao corpo até a altura do peito e desça controlando.",
+"photo": "remada-alta-smith"
+},
+{
+"id": "rotacao-externa-polia",
+"name": "Rotação externa na polia",
+"group": "Ombros",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rotacao externa",
+"rotacao externa polia",
+"manguito",
+"manguito rotador"
+],
+"how": "De lado para a polia, cotovelo colado ao tronco a 90°. Gire o antebraço para fora sem afastar o cotovelo e volte devagar. Use pouca carga.",
+"photo": "rotacao-externa-polia"
+},
+{
+"id": "rotacao-interna-polia",
+"name": "Rotação interna na polia",
+"group": "Ombros",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rotacao interna",
+"rotacao interna polia"
+],
+"how": "De lado para a polia, cotovelo colado ao tronco a 90°. Gire o antebraço para dentro, em direção à barriga, e volte devagar. Use pouca carga.",
+"photo": "rotacao-interna-polia"
+},
+{
+"id": "rotacao-externa-halter",
+"name": "Rotação externa com halter",
+"group": "Ombros",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rotacao externa halter",
+"rotacao externa deitado"
+],
+"how": "Deitado de lado, cotovelo apoiado no tronco a 90°. Gire o antebraço para cima sem afastar o cotovelo e desça devagar.",
+"photo": "rotacao-externa-halter"
+},
+{
+"id": "abertura-elastico",
+"name": "Abertura com elástico",
+"group": "Ombros",
+"equipment": "Elástico",
+"cardio": false,
+"increment": "",
+"aliases": [
+"abertura elastico",
+"pull apart",
+"band pull apart"
+],
+"how": "Segure o elástico à frente do peito com os braços estendidos. Abra os braços para os lados juntando as escápulas e volte devagar.",
+"photo": "abertura-elastico"
 },
 {
 "id": "rosca-direta",
@@ -805,7 +1596,8 @@
 "rosca direta barra",
 "rosca biceps"
 ],
-"how": "Cotovelos colados ao tronco. Suba a barra até a altura dos ombros sem balançar o corpo e desça até estender os braços."
+"how": "Cotovelos colados ao tronco. Suba a barra até a altura dos ombros sem balançar o corpo e desça até estender os braços.",
+"photo": "rosca-direta"
 },
 {
 "id": "rosca-w",
@@ -820,7 +1612,8 @@
 "rosca direta barra w",
 "rosca ez"
 ],
-"how": "Segure a barra W nas partes inclinadas. Suba até os ombros com os cotovelos parados e desça controlando."
+"how": "Segure a barra W nas partes inclinadas. Suba até os ombros com os cotovelos parados e desça controlando.",
+"photo": "rosca-w"
 },
 {
 "id": "rosca-alternada",
@@ -833,7 +1626,8 @@
 "rosca alternada",
 "rosca alternada halteres"
 ],
-"how": "Suba um halter de cada vez girando a palma para cima. Mantenha o cotovelo parado ao lado do tronco."
+"how": "Suba um halter de cada vez girando a palma para cima. Mantenha o cotovelo parado ao lado do tronco.",
+"photo": "rosca-alternada"
 },
 {
 "id": "rosca-halteres",
@@ -848,7 +1642,8 @@
 "rosca com halteres",
 "rosca direta halteres"
 ],
-"how": "Suba os dois halteres ao mesmo tempo com as palmas para cima e desça até estender os braços."
+"how": "Suba os dois halteres ao mesmo tempo com as palmas para cima e desça até estender os braços.",
+"photo": "rosca-halteres"
 },
 {
 "id": "rosca-martelo",
@@ -862,7 +1657,8 @@
 "martelo",
 "rosca neutra"
 ],
-"how": "Palmas viradas uma para a outra durante todo o movimento. Suba os halteres até os ombros com os cotovelos parados."
+"how": "Palmas viradas uma para a outra durante todo o movimento. Suba os halteres até os ombros com os cotovelos parados.",
+"photo": "rosca-martelo"
 },
 {
 "id": "rosca-martelo-corda",
@@ -876,7 +1672,8 @@
 "rosca martelo polia",
 "rosca corda"
 ],
-"how": "Corda na polia baixa, pegada neutra. Suba até os ombros mantendo os cotovelos ao lado do corpo."
+"how": "Corda na polia baixa, pegada neutra. Suba até os ombros mantendo os cotovelos ao lado do corpo.",
+"photo": "rosca-martelo-corda"
 },
 {
 "id": "rosca-concentrada",
@@ -889,7 +1686,8 @@
 "rosca concentrada",
 "concentrada"
 ],
-"how": "Sentado, apoie o cotovelo na parte interna da coxa. Suba o halter até o ombro e desça até estender o braço."
+"how": "Sentado, apoie o cotovelo na parte interna da coxa. Suba o halter até o ombro e desça até estender o braço.",
+"photo": "rosca-concentrada"
 },
 {
 "id": "rosca-scott",
@@ -904,7 +1702,8 @@
 "rosca scott barra",
 "banco scott"
 ],
-"how": "Braços apoiados no banco Scott. Suba a barra até quase a vertical e desça devagar, sem estender de uma vez."
+"how": "Braços apoiados no banco Scott. Suba a barra até quase a vertical e desça devagar, sem estender de uma vez.",
+"photo": "rosca-scott"
 },
 {
 "id": "rosca-scott-maquina",
@@ -919,7 +1718,8 @@
 "rosca maquina",
 "biceps maquina"
 ],
-"how": "Braços apoiados na almofada. Flexione os cotovelos até o fim e volte devagar, sem deixar os pesos baterem."
+"how": "Braços apoiados na almofada. Flexione os cotovelos até o fim e volte devagar, sem deixar os pesos baterem.",
+"photo": "rosca-scott-maquina"
 },
 {
 "id": "rosca-inclinada",
@@ -934,7 +1734,8 @@
 "rosca banco inclinado",
 "rosca no banco inclinado"
 ],
-"how": "Banco a 45°, braços soltos para trás. Suba os halteres sem levar os cotovelos à frente e desça alongando."
+"how": "Banco a 45°, braços soltos para trás. Suba os halteres sem levar os cotovelos à frente e desça alongando.",
+"photo": "rosca-inclinada"
 },
 {
 "id": "rosca-polia",
@@ -950,7 +1751,8 @@
 "rosca direta polia",
 "rosca cross"
 ],
-"how": "De frente para a polia baixa, suba a barra até os ombros com os cotovelos parados e desça controlando."
+"how": "De frente para a polia baixa, suba a barra até os ombros com os cotovelos parados e desça controlando.",
+"photo": "rosca-polia"
 },
 {
 "id": "rosca-inversa",
@@ -964,7 +1766,8 @@
 "rosca invertida",
 "rosca pronada"
 ],
-"how": "Palmas viradas para baixo. Suba a barra até os ombros com os cotovelos colados ao tronco e desça devagar."
+"how": "Palmas viradas para baixo. Suba a barra até os ombros com os cotovelos colados ao tronco e desça devagar.",
+"photo": "rosca-inversa"
 },
 {
 "id": "rosca-spider",
@@ -977,7 +1780,232 @@
 "rosca spider",
 "spider curl"
 ],
-"how": "Peito apoiado no lado inclinado do banco, braços na vertical. Suba a barra sem mover os cotovelos."
+"how": "Peito apoiado no lado inclinado do banco, braços na vertical. Suba a barra sem mover os cotovelos.",
+"photo": "rosca-spider"
+},
+{
+"id": "rosca-martelo-alternada",
+"name": "Rosca martelo alternada",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca martelo alternada",
+"martelo alternado"
+],
+"how": "Pegada neutra. Suba um halter de cada vez até o ombro, com o cotovelo parado ao lado do tronco.",
+"photo": "rosca-martelo-alternada"
+},
+{
+"id": "rosca-martelo-cruzada",
+"name": "Rosca martelo cruzada",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca martelo cruzada",
+"rosca cruzada",
+"martelo cruzado"
+],
+"how": "Pegada neutra. Suba o halter cruzando à frente do peito em direção ao ombro oposto. Alterne os lados.",
+"photo": "rosca-martelo-cruzada"
+},
+{
+"id": "rosca-inclinada-alternada",
+"name": "Rosca inclinada alternada",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca inclinada alternada",
+"rosca 45 alternada"
+],
+"how": "Banco a 45°, braços soltos para trás. Suba um halter de cada vez sem levar o cotovelo à frente.",
+"photo": "rosca-inclinada-alternada"
+},
+{
+"id": "rosca-scott-unilateral",
+"name": "Rosca Scott unilateral com halter",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca scott unilateral",
+"scott unilateral",
+"rosca scott halter",
+"scott halter"
+],
+"how": "Braço apoiado no banco Scott. Suba o halter até o ombro e desça devagar até quase estender. Complete um lado e troque.",
+"photo": "rosca-scott-unilateral"
+},
+{
+"id": "rosca-scott-polia",
+"name": "Rosca Scott na polia",
+"group": "Bíceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rosca scott polia",
+"scott polia",
+"scott no cabo"
+],
+"how": "Banco Scott de frente para a polia baixa. Suba a barra até perto dos ombros e desça controlando, com tensão constante.",
+"photo": "rosca-scott-polia"
+},
+{
+"id": "rosca-polia-alta",
+"name": "Rosca na polia alta (duplo bíceps)",
+"group": "Bíceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rosca polia alta",
+"duplo biceps",
+"rosca crucifixo",
+"rosca cross alta"
+],
+"how": "Entre as duas polias altas, braços abertos na altura dos ombros. Dobre os cotovelos trazendo as mãos em direção às orelhas e volte devagar.",
+"photo": "rosca-polia-alta"
+},
+{
+"id": "rosca-unilateral-polia",
+"name": "Rosca unilateral na polia",
+"group": "Bíceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rosca unilateral polia",
+"rosca unilateral cabo",
+"rosca unilateral no cabo",
+"rosca polia unilateral"
+],
+"how": "Com uma alça na polia baixa, suba a mão até o ombro com o cotovelo parado ao lado do tronco e desça devagar. Complete um lado e troque.",
+"photo": "rosca-unilateral-polia"
+},
+{
+"id": "rosca-drag",
+"name": "Rosca drag",
+"group": "Bíceps",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"rosca drag",
+"drag curl",
+"rosca arrastada"
+],
+"how": "Suba a barra rente ao corpo levando os cotovelos para trás, como se arrastasse a barra pela barriga até o peito. Desça pelo mesmo caminho.",
+"photo": "rosca-drag"
+},
+{
+"id": "rosca-zottman",
+"name": "Rosca Zottman",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca zottman",
+"zottman"
+],
+"how": "Suba os halteres com as palmas para cima, gire os punhos no alto e desça devagar com as palmas para baixo.",
+"photo": "rosca-zottman"
+},
+{
+"id": "rosca-maquina",
+"name": "Rosca na máquina",
+"group": "Bíceps",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rosca direta maquina",
+"rosca biceps maquina",
+"biceps na maquina"
+],
+"how": "Braços apoiados na almofada. Flexione os cotovelos até o fim e volte devagar, sem deixar os pesos baterem.",
+"photo": "rosca-maquina"
+},
+{
+"id": "rosca-sentado",
+"name": "Rosca sentado com halteres",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca sentado",
+"rosca halteres sentado"
+],
+"how": "Sentado com as costas apoiadas. Suba os halteres com as palmas para cima sem mover os cotovelos e desça até estender os braços.",
+"photo": "rosca-sentado"
+},
+{
+"id": "rosca-inversa-polia",
+"name": "Rosca inversa na polia",
+"group": "Bíceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rosca inversa polia",
+"rosca invertida polia",
+"rosca pronada polia"
+],
+"how": "Palmas para baixo na barra da polia baixa. Suba até os ombros com os cotovelos colados ao tronco e desça devagar.",
+"photo": "rosca-inversa-polia"
+},
+{
+"id": "rosca-spider-halteres",
+"name": "Rosca spider com halteres",
+"group": "Bíceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca spider halteres",
+"spider halteres",
+"rosca no banco inclinado de brucos"
+],
+"how": "Deitado de bruços no banco inclinado, braços na vertical. Suba os halteres sem mover os cotovelos e desça até estender.",
+"photo": "rosca-spider-halteres"
+},
+{
+"id": "rosca-21",
+"name": "Rosca 21",
+"group": "Bíceps",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"rosca 21",
+"21"
+],
+"how": "Uma série tem 21 repetições seguidas: 7 da posição baixa até a metade, 7 da metade até o alto e 7 completas. Use uma carga menor que a da rosca direta.",
+"photo": "rosca-direta"
+},
+{
+"id": "rosca-bayesian",
+"name": "Rosca bayesian na polia",
+"group": "Bíceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"rosca bayesian",
+"bayesian",
+"bayesian curl",
+"rosca de costas para a polia"
+],
+"how": "De costas para a polia baixa, um passo à frente, com o braço estendido para trás do tronco. Suba a mão até o ombro sem trazer o cotovelo para frente e volte alongando. Complete um lado e troque.",
+"photo": ""
 },
 {
 "id": "triceps-pulley",
@@ -995,7 +2023,8 @@
 "triceps na polia",
 "triceps puxador"
 ],
-"how": "Cotovelos colados ao tronco. Empurre a barra para baixo até estender os braços e volte até os antebraços passarem da horizontal."
+"how": "Cotovelos colados ao tronco. Empurre a barra para baixo até estender os braços e volte até os antebraços passarem da horizontal.",
+"photo": "triceps-pulley"
 },
 {
 "id": "triceps-corda",
@@ -1010,7 +2039,8 @@
 "triceps pulley corda",
 "triceps polia corda"
 ],
-"how": "Empurre a corda para baixo e abra as pontas no final do movimento. Cotovelos parados ao lado do tronco."
+"how": "Empurre a corda para baixo e abra as pontas no final do movimento. Cotovelos parados ao lado do tronco.",
+"photo": "triceps-corda"
 },
 {
 "id": "triceps-barra-v",
@@ -1023,7 +2053,8 @@
 "triceps barra v",
 "triceps pulley v"
 ],
-"how": "Com a barra V, empurre até estender os braços mantendo os cotovelos colados ao tronco."
+"how": "Com a barra V, empurre até estender os braços mantendo os cotovelos colados ao tronco.",
+"photo": "triceps-barra-v"
 },
 {
 "id": "triceps-inverso",
@@ -1037,7 +2068,8 @@
 "triceps pegada inversa",
 "triceps supinado"
 ],
-"how": "Palmas para cima. Empurre a barra para baixo até estender os braços, sem afastar os cotovelos do corpo."
+"how": "Palmas para cima. Empurre a barra para baixo até estender os braços, sem afastar os cotovelos do corpo.",
+"photo": "triceps-inverso"
 },
 {
 "id": "triceps-testa",
@@ -1053,7 +2085,8 @@
 "skullcrusher",
 "triceps testa barra w"
 ],
-"how": "Deitado, braços na vertical. Dobre só os cotovelos levando a barra em direção à testa e estenda de volta."
+"how": "Deitado, braços na vertical. Dobre só os cotovelos levando a barra em direção à testa e estenda de volta.",
+"photo": "triceps-testa"
 },
 {
 "id": "triceps-testa-halteres",
@@ -1066,7 +2099,8 @@
 "triceps testa halteres",
 "triceps testa halter"
 ],
-"how": "Deitado, halteres acima do peito. Dobre os cotovelos levando os halteres ao lado da cabeça e estenda."
+"how": "Deitado, halteres acima do peito. Dobre os cotovelos levando os halteres ao lado da cabeça e estenda.",
+"photo": "triceps-testa-halteres"
 },
 {
 "id": "triceps-frances",
@@ -1080,7 +2114,8 @@
 "frances",
 "triceps frances halter"
 ],
-"how": "Segure um halter com as duas mãos acima da cabeça. Desça atrás da nuca dobrando só os cotovelos e estenda."
+"how": "Segure um halter com as duas mãos acima da cabeça. Desça atrás da nuca dobrando só os cotovelos e estenda.",
+"photo": "triceps-frances"
 },
 {
 "id": "triceps-frances-polia",
@@ -1094,7 +2129,8 @@
 "triceps frances corda",
 "triceps acima da cabeca"
 ],
-"how": "De costas para a polia, corda atrás da cabeça. Estenda os braços à frente e acima, mantendo os cotovelos apontados para frente."
+"how": "De costas para a polia, corda atrás da cabeça. Estenda os braços à frente e acima, mantendo os cotovelos apontados para frente.",
+"photo": "triceps-frances-polia"
 },
 {
 "id": "triceps-coice",
@@ -1109,7 +2145,8 @@
 "kickback",
 "triceps kickback"
 ],
-"how": "Tronco inclinado, braço colado ao corpo. Estenda o cotovelo levando o halter para trás e volte devagar."
+"how": "Tronco inclinado, braço colado ao corpo. Estenda o cotovelo levando o halter para trás e volte devagar.",
+"photo": "triceps-coice"
 },
 {
 "id": "triceps-banco",
@@ -1124,7 +2161,8 @@
 "triceps no banco",
 "dips banco"
 ],
-"how": "Mãos apoiadas no banco atrás do corpo. Desça dobrando os cotovelos até 90° e empurre de volta."
+"how": "Mãos apoiadas no banco atrás do corpo. Desça dobrando os cotovelos até 90° e empurre de volta.",
+"photo": "triceps-banco"
 },
 {
 "id": "paralelas-triceps",
@@ -1137,7 +2175,8 @@
 "paralelas triceps",
 "mergulho triceps"
 ],
-"how": "Tronco na vertical e cotovelos fechados. Desça até 90° e empurre até estender os braços."
+"how": "Tronco na vertical e cotovelos fechados. Desça até 90° e empurre até estender os braços.",
+"photo": "paralelas-triceps"
 },
 {
 "id": "supino-fechado",
@@ -1150,7 +2189,8 @@
 "supino fechado",
 "supino pegada fechada"
 ],
-"how": "Mãos na largura dos ombros. Desça a barra até a parte baixa do peito com os cotovelos perto do corpo e empurre."
+"how": "Mãos na largura dos ombros. Desça a barra até a parte baixa do peito com os cotovelos perto do corpo e empurre.",
+"photo": "supino-fechado"
 },
 {
 "id": "triceps-maquina",
@@ -1163,7 +2203,8 @@
 "triceps maquina",
 "extensao de triceps maquina"
 ],
-"how": "Braços apoiados na almofada. Estenda os cotovelos até o fim e volte devagar."
+"how": "Braços apoiados na almofada. Estenda os cotovelos até o fim e volte devagar.",
+"photo": "triceps-maquina"
 },
 {
 "id": "flexao-diamante",
@@ -1177,7 +2218,176 @@
 "flexao fechada",
 "flexao triceps"
 ],
-"how": "Mãos próximas sob o peito. Desça com os cotovelos rentes ao corpo e empurre até estender os braços."
+"how": "Mãos próximas sob o peito. Desça com os cotovelos rentes ao corpo e empurre até estender os braços.",
+"photo": "flexao-diamante"
+},
+{
+"id": "triceps-unilateral-polia",
+"name": "Tríceps unilateral na polia",
+"group": "Tríceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"triceps unilateral",
+"triceps unilateral polia",
+"triceps pulley unilateral",
+"triceps unilateral cabo",
+"triceps unilateral no cabo"
+],
+"how": "Com uma alça na polia alta, cotovelo colado ao tronco. Estenda o braço para baixo até o fim e volte até o antebraço passar da horizontal. Complete um lado e troque.",
+"photo": "triceps-unilateral-polia"
+},
+{
+"id": "triceps-katana",
+"name": "Tríceps katana na polia",
+"group": "Tríceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"triceps katana",
+"katana",
+"katana extension",
+"triceps cruzado na polia",
+"triceps cross"
+],
+"how": "Polia na altura da cintura ou mais baixa. Segure o cabo com a mão do lado oposto à polia, de modo que ele cruze o corpo, e leve o cotovelo para o alto, ao lado da cabeça. Estenda o braço para cima e para fora, na diagonal, como quem saca uma espada, e volte devagar sem mover o cotovelo. Com duas polias, os cabos se cruzam à frente e os dois braços trabalham juntos.",
+"photo": ""
+},
+{
+"id": "triceps-frances-unilateral",
+"name": "Tríceps francês unilateral com halter",
+"group": "Tríceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"triceps frances unilateral",
+"frances unilateral",
+"triceps frances um braco"
+],
+"how": "Halter acima da cabeça com um braço. Desça atrás da nuca dobrando só o cotovelo e estenda de volta. Complete um lado e troque.",
+"photo": "triceps-frances-unilateral"
+},
+{
+"id": "triceps-frances-polia-baixa",
+"name": "Tríceps francês unilateral na polia baixa",
+"group": "Tríceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"triceps frances unilateral polia",
+"triceps frances polia baixa",
+"frances unilateral polia"
+],
+"how": "De costas para a polia baixa, cotovelo apontado para cima ao lado da cabeça. Estenda o braço acima da cabeça e volte devagar. Complete um lado e troque.",
+"photo": "triceps-frances-polia-baixa"
+},
+{
+"id": "triceps-frances-barra",
+"name": "Tríceps francês com barra",
+"group": "Tríceps",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"triceps frances barra",
+"frances barra",
+"triceps frances barra w"
+],
+"how": "Barra acima da cabeça, mãos na largura dos ombros. Desça atrás da nuca dobrando só os cotovelos e estenda de volta.",
+"photo": "triceps-frances-barra"
+},
+{
+"id": "triceps-frances-sentado",
+"name": "Tríceps francês sentado com halter",
+"group": "Tríceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"triceps frances sentado",
+"frances sentado"
+],
+"how": "Sentado com as costas apoiadas, halter seguro com as duas mãos acima da cabeça. Desça atrás da nuca e estenda os braços.",
+"photo": "triceps-frances-sentado"
+},
+{
+"id": "triceps-testa-polia",
+"name": "Tríceps testa na polia",
+"group": "Tríceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"triceps testa polia",
+"testa polia",
+"triceps testa no cabo"
+],
+"how": "Deitado com a cabeça voltada para a polia baixa, braços na vertical. Dobre os cotovelos levando a barra em direção à testa e estenda de volta.",
+"photo": "triceps-testa-polia"
+},
+{
+"id": "triceps-coice-polia",
+"name": "Tríceps coice na polia",
+"group": "Tríceps",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"triceps coice polia",
+"coice polia triceps",
+"kickback polia",
+"triceps coice no cabo"
+],
+"how": "Tronco inclinado de frente para a polia baixa, braço colado ao corpo. Estenda o cotovelo levando a mão para trás e volte devagar. Complete um lado e troque.",
+"photo": "triceps-coice"
+},
+{
+"id": "triceps-paralelas-maquina",
+"name": "Tríceps na máquina de paralelas",
+"group": "Tríceps",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"paralelas maquina",
+"dip machine",
+"triceps mergulho maquina",
+"mergulho na maquina"
+],
+"how": "Sentado, mãos nas pegadas ao lado do corpo. Empurre para baixo até estender os braços e volte até os cotovelos formarem 90°.",
+"photo": "triceps-paralelas-maquina"
+},
+{
+"id": "supino-fechado-smith",
+"name": "Supino fechado no Smith",
+"group": "Tríceps",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"supino fechado smith",
+"supino fechado guiado"
+],
+"how": "Mãos na largura dos ombros na barra guiada. Desça até a parte baixa do peito com os cotovelos perto do corpo e empurre.",
+"photo": "supino-fechado-smith"
+},
+{
+"id": "supino-fechado-halteres",
+"name": "Supino fechado com halteres",
+"group": "Tríceps",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"supino fechado halteres",
+"supino fechado halter"
+],
+"how": "Halteres encostados um no outro acima do peito, em pegada neutra. Desça até o peito com os cotovelos perto do corpo e empurre.",
+"photo": "supino-fechado-halteres"
 },
 {
 "id": "rosca-punho",
@@ -1192,7 +2402,8 @@
 "flexao de punho",
 "antebraco"
 ],
-"how": "Antebraços apoiados no banco, palmas para cima. Flexione só os punhos, subindo a barra, e desça devagar."
+"how": "Antebraços apoiados no banco, palmas para cima. Flexione só os punhos, subindo a barra, e desça devagar.",
+"photo": "rosca-punho"
 },
 {
 "id": "rosca-punho-inversa",
@@ -1205,7 +2416,53 @@
 "rosca punho inversa",
 "extensao de punho"
 ],
-"how": "Antebraços apoiados, palmas para baixo. Estenda os punhos para cima e desça controlando."
+"how": "Antebraços apoiados, palmas para baixo. Estenda os punhos para cima e desça controlando.",
+"photo": "rosca-punho-inversa"
+},
+{
+"id": "rosca-punho-halteres",
+"name": "Rosca de punho com halteres",
+"group": "Antebraço",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"rosca punho halteres",
+"rosca de punho halter"
+],
+"how": "Antebraços apoiados no banco, palmas para cima. Flexione só os punhos subindo os halteres e desça devagar.",
+"photo": "rosca-punho-halteres"
+},
+{
+"id": "rolo-punho",
+"name": "Rolo de punho",
+"group": "Antebraço",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"rolo de punho",
+"wrist roller",
+"rolinho de antebraco"
+],
+"how": "Braços estendidos à frente. Gire o bastão enrolando a corda até o peso subir e desenrole devagar.",
+"photo": "rolo-punho"
+},
+{
+"id": "caminhada-fazendeiro",
+"name": "Caminhada do fazendeiro",
+"group": "Antebraço",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"farmer walk",
+"farmers walk",
+"caminhada do fazendeiro",
+"farmer"
+],
+"how": "Segure um peso em cada mão ao lado do corpo. Caminhe com o tronco ereto e os ombros para trás, em passos curtos.",
+"photo": "caminhada-fazendeiro"
 },
 {
 "id": "agachamento",
@@ -1221,7 +2478,8 @@
 "agachamento com barra",
 "squat"
 ],
-"how": "Barra apoiada nos trapézios, pés na largura dos ombros. Desça levando o quadril para trás até as coxas ficarem paralelas ao chão e suba."
+"how": "Barra apoiada nos trapézios, pés na largura dos ombros. Desça levando o quadril para trás até as coxas ficarem paralelas ao chão e suba.",
+"photo": "agachamento"
 },
 {
 "id": "agachamento-frontal",
@@ -1234,7 +2492,8 @@
 "agachamento frontal",
 "front squat"
 ],
-"how": "Barra apoiada na frente dos ombros, cotovelos altos. Desça com o tronco o mais vertical possível e suba."
+"how": "Barra apoiada na frente dos ombros, cotovelos altos. Desça com o tronco o mais vertical possível e suba.",
+"photo": "agachamento-frontal"
 },
 {
 "id": "agachamento-smith",
@@ -1248,7 +2507,8 @@
 "agachamento guiado",
 "agachamento no smith"
 ],
-"how": "Pés um pouco à frente da barra guiada. Desça até as coxas ficarem paralelas ao chão e suba sem travar os joelhos."
+"how": "Pés um pouco à frente da barra guiada. Desça até as coxas ficarem paralelas ao chão e suba sem travar os joelhos.",
+"photo": "agachamento-smith"
 },
 {
 "id": "agachamento-hack",
@@ -1263,7 +2523,8 @@
 "agachamento hack",
 "hack squat"
 ],
-"how": "Costas apoiadas no encosto, pés na plataforma na largura dos ombros. Desça até 90° e empurre a plataforma."
+"how": "Costas apoiadas no encosto, pés na plataforma na largura dos ombros. Desça até 90° e empurre a plataforma.",
+"photo": "agachamento-hack"
 },
 {
 "id": "agachamento-halteres",
@@ -1274,11 +2535,10 @@
 "increment": "2",
 "aliases": [
 "agachamento halteres",
-"agachamento com halter",
-"agachamento goblet",
-"goblet"
+"agachamento com halter"
 ],
-"how": "Halteres ao lado do corpo. Agache levando o quadril para trás até as coxas ficarem paralelas ao chão e suba."
+"how": "Halteres ao lado do corpo. Agache levando o quadril para trás até as coxas ficarem paralelas ao chão e suba.",
+"photo": "agachamento-halteres"
 },
 {
 "id": "agachamento-sumo",
@@ -1292,7 +2552,8 @@
 "sumo",
 "agachamento plie"
 ],
-"how": "Pés bem afastados com as pontas para fora. Segure o halter entre as pernas, agache com o tronco reto e suba."
+"how": "Pés bem afastados com as pontas para fora. Segure o halter entre as pernas, agache com o tronco reto e suba.",
+"photo": "agachamento-sumo"
 },
 {
 "id": "agachamento-corporal",
@@ -1306,7 +2567,8 @@
 "agachamento peso corporal",
 "agachamento livre sem peso"
 ],
-"how": "Pés na largura dos ombros, braços à frente. Agache até as coxas ficarem paralelas ao chão e suba."
+"how": "Pés na largura dos ombros, braços à frente. Agache até as coxas ficarem paralelas ao chão e suba.",
+"photo": "agachamento-corporal"
 },
 {
 "id": "leg-press",
@@ -1322,7 +2584,8 @@
 "legpress",
 "leg"
 ],
-"how": "Pés na plataforma na largura dos ombros. Desça até os joelhos formarem 90° e empurre sem travar os joelhos no final."
+"how": "Pés na plataforma na largura dos ombros. Desça até os joelhos formarem 90° e empurre sem travar os joelhos no final.",
+"photo": "leg-press"
 },
 {
 "id": "cadeira-extensora",
@@ -1337,7 +2600,8 @@
 "extensao de pernas",
 "leg extension"
 ],
-"how": "Ajuste o rolo sobre o tornozelo. Estenda os joelhos até o fim, segure um instante e desça devagar."
+"how": "Ajuste o rolo sobre o tornozelo. Estenda os joelhos até o fim, segure um instante e desça devagar.",
+"photo": "cadeira-extensora"
 },
 {
 "id": "mesa-flexora",
@@ -1353,7 +2617,8 @@
 "flexora deitado",
 "leg curl"
 ],
-"how": "Deitado de bruços, rolo acima do calcanhar. Flexione os joelhos levando os pés em direção ao glúteo e volte devagar."
+"how": "Deitado de bruços, rolo acima do calcanhar. Flexione os joelhos levando os pés em direção ao glúteo e volte devagar.",
+"photo": "mesa-flexora"
 },
 {
 "id": "cadeira-flexora",
@@ -1367,7 +2632,8 @@
 "flexora sentada",
 "flexora sentado"
 ],
-"how": "Sentado, rolo atrás do tornozelo. Flexione os joelhos puxando o rolo para baixo e volte controlando."
+"how": "Sentado, rolo atrás do tornozelo. Flexione os joelhos puxando o rolo para baixo e volte controlando.",
+"photo": "cadeira-flexora"
 },
 {
 "id": "flexora-em-pe",
@@ -1381,7 +2647,8 @@
 "flexora unilateral",
 "flexora vertical"
 ],
-"how": "De pé, flexione um joelho de cada vez levando o calcanhar em direção ao glúteo."
+"how": "De pé, flexione um joelho de cada vez levando o calcanhar em direção ao glúteo.",
+"photo": "flexora-em-pe"
 },
 {
 "id": "stiff",
@@ -1395,7 +2662,8 @@
 "stiff barra",
 "stiff com barra"
 ],
-"how": "Joelhos quase estendidos e coluna reta. Desça a barra rente às pernas até alongar a parte de trás da coxa e suba contraindo os glúteos."
+"how": "Joelhos quase estendidos e coluna reta. Desça a barra rente às pernas até alongar a parte de trás da coxa e suba contraindo os glúteos.",
+"photo": "stiff"
 },
 {
 "id": "stiff-halteres",
@@ -1409,7 +2677,8 @@
 "stiff com halteres",
 "stiff halter"
 ],
-"how": "Halteres à frente das coxas. Incline o tronco com a coluna reta até alongar a parte de trás da coxa e suba."
+"how": "Halteres à frente das coxas. Incline o tronco com a coluna reta até alongar a parte de trás da coxa e suba.",
+"photo": "stiff-halteres"
 },
 {
 "id": "terra-romeno",
@@ -1424,7 +2693,8 @@
 "romeno",
 "levantamento romeno"
 ],
-"how": "Joelhos levemente flexionados. Leve o quadril para trás descendo a barra até abaixo dos joelhos e volte empurrando o quadril à frente."
+"how": "Joelhos levemente flexionados. Leve o quadril para trás descendo a barra até abaixo dos joelhos e volte empurrando o quadril à frente.",
+"photo": "terra-romeno"
 },
 {
 "id": "terra-sumo",
@@ -1437,7 +2707,8 @@
 "terra sumo",
 "levantamento terra sumo"
 ],
-"how": "Pés bem afastados, mãos por dentro das pernas. Suba com a coluna reta estendendo quadril e joelhos juntos."
+"how": "Pés bem afastados, mãos por dentro das pernas. Suba com a coluna reta estendendo quadril e joelhos juntos.",
+"photo": "terra-sumo"
 },
 {
 "id": "afundo",
@@ -1453,7 +2724,8 @@
 "afundo com halter",
 "lunge"
 ],
-"how": "Dê um passo à frente e desça até os dois joelhos formarem 90°. Empurre o chão com a perna da frente para voltar."
+"how": "Dê um passo à frente e desça até os dois joelhos formarem 90°. Empurre o chão com a perna da frente para voltar.",
+"photo": "afundo"
 },
 {
 "id": "afundo-barra",
@@ -1466,7 +2738,8 @@
 "afundo barra",
 "avanco barra"
 ],
-"how": "Barra nos trapézios. Dê um passo à frente, desça até 90° nos dois joelhos e volte à posição inicial."
+"how": "Barra nos trapézios. Dê um passo à frente, desça até 90° nos dois joelhos e volte à posição inicial.",
+"photo": "afundo-barra"
 },
 {
 "id": "passada",
@@ -1482,7 +2755,8 @@
 "walking lunge",
 "passadas"
 ],
-"how": "Dê passos largos alternando as pernas. Em cada passo, desça até o joelho de trás quase tocar o chão."
+"how": "Dê passos largos alternando as pernas. Em cada passo, desça até o joelho de trás quase tocar o chão.",
+"photo": "passada"
 },
 {
 "id": "bulgaro",
@@ -1496,7 +2770,8 @@
 "agachamento bulgaro",
 "afundo bulgaro"
 ],
-"how": "Pé de trás apoiado no banco. Desça até a coxa da frente ficar paralela ao chão e suba empurrando com o calcanhar."
+"how": "Pé de trás apoiado no banco. Desça até a coxa da frente ficar paralela ao chão e suba empurrando com o calcanhar.",
+"photo": "bulgaro"
 },
 {
 "id": "subida-banco",
@@ -1510,7 +2785,8 @@
 "subida no banco",
 "step"
 ],
-"how": "Suba no banco com uma perna, estenda o joelho por completo e desça controlando. Complete um lado e troque."
+"how": "Suba no banco com uma perna, estenda o joelho por completo e desça controlando. Complete um lado e troque.",
+"photo": "subida-banco"
 },
 {
 "id": "cadeira-abdutora",
@@ -1525,7 +2801,8 @@
 "abducao",
 "abducao de quadril"
 ],
-"how": "Sentado, almofadas por fora dos joelhos. Abra as pernas o máximo que conseguir e volte devagar."
+"how": "Sentado, almofadas por fora dos joelhos. Abra as pernas o máximo que conseguir e volte devagar.",
+"photo": "cadeira-abdutora"
 },
 {
 "id": "cadeira-adutora",
@@ -1540,7 +2817,8 @@
 "aducao",
 "aducao de quadril"
 ],
-"how": "Sentado, almofadas por dentro dos joelhos. Feche as pernas até as almofadas se tocarem e volte devagar."
+"how": "Sentado, almofadas por dentro dos joelhos. Feche as pernas até as almofadas se tocarem e volte devagar.",
+"photo": "cadeira-adutora"
 },
 {
 "id": "bom-dia",
@@ -1553,7 +2831,279 @@
 "bom dia",
 "good morning"
 ],
-"how": "Barra nos trapézios, joelhos levemente flexionados. Incline o tronco à frente com a coluna reta e volte contraindo os glúteos."
+"how": "Barra nos trapézios, joelhos levemente flexionados. Incline o tronco à frente com a coluna reta e volte contraindo os glúteos.",
+"photo": "bom-dia"
+},
+{
+"id": "agachamento-goblet",
+"name": "Agachamento goblet",
+"group": "Pernas",
+"equipment": "Kettlebell",
+"cardio": false,
+"increment": "4",
+"aliases": [
+"goblet",
+"agachamento goblet",
+"agachamento taca",
+"goblet squat"
+],
+"how": "Segure um kettlebell ou um halter junto ao peito. Agache com o tronco ereto até os cotovelos chegarem perto dos joelhos e suba.",
+"photo": "agachamento-goblet"
+},
+{
+"id": "agachamento-banco",
+"name": "Agachamento no banco",
+"group": "Pernas",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"agachamento no banco",
+"box squat",
+"agachamento caixa"
+],
+"how": "Barra nos trapézios, banco atrás de você. Desça até encostar de leve no banco, sem soltar o peso, e suba.",
+"photo": "agachamento-banco"
+},
+{
+"id": "agachamento-sissy",
+"name": "Agachamento sissy",
+"group": "Pernas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"sissy",
+"agachamento sissy",
+"sissy squat"
+],
+"how": "Segure em um apoio. Suba nas pontas dos pés e leve os joelhos à frente inclinando o tronco para trás em linha reta. Volte contraindo as coxas.",
+"photo": "agachamento-sissy"
+},
+{
+"id": "agachamento-pistol",
+"name": "Agachamento pistol",
+"group": "Pernas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"pistol",
+"agachamento pistol",
+"agachamento unilateral",
+"pistol squat"
+],
+"how": "Em uma perna só, com a outra estendida à frente. Agache o mais baixo que conseguir com o calcanhar no chão e suba. Segure em um apoio se precisar.",
+"photo": "agachamento-pistol"
+},
+{
+"id": "agachamento-salto",
+"name": "Agachamento com salto",
+"group": "Pernas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"agachamento com salto",
+"agachamento salto",
+"jump squat"
+],
+"how": "Agache até as coxas ficarem paralelas ao chão e salte para cima. Amorteça a queda já descendo para a próxima repetição.",
+"photo": "agachamento-salto"
+},
+{
+"id": "leg-press-fechado",
+"name": "Leg press com pés juntos",
+"group": "Pernas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"leg press pes juntos",
+"leg press fechado",
+"leg fechado"
+],
+"how": "Pés juntos no meio da plataforma. Desça até os joelhos formarem 90° e empurre sem travar os joelhos.",
+"photo": "leg-press-fechado"
+},
+{
+"id": "leg-press-unilateral",
+"name": "Leg press unilateral",
+"group": "Pernas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"leg press unilateral",
+"leg unilateral",
+"leg 45 unilateral"
+],
+"how": "Um pé no meio da plataforma, o outro apoiado no chão. Desça até o joelho formar 90° e empurre. Complete um lado e troque.",
+"photo": "leg-press"
+},
+{
+"id": "leg-press-horizontal",
+"name": "Leg press horizontal",
+"group": "Pernas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"leg press horizontal",
+"leg horizontal",
+"leg press sentado"
+],
+"how": "Sentado com as costas apoiadas e os pés na plataforma à frente, na largura dos ombros. Empurre até quase estender os joelhos e volte até 90°.",
+"photo": ""
+},
+{
+"id": "leg-press-smith",
+"name": "Leg press no Smith",
+"group": "Pernas",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"leg press smith",
+"leg no smith"
+],
+"how": "Deitado sob a barra guiada, pés no meio da barra. Destrave, desça os joelhos em direção ao peito e empurre para cima.",
+"photo": "leg-press-smith"
+},
+{
+"id": "extensora-unilateral",
+"name": "Cadeira extensora unilateral",
+"group": "Pernas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"extensora unilateral",
+"cadeira extensora unilateral"
+],
+"how": "Estenda um joelho de cada vez até o fim, segure um instante e desça devagar. Complete um lado e troque.",
+"photo": "extensora-unilateral"
+},
+{
+"id": "mesa-flexora-unilateral",
+"name": "Mesa flexora unilateral",
+"group": "Pernas",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"mesa flexora unilateral",
+"flexora deitada unilateral"
+],
+"how": "Deitado de bruços, flexione um joelho de cada vez levando o pé em direção ao glúteo e volte devagar.",
+"photo": "mesa-flexora"
+},
+{
+"id": "flexao-nordica",
+"name": "Flexão nórdica",
+"group": "Pernas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"flexao nordica",
+"nordica",
+"nordic curl",
+"nordic"
+],
+"how": "Ajoelhado com os tornozelos presos. Desça o tronco reto à frente o mais devagar que conseguir, apoie as mãos no chão e volte com a ajuda dos braços.",
+"photo": "flexao-nordica"
+},
+{
+"id": "stiff-unilateral",
+"name": "Stiff unilateral",
+"group": "Pernas",
+"equipment": "Kettlebell",
+"cardio": false,
+"increment": "4",
+"aliases": [
+"stiff unilateral",
+"terra unilateral",
+"stiff uma perna"
+],
+"how": "Apoiado em uma perna, incline o tronco com a coluna reta enquanto a outra perna sobe atrás. Desça o peso até a canela e volte.",
+"photo": "stiff-unilateral"
+},
+{
+"id": "stiff-smith",
+"name": "Stiff no Smith",
+"group": "Pernas",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"stiff smith",
+"stiff guiado"
+],
+"how": "Barra guiada à frente das coxas, joelhos quase estendidos. Incline o tronco com a coluna reta até alongar a parte de trás da coxa e suba.",
+"photo": "stiff-smith"
+},
+{
+"id": "afundo-reverso",
+"name": "Afundo para trás com halteres",
+"group": "Pernas",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"afundo reverso",
+"afundo para tras",
+"recuo",
+"avanco para tras"
+],
+"how": "Dê um passo para trás e desça até os dois joelhos formarem 90°. Empurre com a perna da frente para voltar. Alterne as pernas.",
+"photo": "afundo-reverso"
+},
+{
+"id": "afundo-smith",
+"name": "Afundo no Smith",
+"group": "Pernas",
+"equipment": "Smith",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"afundo smith",
+"afundo guiado",
+"bulgaro smith",
+"afundo no smith"
+],
+"how": "Barra guiada nos trapézios, um pé à frente e outro atrás. Desça até o joelho de trás quase tocar o chão e suba. Complete um lado e troque.",
+"photo": "afundo-smith"
+},
+{
+"id": "passada-sem-peso",
+"name": "Passada sem peso",
+"group": "Pernas",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"passada sem peso",
+"afundo sem peso",
+"avanco sem peso"
+],
+"how": "Dê passos largos alternando as pernas, descendo até o joelho de trás quase tocar o chão em cada passo.",
+"photo": "passada-sem-peso"
+},
+{
+"id": "aducao-polia",
+"name": "Adução de quadril na polia",
+"group": "Pernas",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"aducao polia",
+"adutor polia",
+"aducao no cabo"
+],
+"how": "Tornozeleira na perna mais próxima da polia baixa. Cruze a perna à frente da perna de apoio e volte devagar.",
+"photo": "aducao-polia"
 },
 {
 "id": "elevacao-pelvica",
@@ -1568,7 +3118,8 @@
 "elevacao de quadril",
 "pelvica"
 ],
-"how": "Costas apoiadas no banco, barra sobre o quadril. Suba o quadril até alinhar tronco e coxas, aperte os glúteos e desça."
+"how": "Costas apoiadas no banco, barra sobre o quadril. Suba o quadril até alinhar tronco e coxas, aperte os glúteos e desça.",
+"photo": "elevacao-pelvica"
 },
 {
 "id": "ponte-gluteo",
@@ -1583,7 +3134,8 @@
 "glute bridge",
 "ponte gluteo"
 ],
-"how": "Deitado, pés apoiados no chão. Suba o quadril contraindo os glúteos, segure um instante e desça."
+"how": "Deitado, pés apoiados no chão. Suba o quadril contraindo os glúteos, segure um instante e desça.",
+"photo": "ponte-gluteo"
 },
 {
 "id": "gluteo-polia",
@@ -1600,7 +3152,8 @@
 "gluteo no cabo",
 "coice de gluteo"
 ],
-"how": "Tornozeleira na polia baixa. Leve a perna para trás com o joelho quase estendido, contraia o glúteo e volte devagar."
+"how": "Tornozeleira na polia baixa. Leve a perna para trás com o joelho quase estendido, contraia o glúteo e volte devagar.",
+"photo": "gluteo-polia"
 },
 {
 "id": "gluteo-4-apoios",
@@ -1615,7 +3168,8 @@
 "quatro apoios",
 "coice quatro apoios"
 ],
-"how": "Em quatro apoios, suba uma perna com o joelho a 90° até a coxa alinhar com o tronco e desça sem encostar no chão."
+"how": "Em quatro apoios, suba uma perna com o joelho a 90° até a coxa alinhar com o tronco e desça sem encostar no chão.",
+"photo": "gluteo-4-apoios"
 },
 {
 "id": "pull-through",
@@ -1627,7 +3181,130 @@
 "aliases": [
 "pull through"
 ],
-"how": "De costas para a polia baixa, corda entre as pernas. Leve o quadril para trás e volte empurrando o quadril à frente."
+"how": "De costas para a polia baixa, corda entre as pernas. Leve o quadril para trás e volte empurrando o quadril à frente.",
+"photo": "pull-through"
+},
+{
+"id": "abducao-polia",
+"name": "Abdução de quadril na polia",
+"group": "Glúteos",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"abducao polia",
+"abdutor polia",
+"abducao no cabo",
+"abducao de quadril polia"
+],
+"how": "Tornozeleira na perna mais distante da polia baixa. Segure em um apoio e leve a perna para o lado, sem inclinar o tronco. Volte devagar.",
+"photo": ""
+},
+{
+"id": "caminhada-elastico",
+"name": "Caminhada lateral com elástico",
+"group": "Glúteos",
+"equipment": "Elástico",
+"cardio": false,
+"increment": "",
+"aliases": [
+"caminhada lateral",
+"caminhada com elastico",
+"monster walk",
+"passada lateral elastico"
+],
+"how": "Elástico acima dos joelhos ou nos tornozelos, joelhos levemente flexionados. Dê passos para o lado mantendo o elástico esticado.",
+"photo": "caminhada-elastico"
+},
+{
+"id": "elevacao-pelvica-maquina",
+"name": "Elevação pélvica na máquina",
+"group": "Glúteos",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"elevacao pelvica maquina",
+"hip thrust maquina"
+],
+"how": "Costas apoiadas no encosto e cinto ou almofada sobre o quadril. Suba o quadril até alinhar tronco e coxas, aperte os glúteos e desça.",
+"photo": "elevacao-pelvica"
+},
+{
+"id": "ponte-unilateral",
+"name": "Ponte de glúteo unilateral",
+"group": "Glúteos",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"ponte unilateral",
+"elevacao pelvica unilateral",
+"ponte uma perna"
+],
+"how": "Deitado, um pé apoiado no chão e a outra perna estendida. Suba o quadril contraindo o glúteo e desça devagar. Complete um lado e troque.",
+"photo": "ponte-unilateral"
+},
+{
+"id": "ponte-solo",
+"name": "Elevação de quadril no chão",
+"group": "Glúteos",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"elevacao de quadril no chao",
+"ponte no chao",
+"ponte sem peso"
+],
+"how": "Deitado, pés apoiados no chão perto do quadril. Suba o quadril até alinhar tronco e coxas, segure um instante e desça.",
+"photo": "ponte-solo"
+},
+{
+"id": "coice-elastico",
+"name": "Coice de glúteo com elástico",
+"group": "Glúteos",
+"equipment": "Elástico",
+"cardio": false,
+"increment": "",
+"aliases": [
+"coice elastico",
+"gluteo elastico",
+"extensao de quadril elastico"
+],
+"how": "Elástico preso ao tornozelo. Leve a perna para trás com o joelho quase estendido, contraia o glúteo e volte devagar.",
+"photo": "coice-elastico"
+},
+{
+"id": "gluteo-maquina",
+"name": "Glúteo na máquina (coice)",
+"group": "Glúteos",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"gluteo maquina",
+"coice maquina",
+"gluteo na maquina",
+"maquina de gluteo"
+],
+"how": "Apoiado na máquina, pé na plataforma. Empurre a plataforma para trás estendendo o quadril, contraia o glúteo e volte devagar.",
+"photo": "gluteo-4-apoios"
+},
+{
+"id": "kettlebell-swing",
+"name": "Kettlebell swing",
+"group": "Glúteos",
+"equipment": "Kettlebell",
+"cardio": false,
+"increment": "4",
+"aliases": [
+"swing",
+"kettlebell swing",
+"balanco com kettlebell"
+],
+"how": "Pés afastados, coluna reta. Leve o kettlebell para trás entre as pernas dobrando o quadril e impulsione para frente com os glúteos até a altura do peito.",
+"photo": "kettlebell-swing"
 },
 {
 "id": "panturrilha-em-pe",
@@ -1643,7 +3320,8 @@
 "gemeos em pe",
 "elevacao de panturrilha"
 ],
-"how": "Ponta dos pés no degrau. Suba o máximo que conseguir, segure um instante e desça até alongar a panturrilha."
+"how": "Ponta dos pés no degrau. Suba o máximo que conseguir, segure um instante e desça até alongar a panturrilha.",
+"photo": "panturrilha-em-pe"
 },
 {
 "id": "panturrilha-sentado",
@@ -1658,7 +3336,8 @@
 "soleo",
 "panturrilha banco"
 ],
-"how": "Sentado, almofada sobre os joelhos. Suba os calcanhares o máximo possível e desça alongando."
+"how": "Sentado, almofada sobre os joelhos. Suba os calcanhares o máximo possível e desça alongando.",
+"photo": "panturrilha-sentado"
 },
 {
 "id": "panturrilha-leg",
@@ -1672,7 +3351,8 @@
 "panturrilha no leg",
 "gemeos leg press"
 ],
-"how": "Ponta dos pés na borda da plataforma, joelhos quase estendidos. Empurre com a ponta dos pés e volte alongando."
+"how": "Ponta dos pés na borda da plataforma, joelhos quase estendidos. Empurre com a ponta dos pés e volte alongando.",
+"photo": "panturrilha-leg"
 },
 {
 "id": "panturrilha-smith",
@@ -1684,7 +3364,8 @@
 "aliases": [
 "panturrilha smith"
 ],
-"how": "Barra guiada nos trapézios, ponta dos pés em um degrau. Suba nos dedos e desça alongando."
+"how": "Barra guiada nos trapézios, ponta dos pés em um degrau. Suba nos dedos e desça alongando.",
+"photo": "panturrilha-smith"
 },
 {
 "id": "panturrilha-halteres",
@@ -1697,7 +3378,67 @@
 "panturrilha halteres",
 "panturrilha livre"
 ],
-"how": "Halteres ao lado do corpo. Suba na ponta dos pés, segure um instante e desça devagar."
+"how": "Halteres ao lado do corpo. Suba na ponta dos pés, segure um instante e desça devagar.",
+"photo": "panturrilha-halteres"
+},
+{
+"id": "panturrilha-maquina",
+"name": "Panturrilha na máquina horizontal",
+"group": "Panturrilha",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"panturrilha maquina",
+"calf press",
+"panturrilha horizontal"
+],
+"how": "Sentado, ponta dos pés na plataforma e joelhos quase estendidos. Empurre com a ponta dos pés e volte alongando.",
+"photo": "panturrilha-maquina"
+},
+{
+"id": "panturrilha-burrinho",
+"name": "Panturrilha burrinho",
+"group": "Panturrilha",
+"equipment": "Máquina",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"burrinho",
+"panturrilha burrinho",
+"donkey"
+],
+"how": "Tronco inclinado à frente com o peso apoiado no quadril, ponta dos pés no degrau. Suba o máximo possível e desça alongando.",
+"photo": "panturrilha-burrinho"
+},
+{
+"id": "panturrilha-barra",
+"name": "Panturrilha em pé com barra",
+"group": "Panturrilha",
+"equipment": "Barra",
+"cardio": false,
+"increment": "2,5",
+"aliases": [
+"panturrilha barra",
+"panturrilha em pe barra"
+],
+"how": "Barra nos trapézios, ponta dos pés em um degrau ou anilha. Suba nos dedos, segure um instante e desça alongando.",
+"photo": "panturrilha-barra"
+},
+{
+"id": "panturrilha-unilateral",
+"name": "Panturrilha unilateral",
+"group": "Panturrilha",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"panturrilha unilateral",
+"panturrilha uma perna",
+"gemeos unilateral"
+],
+"how": "Em um pé só, na borda de um degrau, com um halter na mão do mesmo lado. Suba o máximo possível e desça alongando. Complete um lado e troque.",
+"photo": "panturrilha-halteres"
 },
 {
 "id": "abdominal",
@@ -1714,7 +3455,8 @@
 "crunch",
 "abdominais"
 ],
-"how": "Deitado, joelhos flexionados. Tire os ombros do chão contraindo o abdômen, sem puxar o pescoço, e desça devagar."
+"how": "Deitado, joelhos flexionados. Tire os ombros do chão contraindo o abdômen, sem puxar o pescoço, e desça devagar.",
+"photo": "abdominal"
 },
 {
 "id": "abdominal-infra",
@@ -1729,7 +3471,8 @@
 "elevacao de pernas deitado",
 "elevacao de pernas"
 ],
-"how": "Deitado, pernas quase estendidas. Suba as pernas até a vertical e desça sem encostar os pés no chão."
+"how": "Deitado, pernas quase estendidas. Suba as pernas até a vertical e desça sem encostar os pés no chão.",
+"photo": "abdominal-infra"
 },
 {
 "id": "elevacao-pernas",
@@ -1743,7 +3486,8 @@
 "elevacao de pernas suspenso",
 "abdominal na barra"
 ],
-"how": "Pendurado na barra, suba as pernas até a altura do quadril sem balançar o corpo e desça devagar."
+"how": "Pendurado na barra, suba as pernas até a altura do quadril sem balançar o corpo e desça devagar.",
+"photo": "elevacao-pernas"
 },
 {
 "id": "elevacao-joelhos",
@@ -1757,7 +3501,8 @@
 "abdominal paralela",
 "elevacao de joelhos paralela"
 ],
-"how": "Antebraços apoiados nas paralelas. Suba os joelhos em direção ao peito e desça controlando."
+"how": "Antebraços apoiados nas paralelas. Suba os joelhos em direção ao peito e desça controlando.",
+"photo": "elevacao-joelhos"
 },
 {
 "id": "prancha",
@@ -1772,7 +3517,8 @@
 "prancha isometrica",
 "prancha frontal"
 ],
-"how": "Antebraços e pontas dos pés no chão, corpo em linha reta. Contraia abdômen e glúteos e segure pelo tempo planejado."
+"how": "Antebraços e pontas dos pés no chão, corpo em linha reta. Contraia abdômen e glúteos e segure pelo tempo planejado.",
+"photo": "prancha"
 },
 {
 "id": "prancha-lateral",
@@ -1784,7 +3530,8 @@
 "aliases": [
 "prancha lateral"
 ],
-"how": "De lado, apoiado no antebraço. Suba o quadril até alinhar o corpo e segure. Repita do outro lado."
+"how": "De lado, apoiado no antebraço. Suba o quadril até alinhar o corpo e segure. Repita do outro lado.",
+"photo": "prancha-lateral"
 },
 {
 "id": "abdominal-polia",
@@ -1799,7 +3546,8 @@
 "abdominal na corda",
 "abdominal cabo"
 ],
-"how": "Ajoelhado, corda ao lado da cabeça. Enrole o tronco levando os cotovelos em direção aos joelhos e volte devagar."
+"how": "Ajoelhado, corda ao lado da cabeça. Enrole o tronco levando os cotovelos em direção aos joelhos e volte devagar.",
+"photo": "abdominal-polia"
 },
 {
 "id": "abdominal-maquina",
@@ -1811,7 +3559,8 @@
 "aliases": [
 "abdominal maquina"
 ],
-"how": "Sentado, segure as pegadas e flexione o tronco à frente contraindo o abdômen. Volte devagar."
+"how": "Sentado, segure as pegadas e flexione o tronco à frente contraindo o abdômen. Volte devagar.",
+"photo": "abdominal-maquina"
 },
 {
 "id": "abdominal-bicicleta",
@@ -1824,7 +3573,8 @@
 "abdominal bicicleta",
 "bicicleta no chao"
 ],
-"how": "Deitado, mãos atrás da cabeça. Leve o cotovelo em direção ao joelho oposto, alternando os lados."
+"how": "Deitado, mãos atrás da cabeça. Leve o cotovelo em direção ao joelho oposto, alternando os lados.",
+"photo": "abdominal-bicicleta"
 },
 {
 "id": "abdominal-obliquo",
@@ -1838,7 +3588,8 @@
 "abdominal obliquo",
 "obliquos"
 ],
-"how": "Deitado, joelhos tombados para um lado. Suba os ombros contraindo a lateral do abdômen. Repita do outro lado."
+"how": "Deitado, joelhos tombados para um lado. Suba os ombros contraindo a lateral do abdômen. Repita do outro lado.",
+"photo": "abdominal-obliquo"
 },
 {
 "id": "giro-russo",
@@ -1852,7 +3603,8 @@
 "russian twist",
 "rotacao russa"
 ],
-"how": "Sentado, tronco inclinado para trás. Gire o tronco de um lado para o outro, com ou sem peso nas mãos."
+"how": "Sentado, tronco inclinado para trás. Gire o tronco de um lado para o outro, com ou sem peso nas mãos.",
+"photo": "giro-russo"
 },
 {
 "id": "roda-abdominal",
@@ -1866,7 +3618,8 @@
 "rodinha",
 "ab wheel"
 ],
-"how": "Ajoelhado, role a roda à frente até onde conseguir manter a coluna firme e volte contraindo o abdômen."
+"how": "Ajoelhado, role a roda à frente até onde conseguir manter a coluna firme e volte contraindo o abdômen.",
+"photo": "roda-abdominal"
 },
 {
 "id": "abdominal-declinado",
@@ -1879,7 +3632,8 @@
 "abdominal declinado",
 "abdominal banco declinado"
 ],
-"how": "Pés presos no banco declinado. Suba o tronco contraindo o abdômen e desça devagar."
+"how": "Pés presos no banco declinado. Suba o tronco contraindo o abdômen e desça devagar.",
+"photo": "abdominal-declinado"
 },
 {
 "id": "abdominal-canivete",
@@ -1893,7 +3647,8 @@
 "abdominal canivete",
 "abdominal remador"
 ],
-"how": "Deitado e estendido, suba tronco e pernas ao mesmo tempo tentando tocar os pés e desça controlando."
+"how": "Deitado e estendido, suba tronco e pernas ao mesmo tempo tentando tocar os pés e desça controlando.",
+"photo": "abdominal-canivete"
 },
 {
 "id": "abdominal-completo",
@@ -1907,7 +3662,187 @@
 "sit up",
 "situp"
 ],
-"how": "Deitado com os joelhos flexionados, suba o tronco até ficar sentado e desça devagar."
+"how": "Deitado com os joelhos flexionados, suba o tronco até ficar sentado e desça devagar.",
+"photo": "abdominal-completo"
+},
+{
+"id": "abdominal-reverso",
+"name": "Abdominal reverso",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"abdominal reverso",
+"reverso",
+"reverse crunch"
+],
+"how": "Deitado, joelhos flexionados a 90°. Tire o quadril do chão levando os joelhos em direção ao peito e desça devagar.",
+"photo": "abdominal-reverso"
+},
+{
+"id": "abdominal-cruzado",
+"name": "Abdominal cruzado",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"abdominal cruzado",
+"abdominal cotovelo joelho"
+],
+"how": "Deitado, mãos atrás da cabeça. Suba levando um cotovelo em direção ao joelho oposto e alterne os lados.",
+"photo": "abdominal-cruzado"
+},
+{
+"id": "toque-calcanhar",
+"name": "Toque nos calcanhares",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"toque no calcanhar",
+"toque nos calcanhares",
+"abdominal lateral no chao"
+],
+"how": "Deitado, joelhos flexionados e ombros fora do chão. Incline o tronco para um lado e para o outro tocando os calcanhares.",
+"photo": "toque-calcanhar"
+},
+{
+"id": "abdominal-remador",
+"name": "Abdominal remador",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"abdominal remador sentado",
+"remador",
+"abdominal no banco"
+],
+"how": "Sentado na ponta do banco, tronco inclinado para trás. Traga os joelhos ao peito aproximando o tronco e estenda as pernas de volta.",
+"photo": "abdominal-remador"
+},
+{
+"id": "abdominal-bola",
+"name": "Abdominal na bola",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"abdominal na bola",
+"abdominal bola suica"
+],
+"how": "Lombar apoiada na bola, pés firmes no chão. Suba o tronco contraindo o abdômen e desça alongando sobre a bola.",
+"photo": "abdominal-bola"
+},
+{
+"id": "abdominal-peso",
+"name": "Abdominal com peso",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"abdominal com peso",
+"abdominal com anilha",
+"supra com peso"
+],
+"how": "Deitado, segure uma anilha ou uma bola junto ao peito ou acima da cabeça. Tire os ombros do chão contraindo o abdômen e desça devagar.",
+"photo": "abdominal-peso"
+},
+{
+"id": "tesoura",
+"name": "Tesoura (batida de pernas)",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"tesoura",
+"flutter kicks",
+"batida de pernas"
+],
+"how": "Deitado, pernas estendidas e um pouco fora do chão. Suba e desça as pernas alternadamente, em movimentos curtos, com a lombar apoiada.",
+"photo": "tesoura"
+},
+{
+"id": "inseto-morto",
+"name": "Inseto morto (dead bug)",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"dead bug",
+"inseto morto"
+],
+"how": "Deitado, braços para cima e joelhos a 90°. Estenda um braço e a perna oposta sem tirar a lombar do chão. Volte e troque os lados.",
+"photo": "inseto-morto"
+},
+{
+"id": "flexao-lateral",
+"name": "Flexão lateral com halter",
+"group": "Abdômen",
+"equipment": "Halteres",
+"cardio": false,
+"increment": "2",
+"aliases": [
+"flexao lateral",
+"inclinacao lateral",
+"obliquo com halter"
+],
+"how": "De pé, um halter em uma das mãos. Incline o tronco para o lado do halter e volte contraindo o lado oposto. Complete um lado e troque.",
+"photo": "flexao-lateral"
+},
+{
+"id": "lenhador",
+"name": "Lenhador na polia",
+"group": "Abdômen",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"lenhador",
+"wood chop",
+"rotacao na polia",
+"lenhador polia"
+],
+"how": "De lado para a polia alta, braços estendidos. Puxe o cabo na diagonal até o quadril oposto girando o tronco e volte devagar.",
+"photo": "lenhador"
+},
+{
+"id": "pallof",
+"name": "Pallof press",
+"group": "Abdômen",
+"equipment": "Polia",
+"cardio": false,
+"increment": "5",
+"aliases": [
+"pallof",
+"pallof press",
+"anti rotacao"
+],
+"how": "De lado para a polia, mãos juntas no peito. Estenda os braços à frente sem deixar o tronco girar, segure um instante e volte.",
+"photo": "pallof"
+},
+{
+"id": "escalador",
+"name": "Escalador (mountain climber)",
+"group": "Abdômen",
+"equipment": "Peso corporal",
+"cardio": false,
+"increment": "",
+"aliases": [
+"escalador",
+"mountain climber",
+"mountain climbers",
+"alpinista"
+],
+"how": "Em posição de flexão, traga um joelho de cada vez em direção ao peito, em ritmo rápido, sem levantar o quadril.",
+"photo": "escalador"
 },
 {
 "id": "esteira-corrida",
@@ -1922,7 +3857,8 @@
 "corrida esteira",
 "corrida"
 ],
-"how": "Comece em ritmo leve por alguns minutos e ajuste a velocidade. Mantenha o tronco ereto e olhe para frente."
+"how": "Comece em ritmo leve por alguns minutos e ajuste a velocidade. Mantenha o tronco ereto e olhe para frente.",
+"photo": "esteira-corrida"
 },
 {
 "id": "esteira-caminhada",
@@ -1937,7 +3873,8 @@
 "caminhada esteira",
 "caminhada inclinada"
 ],
-"how": "Caminhe em ritmo constante, com ou sem inclinação, sem se apoiar no corrimão."
+"how": "Caminhe em ritmo constante, com ou sem inclinação, sem se apoiar no corrimão.",
+"photo": "esteira-caminhada"
 },
 {
 "id": "bicicleta",
@@ -1950,10 +3887,10 @@
 "bicicleta",
 "bike",
 "bicicleta ergometrica",
-"spinning",
 "ergometrica"
 ],
-"how": "Ajuste o banco para o joelho ficar levemente flexionado com o pedal embaixo. Pedale em ritmo constante."
+"how": "Ajuste o banco para o joelho ficar levemente flexionado com o pedal embaixo. Pedale em ritmo constante.",
+"photo": "bicicleta"
 },
 {
 "id": "eliptico",
@@ -1967,7 +3904,8 @@
 "transport",
 "elíptico"
 ],
-"how": "Mantenha o tronco ereto e empurre e puxe as alças acompanhando as pernas, em ritmo constante."
+"how": "Mantenha o tronco ereto e empurre e puxe as alças acompanhando as pernas, em ritmo constante.",
+"photo": "eliptico"
 },
 {
 "id": "escada",
@@ -1981,7 +3919,8 @@
 "stairmaster",
 "simulador de escada"
 ],
-"how": "Suba os degraus em ritmo constante, pisando com o pé inteiro, sem se pendurar no corrimão."
+"how": "Suba os degraus em ritmo constante, pisando com o pé inteiro, sem se pendurar no corrimão.",
+"photo": "escada"
 },
 {
 "id": "remo",
@@ -1995,7 +3934,8 @@
 "remo ergometro",
 "remoergometro"
 ],
-"how": "Empurre com as pernas, incline levemente o tronco para trás e só então puxe o cabo até o abdômen. Volte na ordem inversa."
+"how": "Empurre com as pernas, incline levemente o tronco para trás e só então puxe o cabo até o abdômen. Volte na ordem inversa.",
+"photo": "remo"
 },
 {
 "id": "corda",
@@ -2008,7 +3948,8 @@
 "pular corda",
 "corda"
 ],
-"how": "Saltos baixos na ponta dos pés, cotovelos perto do corpo e giro vindo dos punhos."
+"how": "Saltos baixos na ponta dos pés, cotovelos perto do corpo e giro vindo dos punhos.",
+"photo": "corda"
 },
 {
 "id": "corrida-rua",
@@ -2022,7 +3963,8 @@
 "corrida ao ar livre",
 "corrida na rua"
 ],
-"how": "Comece em ritmo confortável e aumente aos poucos. Mantenha passadas curtas e o tronco ereto."
+"how": "Comece em ritmo confortável e aumente aos poucos. Mantenha passadas curtas e o tronco ereto.",
+"photo": "corrida-rua"
 },
 {
 "id": "ciclismo",
@@ -2036,6 +3978,306 @@
 "pedal",
 "bicicleta na rua"
 ],
-"how": "Pedale em cadência constante e ajuste a marcha para manter o esforço planejado."
+"how": "Pedale em cadência constante e ajuste a marcha para manter o esforço planejado.",
+"photo": "ciclismo"
+},
+{
+"id": "esteira-trote",
+"name": "Trote na esteira",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"trote",
+"trote na esteira",
+"corrida leve"
+],
+"how": "Corra em ritmo leve, em que ainda dá para conversar. Mantenha o tronco ereto e os ombros relaxados.",
+"photo": "esteira-trote"
+},
+{
+"id": "bicicleta-reclinada",
+"name": "Bicicleta reclinada",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"bicicleta reclinada",
+"bicicleta horizontal",
+"bike horizontal"
+],
+"how": "Costas apoiadas no encosto e banco ajustado para o joelho ficar levemente flexionado com a perna estendida. Pedale em ritmo constante.",
+"photo": "bicicleta-reclinada"
+},
+{
+"id": "escada-rolante",
+"name": "Escada rolante",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"escada rolante",
+"step mill",
+"escada infinita"
+],
+"how": "Suba os degraus em ritmo constante, pisando com o pé inteiro, com o tronco ereto e sem se pendurar no corrimão.",
+"photo": "escada-rolante"
+},
+{
+"id": "spinning",
+"name": "Spinning",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"spinning",
+"aula de spinning",
+"bike indoor",
+"rpm"
+],
+"how": "Ajuste o banco na altura do quadril e o guidão em posição confortável. Siga o ritmo da aula alternando carga, cadência e trechos em pé.",
+"photo": "bicicleta"
+},
+{
+"id": "air-bike",
+"name": "Air bike",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"air bike",
+"assault bike",
+"bicicleta de ar"
+],
+"how": "Empurre e puxe as alavancas enquanto pedala. A resistência aumenta com a força que você faz. Funciona bem em tiros curtos com descanso.",
+"photo": ""
+},
+{
+"id": "corda-naval",
+"name": "Corda naval",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"corda naval",
+"battle rope",
+"battling ropes"
+],
+"how": "Joelhos flexionados e tronco firme. Faça ondas com as cordas subindo e descendo os braços, alternados ou juntos, em ritmo forte.",
+"photo": "corda-naval"
+},
+{
+"id": "treno",
+"name": "Trenó",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"treno",
+"sled",
+"prowler",
+"empurrar treno"
+],
+"how": "Braços estendidos nas hastes e tronco inclinado. Empurre o trenó com passadas fortes e curtas, mantendo a coluna reta.",
+"photo": "treno"
+},
+{
+"id": "patins",
+"name": "Patins",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"patins",
+"patinacao",
+"roller"
+],
+"how": "Joelhos flexionados e tronco levemente inclinado. Empurre para o lado e para trás alternando as pernas. Use os equipamentos de proteção.",
+"photo": "patins"
+},
+{
+"id": "caminhada-rua",
+"name": "Caminhada ao ar livre",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"caminhada na rua",
+"caminhada ao ar livre",
+"caminhada de rua",
+"trilha"
+],
+"how": "Caminhe em ritmo que acelere a respiração, com o tronco ereto e os braços acompanhando o passo.",
+"photo": "corrida-rua"
+},
+{
+"id": "natacao",
+"name": "Natação",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"natacao",
+"nadar",
+"piscina"
+],
+"how": "Alterne os estilos e os ritmos conforme o plano. Anote o tempo e, se quiser, a distância nadada em quilômetros.",
+"photo": ""
+},
+{
+"id": "hiit",
+"name": "HIIT (treino intervalado)",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"hiit",
+"treino intervalado",
+"intervalado",
+"tabata",
+"tiros"
+],
+"how": "Alterne períodos curtos de esforço forte com períodos de recuperação. Anote o tempo total e, no campo de nível, quantos tiros você fez.",
+"photo": ""
+},
+{
+"id": "burpee",
+"name": "Burpee",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"burpee",
+"burpees"
+],
+"how": "Agache, apoie as mãos no chão, jogue os pés para trás, faça uma flexão, traga os pés de volta e salte com os braços para cima.",
+"photo": ""
+},
+{
+"id": "polichinelo",
+"name": "Polichinelo",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"polichinelo",
+"polichinelos",
+"jumping jack",
+"jumping jacks"
+],
+"how": "Salte abrindo as pernas e levando os braços acima da cabeça. Salte de novo voltando à posição inicial. Mantenha um ritmo constante.",
+"photo": ""
+},
+{
+"id": "jump",
+"name": "Jump (mini trampolim)",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"jump",
+"mini trampolim",
+"aula de jump"
+],
+"how": "Saltos baixos no centro do trampolim, com os joelhos levemente flexionados e o abdômen firme.",
+"photo": ""
+},
+{
+"id": "danca",
+"name": "Dança",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"danca",
+"zumba",
+"fit dance",
+"aula de danca"
+],
+"how": "Siga a aula no seu ritmo. Anote o tempo e, se o relógio ou o aparelho mostrar, as calorias.",
+"photo": ""
+},
+{
+"id": "luta",
+"name": "Luta ou boxe",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"luta",
+"boxe",
+"muay thai",
+"jiu jitsu",
+"saco de pancada",
+"artes marciais"
+],
+"how": "Anote o tempo de treino. No campo de nível, você pode registrar o número de rounds.",
+"photo": ""
+},
+{
+"id": "futebol",
+"name": "Futebol ou esporte coletivo",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"futebol",
+"futsal",
+"pelada",
+"basquete",
+"volei",
+"esporte"
+],
+"how": "Anote o tempo jogado e, se usar relógio, a distância percorrida e as calorias.",
+"photo": ""
+},
+{
+"id": "funcional",
+"name": "Treino funcional",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"funcional",
+"treino funcional",
+"crossfit",
+"circuito"
+],
+"how": "Circuito de exercícios com pouco descanso. Anote o tempo total e, no campo de nível, quantas voltas você completou.",
+"photo": ""
+},
+{
+"id": "simulador-esqui",
+"name": "Simulador de esqui",
+"group": "Cardio",
+"equipment": "Cardio",
+"cardio": true,
+"increment": "",
+"aliases": [
+"esqui",
+"ski erg",
+"skierg",
+"simulador de esqui"
+],
+"how": "De pé, puxe as duas alças de cima para baixo dobrando levemente os joelhos e o quadril. Volte com os braços estendidos acima da cabeça.",
+"photo": ""
 }
 ]

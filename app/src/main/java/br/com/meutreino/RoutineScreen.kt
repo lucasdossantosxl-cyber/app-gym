@@ -151,7 +151,7 @@ fun RoutineScreen(model: TrainingModel, draft: RoutineDraft, sessions: List<Sess
 
     editing?.let { index ->
         val exercise = draft.exercises.getOrNull(index)
-        if (exercise == null) editing = null else PlanSheet(exercise, model.defaultRest,
+        if (exercise == null) editing = null else PlanSheet(exercise, model.defaultRest, model.catalog,
             onChange = { change(draft.copy(exercises = draft.exercises.replacing(index, it))) },
             onDismiss = { editing = null })
     }
@@ -175,13 +175,20 @@ private val restOptions = listOf(0, 30, 45, 60, 90, 120, 180, 240)
 /** Plano de um exercício dentro da rotina. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun PlanSheet(exercise: Exercise, defaultRest: Int, onChange: (Exercise) -> Unit, onDismiss: () -> Unit) {
+private fun PlanSheet(exercise: Exercise, defaultRest: Int, catalog: Catalog, onChange: (Exercise) -> Unit, onDismiss: () -> Unit) {
+    var variant by remember { mutableStateOf(false) }
+    if (variant) VariantDialog(exercise, onConfirm = { onChange(exercise.withVariant(it, catalog)) }, onDismiss = { variant = false })
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
         Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).imePadding()
             .padding(horizontal = 20.dp).padding(bottom = 28.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(exercise.name.ifBlank { "Exercício" }, style = MaterialTheme.typography.titleLarge)
-            if (exercise.ref.isEmpty()) Field("Nome", exercise.name, { onChange(exercise.copy(name = it.take(60))) })
+            if (exercise.ref.isEmpty() && exercise.variant.isEmpty()) {
+                Field("Nome", exercise.name, { onChange(exercise.copy(name = it.take(60))) })
+            }
             if (!exercise.cardio) {
+                FilledTonalButton(onClick = { variant = true }) {
+                    Text(if (exercise.variant.isBlank()) "Escolher variação (unilateral, pegada…)" else "Variação: ${exercise.variant}")
+                }
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Field("Séries", exercise.sets, { onChange(exercise.copy(sets = it.filter(Char::isDigit).take(3))) },
                         Modifier.weight(1f), KeyboardType.Number)

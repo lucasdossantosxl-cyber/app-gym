@@ -22,10 +22,12 @@ data class Exercise(
     val video: String = "",
     val note: String = "",
     /** Carga planejada, usada como sugestão enquanto não há registro anterior. */
-    val load: String = ""
+    val load: String = "",
+    /** Variação de um exercício da biblioteca ("unilateral", "pegada neutra"). Tem histórico próprio. */
+    val variant: String = ""
 ) {
     /** Identifica o mesmo exercício entre rotinas e treinos diferentes. */
-    fun key() = ref.ifBlank { name.normalized() }
+    fun key() = ref.ifBlank { name.normalized() } + variant.normalized().let { if (it.isEmpty()) "" else "+$it" }
 
     fun plan(): String = when {
         cardio -> note.ifBlank { "Cardio" }
@@ -36,18 +38,38 @@ data class Exercise(
     }
 }
 
-data class SetEntry(val first: String = "", val second: String = "", val done: Boolean = false) {
-    fun empty() = first.isBlank() && second.isBlank()
+/**
+ * Uma série. Em força, [first] é a carga e [second] são as repetições. Em cardio, [first] são os minutos,
+ * [second] a distância em km, [speed] a velocidade ou o nível do aparelho e [calories] as calorias gastas.
+ */
+data class SetEntry(
+    val first: String = "",
+    val second: String = "",
+    val done: Boolean = false,
+    val speed: String = "",
+    val calories: String = ""
+) {
+    fun empty() = first.isBlank() && second.isBlank() && speed.isBlank() && calories.isBlank()
 
     fun valid(cardio: Boolean): Boolean {
         if (empty()) return true
         return if (cardio) {
             first.decimal()?.let { it.signum() > 0 } == true &&
-                (second.isBlank() || second.decimal() != null)
+                (second.isBlank() || second.decimal() != null) &&
+                (speed.isBlank() || speed.decimal() != null) &&
+                (calories.isBlank() || calories.decimal() != null)
         } else {
             first.decimal() != null && (second.toIntOrNull() ?: 0) > 0
         }
     }
+
+    /** "30 min · 5 km · vel. 10 · 320 kcal", só com o que foi preenchido. */
+    fun cardioSummary(): String = listOfNotNull(
+        "$first min",
+        second.takeIf { it.isNotBlank() }?.let { "$it km" },
+        speed.takeIf { it.isNotBlank() }?.let { "vel. $it" },
+        calories.takeIf { it.isNotBlank() }?.let { "$it kcal" }
+    ).joinToString(" · ")
 }
 
 data class Entry(val exercise: Exercise, val sets: List<SetEntry>) {
@@ -85,7 +107,7 @@ data class Entry(val exercise: Exercise, val sets: List<SetEntry>) {
     }
 
     fun summary(): String = if (exercise.cardio) {
-        sets.joinToString(" · ") { if (it.second.isBlank()) "${it.first} min" else "${it.first} min / ${it.second} km" }
+        sets.joinToString("  |  ") { it.cardioSummary() }
     } else {
         // 40 kg × 12 · 12 · 10 quando a carga se repete; senão série a série
         val loads = sets.map { it.first.decimal() }
@@ -123,7 +145,10 @@ data class WorkoutDraft(
     val date: Long = System.currentTimeMillis(),
     val entries: List<Entry> = emptyList(),
     /** Duração em segundos de um registro já salvo. Em treinos novos é calculada a partir de [date]. */
-    val duration: Long = 0
+    val duration: Long = 0,
+    /** Avaliação do treino, de 1 a 5. Zero quando o treino não foi avaliado. */
+    val rating: Int = 0,
+    val note: String = ""
 )
 
 fun String.decimal() = trim().replace(',', '.').toBigDecimalOrNull()
@@ -145,16 +170,24 @@ fun clock(seconds: Long): String =
     if (seconds >= 3600) "%d:%02d:%02d".format(seconds / 3600, seconds % 3600 / 60, seconds % 60)
     else clock(seconds.toInt())
 
+/** 3700 segundos viram "1 h 01 min"; menos de um minuto aparece em segundos. */
+fun durationLabel(seconds: Long): String = when {
+    seconds <= 0 -> ""
+    seconds < 60 -> "$seconds s"
+    seconds < 3600 -> "${(seconds + 30) / 60} min"
+    else -> "%d h %02d min".format(seconds / 3600, seconds % 3600 / 60)
+}
+
 private fun Exercise.json() = JSONObject()
     .put("id", id).put("name", name).put("cardio", cardio)
     .put("unit", unit).put("sets", sets).put("target", target).put("increment", increment)
-    .put("rest", rest).put("ref", ref).put("video", video).put("note", note).put("load", load)
+    .put("rest", rest).put("ref", ref).put("video", video).put("note", note).put("load", load).put("variant", variant)
 
 // Campos acrescentados depois da versão 1 são opcionais para ler registros antigos.
 private fun JSONObject.exercise() = Exercise(
     getString("id"), getString("name"), getBoolean("cardio"),
     getString("unit"), getString("sets"), getString("target"), optString("increment"),
-    optInt("rest"), optString("ref"), optString("video"), optString("note"), optString("load")
+    optInt("rest"), optString("ref"), optString("video"), optString("note"), optString("load"), optString("variant")
 )
 
 fun List<Exercise>.encodeExercises() = JSONArray(map { it.json() }).toString()
@@ -164,7 +197,10 @@ fun String.decodeExercises() = JSONArray(this).let { array ->
 
 private fun List<Entry>.entriesJson() = JSONArray(map { entry ->
     JSONObject().put("exercise", entry.exercise.json()).put("series", JSONArray(entry.sets.map {
-        JSONObject().put("first", it.first).put("second", it.second).put("done", it.done)
+        JSONObject().put("first", it.first).put("second", it.second).put("done", it.done).apply {
+            if (it.speed.isNotBlank()) put("speed", it.speed)
+            if (it.calories.isNotBlank()) put("kcal", it.calories)
+        }
     }))
 })
 
@@ -173,7 +209,8 @@ private fun JSONArray.entries() = List(length()) { index ->
     val series = entry.getJSONArray("series")
     Entry(entry.getJSONObject("exercise").exercise(), List(series.length()) {
         val set = series.getJSONObject(it)
-        SetEntry(set.getString("first"), set.getString("second"), set.optBoolean("done"))
+        SetEntry(set.getString("first"), set.getString("second"), set.optBoolean("done"),
+            set.optString("speed"), set.optString("kcal"))
     })
 }
 
@@ -183,9 +220,11 @@ fun String.decodeEntries() = JSONArray(this).entries()
 /** Guarda o treino em andamento para ele sobreviver ao fechamento do app. */
 fun WorkoutDraft.encodeDraft() = JSONObject()
     .put("id", id).put("routineId", routineId ?: JSONObject.NULL).put("name", name)
-    .put("date", date).put("duration", duration).put("entries", entries.entriesJson()).toString()
+    .put("date", date).put("duration", duration).put("rating", rating).put("note", note)
+    .put("entries", entries.entriesJson()).toString()
 
 fun String.decodeDraft() = JSONObject(this).let {
     WorkoutDraft(it.getLong("id"), if (it.isNull("routineId")) null else it.getLong("routineId"),
-        it.getString("name"), it.getLong("date"), it.getJSONArray("entries").entries(), it.optLong("duration"))
+        it.getString("name"), it.getLong("date"), it.getJSONArray("entries").entries(), it.optLong("duration"),
+        it.optInt("rating").coerceIn(0, 5), it.optString("note"))
 }

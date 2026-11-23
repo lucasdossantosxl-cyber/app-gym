@@ -29,7 +29,10 @@ data class Workout(
     val date: Long,
     val entries: String,
     /** Duração em segundos. Zero em registros anteriores à versão 2. */
-    @ColumnInfo(defaultValue = "0") val duration: Long = 0
+    @ColumnInfo(defaultValue = "0") val duration: Long = 0,
+    /** Avaliação de 1 a 5 dada ao concluir o treino. Zero quando não houve avaliação. */
+    @ColumnInfo(defaultValue = "0") val rating: Int = 0,
+    @ColumnInfo(defaultValue = "") val note: String = ""
 )
 
 @Dao
@@ -54,7 +57,7 @@ interface TrainingDao {
     @Delete suspend fun delete(workout: Workout)
 }
 
-@Database(entities = [Routine::class, Workout::class], version = 2, exportSchema = false)
+@Database(entities = [Routine::class, Workout::class], version = 3, exportSchema = false)
 abstract class TrainingDatabase : RoomDatabase() {
     abstract fun trainingDao(): TrainingDao
 
@@ -65,5 +68,15 @@ abstract class TrainingDatabase : RoomDatabase() {
                 db.execSQL("ALTER TABLE Workout ADD COLUMN duration INTEGER NOT NULL DEFAULT 0")
             }
         }
+
+        /** A versão 3 guarda a avaliação e a anotação do treino. */
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE Workout ADD COLUMN rating INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE Workout ADD COLUMN note TEXT NOT NULL DEFAULT ''")
+            }
+        }
+
+        val MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
     }
 }

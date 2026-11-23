@@ -36,7 +36,11 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -232,17 +236,27 @@ fun ExerciseSheet(exercise: Exercise, catalog: Catalog, stats: ExerciseStats?, o
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             if (item != null) {
-                // alterna a foto inicial e a final para mostrar o movimento
-                var frame by remember { mutableIntStateOf(0) }
-                LaunchedEffect(item.id) {
-                    while (true) {
-                        delay(1100)
-                        frame = 1 - frame
+                if (item.photo.isNotEmpty()) {
+                    // alterna a foto inicial e a final para mostrar o movimento
+                    var frame by remember { mutableIntStateOf(0) }
+                    LaunchedEffect(item.id) {
+                        while (true) {
+                            delay(1100)
+                            frame = 1 - frame
+                        }
+                    }
+                    ExercisePhoto(item.id, item.name, Modifier.fillMaxWidth().aspectRatio(1.5f), frame = frame, thumb = false)
+                    if (item.photo != item.id) {
+                        Text("Foto de um exercício parecido: ${catalog[item.photo]?.name.orEmpty()}. Veja o vídeo para a execução exata.",
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
-                ExercisePhoto(item.id, item.name, Modifier.fillMaxWidth().aspectRatio(1.5f), frame = frame, thumb = false)
                 Text("Como fazer", style = MaterialTheme.typography.titleMedium)
                 Text(item.how, style = MaterialTheme.typography.bodyLarge)
+                if (exercise.variant.isNotBlank()) {
+                    Text("Variação: ${exercise.variant}. As fotos e o texto são do exercício original.",
+                        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
             }
             if (exercise.note.isNotBlank()) {
                 Text("Observação: ${exercise.note}", color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -268,7 +282,8 @@ fun ProgressSection(stats: ExerciseStats) {
         if (stats.cardio) {
             Record("Maior tempo", "${stats.bestLoad.pretty()} min", Modifier.weight(1f))
             Record("Maior distância", "${stats.bestVolume.pretty()} km", Modifier.weight(1f))
-            Record("Treinos", "${stats.points.size}", Modifier.weight(1f))
+            Record(if (stats.totalCalories > 0) "Calorias" else "Treinos",
+                if (stats.totalCalories > 0) "${stats.totalCalories.pretty()} kcal" else "${stats.points.size}", Modifier.weight(1f))
         } else {
             Record("Maior carga", "${stats.bestLoad.pretty()} ${stats.unit}", Modifier.weight(1f))
             Record("1RM estimado", "${stats.bestOneRepMax.pretty()} ${stats.unit}", Modifier.weight(1f))
@@ -368,4 +383,28 @@ fun ProgressChart(points: List<Point>, metric: Metric, picked: Int?, onPick: (In
             Text(points.last().date.dayLabel(), style = MaterialTheme.typography.labelSmall, color = colors.onSurfaceVariant)
         }
     }
+}
+
+/** Escolhe a variação de um exercício: uma das sugestões ou um texto livre. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun VariantDialog(exercise: Exercise, onConfirm: (String) -> Unit, onDismiss: () -> Unit) {
+    var text by remember { mutableStateOf(exercise.variant) }
+    AlertDialog(onDismissRequest = onDismiss, title = { Text("Variação") },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("Cada variação tem histórico e progressão de carga próprios. As fotos e o passo a passo continuam " +
+                    "os do exercício original.", style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                OutlinedTextField(value = text, onValueChange = { text = it.take(40) }, label = { Text("Variação") },
+                    placeholder = { Text("Ex.: unilateral") }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    VARIANTS.forEach { option ->
+                        FilterChip(selected = text.trim().equals(option, true), onClick = { text = option }, label = { Text(option) })
+                    }
+                }
+            }
+        },
+        confirmButton = { TextButton(onClick = { onConfirm(text); onDismiss() }) { Text("Usar") } },
+        dismissButton = { TextButton(onClick = { onConfirm(""); onDismiss() }) { Text("Sem variação") } })
 }
